@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>br.com.hidroluz</groupId>
+		<artifactId>sigep</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>sigep-ear</artifactId>
+	<packaging>ear</packaging>
+
+	<name>sigep-ear</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>br.com.hidroluz</groupId>
+			<artifactId>sigep-web</artifactId>
+			<version>0.0.1</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>br.com.hidroluz</groupId>
+			<artifactId>sigep-entity</artifactId>
+			<version>0.0.1</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>br.com.hidroluz</groupId>
+			<artifactId>sigep-business</artifactId>
+			<version>0.0.1</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<build>
+		<finalName>sigep-ear</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.8</version>
+				<configuration>
+					<displayName>sigep</displayName>
+					<version>6</version>
+					<modules>
+						<webModule>
+							<groupId>br.com.hidroluz</groupId>
+							<artifactId>sigep-web</artifactId>
+							<contextRoot>/sigep-web</contextRoot>
+						</webModule>
+						<jarModule>
+							<groupId>br.com.hidroluz</groupId>
+							<artifactId>sigep-entity</artifactId>
+						</jarModule>
+						<ejbModule>
+							<groupId>br.com.hidroluz</groupId>
+							<artifactId>sigep-business</artifactId>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
