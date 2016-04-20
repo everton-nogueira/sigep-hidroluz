@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+body {
+	background: url('#{resource['img:bg.png']}') repeat-x scroll center top #00FF7F;
+}
+
+#topo {
+	background-color: #D3D3D3 !important;
+}
+
+div.container {
+	margin: 0px auto;
+	margin: 0 auto;
+    max-width: 1000px;
+    min-width: 1000px;
+    width: 100%; 
+	text-align:left; 
+}
+
+.ui-layout-unit-content {
+	overflow:hidden !important;
+}

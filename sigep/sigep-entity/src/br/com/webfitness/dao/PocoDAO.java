@@ -1,7 +1,7 @@
 /**
  * Desenvolvido por Everton e Willian 23/02/2015
  */
-package br.com.hidroluz.dao;
+package br.com.webfitness.dao;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.hidroluz.entidades.Poco;
+import br.com.webfitness.entidades.Poco;
 
 
 /**

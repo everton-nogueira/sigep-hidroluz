@@ -1,10 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
-<ui:decorate template="/template.xhtml">
-	<ui:define name="centro">
-            Aqui é o centro do index!
-        </ui:define>
-</ui:decorate>
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<ui:decorate template="/template.xhtml">
+		<ui:define name="menu">
+			<ui:include src="menu.xhtml"/>
+		</ui:define>
+		<ui:define name="centro">
+	        <ui:include src="cadastroPessoa.xhtml"/>
+	    </ui:define>
+	</ui:decorate>
 </html>

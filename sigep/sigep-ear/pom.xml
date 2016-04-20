@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>br.com.hidroluz</groupId>
+		<groupId>br.com.webfitness</groupId>
 		<artifactId>sigep</artifactId>
 		<version>0.0.1</version>
 	</parent>
@@ -14,19 +14,19 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>br.com.hidroluz</groupId>
+			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-web</artifactId>
 			<version>0.0.1</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
-			<groupId>br.com.hidroluz</groupId>
+			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-entity</artifactId>
 			<version>0.0.1</version>
 			<type>jar</type>
 		</dependency>
 		<dependency>
-			<groupId>br.com.hidroluz</groupId>
+			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-business</artifactId>
 			<version>0.0.1</version>
 			<type>ejb</type>
@@ -49,16 +49,16 @@
 					<version>6</version>
 					<modules>
 						<webModule>
-							<groupId>br.com.hidroluz</groupId>
+							<groupId>br.com.webfitness</groupId>
 							<artifactId>sigep-web</artifactId>
 							<contextRoot>/sigep-web</contextRoot>
 						</webModule>
 						<jarModule>
-							<groupId>br.com.hidroluz</groupId>
+							<groupId>br.com.webfitness</groupId>
 							<artifactId>sigep-entity</artifactId>
 						</jarModule>
 						<ejbModule>
-							<groupId>br.com.hidroluz</groupId>
+							<groupId>br.com.webfitness</groupId>
 							<artifactId>sigep-business</artifactId>
 						</ejbModule>
 					</modules>

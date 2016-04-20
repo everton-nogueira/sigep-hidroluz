@@ -1,7 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.com.hidroluz</groupId>
+	<groupId>br.com.webfitness</groupId>
 	<artifactId>sigep</artifactId>
 	<version>0.0.1</version>
 	<packaging>pom</packaging>
@@ -9,18 +9,20 @@
 
 	<!-- Módulos da aplicação -->
 	<modules>
+    	<module>sigep-dto</module>
+		<module>sigep-entity</module>
 		<module>sigep-business</module>
 		<module>sigep-ear</module>
-		<module>sigep-entity</module>
 		<module>sigep-web</module>
-	</modules>
+  </modules>
 
 	<!-- Propriedades -->
 	<properties>
-		<hidroluz.sigep-ear.version>0.0.1</hidroluz.sigep-ear.version>
-		<hidroluz.sigep-entity.version>0.0.1</hidroluz.sigep-entity.version>
-		<hidroluz.sigep-business.version>0.0.1</hidroluz.sigep-business.version>
-		<hidroluz.sigep-web.version>0.0.1</hidroluz.sigep-web.version>
+		<webfitness.sigep-ear.version>0.0.1</webfitness.sigep-ear.version>
+		<webfitness.sigep-dto.version>0.0.1</webfitness.sigep-dto.version>
+		<webfitness.sigep-entity.version>0.0.1</webfitness.sigep-entity.version>
+		<webfitness.sigep-business.version>0.0.1</webfitness.sigep-business.version>
+		<webfitness.sigep-web.version>0.0.1</webfitness.sigep-web.version>
 	</properties>
 	
 	<build>

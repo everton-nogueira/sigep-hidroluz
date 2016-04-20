@@ -1,7 +1,7 @@
 /**
  * Desenvolvido por Everton e Willian 23/02/2015
  */
-package br.com.hidroluz.fabrica;
+package br.com.webfitness.fabrica;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;

@@ -6,31 +6,25 @@
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>SIGEP - Sistema para Gestão de Poços Artesianos</title>
+	<title>Webfitness	</title>
+	<h:outputStylesheet name="style.css" library="css"/>
 </h:head>
 <h:body>
-	<p:layout>
-		<p:layoutUnit position="north">
-			<p:graphicImage library="img" name="topo.jpg"/>
-		</p:layoutUnit>
-
-		<p:layoutUnit position="west">
-			<ui:insert name="menu">
-				<h:form>
-					<p:menu>
-						<p:submenu label="Menu">
-							<p:menuitem value="Login" icon="ui-icon-key" />
-							<p:menuitem value="Fazer meu cadastro" icon="ui-icon-contact" />
-						</p:submenu>
-					</p:menu>
-				</h:form>
-			</ui:insert>
-		</p:layoutUnit>
-		<p:layoutUnit position="center">
-			<ui:insert name="centro">
-                        O que estiver aqui será substituido!
-                    </ui:insert>
-		</p:layoutUnit>
-	</p:layout>
+	<div class="container">
+		<p:layout>
+			<p:layoutUnit position="north">
+				<p:graphicImage library="img" name="logo.png"/>
+			</p:layoutUnit>
+			<p:layoutUnit position="west">
+				<ui:insert name="menu"/>
+			</p:layoutUnit>
+			<p:layoutUnit position="center">
+				<ui:insert name="centro"/>
+			</p:layoutUnit>
+			<p:layoutUnit position="east">
+				<ui:insert name="propagandas"/>
+			</p:layoutUnit>
+		</p:layout>
+	</div>
 </h:body>
 </html>

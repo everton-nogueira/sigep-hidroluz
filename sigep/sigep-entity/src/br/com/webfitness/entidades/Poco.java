@@ -1,7 +1,7 @@
 /**
  * Desenvolvido por Everton e Willian 23/02/2015
  */
-package br.com.hidroluz.entidades;
+package br.com.webfitness.entidades;
 
 import java.util.Date;
 
