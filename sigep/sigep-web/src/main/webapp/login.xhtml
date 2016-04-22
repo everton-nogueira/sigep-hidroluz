@@ -1,58 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
+<body>
 
-<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Webfitness</title>
-	<h:outputStylesheet name="style.css" library="css"/>
-</h:head>
-<h:body>
-	<div class="login">
-		<p:layout>
-			<p:layoutUnit position="center">
-				<p:tabView dynamic="true" cache="true" orientation="left">
-					<p:tab title="Acessar o Sistema">
-						<div id="painelInternoAcesso">
-							<h:panelGrid columns="2">
-								<h:outputText value="Login / e-mail: "/>
-								<p:inputText />
-								<h:outputText value="Senha: "/>
-								<p:password />
+	<ui:composition template="template.xhtml">
+		<ui:define name="titulo">
+                Home
+            </ui:define>
+
+		<ui:define name="conteudo">
+			<div id="container">
+
+				<div id="fomulario-login-cadastro">
+					<p:accordionPanel>
+						<p:tab title="Entrar">
+							<h:panelGrid columns="1" cellpadding="10">
+								<h:panelGrid columns="1">
+									<h:outputText value="E-mail: " />
+									<p:inputText />
+
+									<h:outputText value="Senha: " />
+									<p:inputText />
+
+									<p:commandButton value="Entrar" />
+								</h:panelGrid>
 							</h:panelGrid>
-							<h:panelGrid columns="1">
-								<p:commandButton value="Entrar" />
+						</p:tab>
+						<p:tab title="Cadastrar">
+							<h:panelGrid columns="1" cellpadding="2">
+								<h:panelGrid columns="1">
+									<h:outputText value="Nome: " />
+									<p:inputText />
+
+									<h:outputText value="E-mail: " />
+									<p:inputText />
+
+									<h:outputText value="Senha: " />
+									<p:inputText />
+
+									<h:outputText value="Confirmar Senha: " />
+									<p:inputText />
+
+								</h:panelGrid>
+								<h:panelGrid columns="2">
+									<p:commandButton value="Confirmar" />
+									<p:commandButton value="Cancelar" />
+								</h:panelGrid>
 							</h:panelGrid>
-						</div>
-					</p:tab>
-					<p:tab title="Cadastre-se">
-						<div id="painelInternoAcesso">
-							<h:panelGrid columns="2">
-								<h:outputText value="Nome: "/>
-								<p:inputText />
-								<h:outputText value="Idade: "/>
-								<p:inputText />
-								<h:outputText value="Sexo: "/>
-								<p:selectOneRadio id="sexo">
-									<f:selectItem itemLabel="Masculino"/>
-									<f:selectItem itemLabel="Feminino"/>
-								</p:selectOneRadio>
-							</h:panelGrid>
-							<h:panelGrid columns="1">
-								<p:commandButton value="Cadastrar" />
-							</h:panelGrid>
-						</div>
-					</p:tab>
-					<p:tab title="Sobre nós">
-						<h:panelGrid columns="1">
-							<h:outputText value="Willian e gostoso de mais! ta doido "/>
-						</h:panelGrid>
-					</p:tab>
-				</p:tabView>
-			</p:layoutUnit>
-		</p:layout>
-	</div>
-</h:body>
+						</p:tab>
+					</p:accordionPanel>
+				</div>
+				<div id="contents">
+				
+				</div>
+				<div id="footer">Webfitness © 2016</div>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+
+</body>
 </html>

@@ -11,20 +11,20 @@
 </h:head>
 <h:body>
 	<div class="container">
-		<p:layout>
-			<p:layoutUnit position="north">
-				<p:graphicImage library="img" name="logo.png"/>
-			</p:layoutUnit>
-			<p:layoutUnit position="west">
-				<ui:insert name="menu"/>
-			</p:layoutUnit>
-			<p:layoutUnit position="center">
-				<ui:insert name="centro"/>
-			</p:layoutUnit>
-			<p:layoutUnit position="east">
-				<ui:insert name="propagandas"/>
-			</p:layoutUnit>
-		</p:layout>
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north" resizable="false"
+			closable="false" collapsible="false">
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south"
+			resizable="false" closable="false" collapsible="false">
+		</p:layoutUnit>
+		
+		<p:layoutUnit position="center">
+			<ui:insert name="conteudo" />
+		</p:layoutUnit>
+	</p:layout>
 	</div>
 </h:body>
 </html>
