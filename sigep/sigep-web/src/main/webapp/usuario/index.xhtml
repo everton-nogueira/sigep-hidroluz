@@ -4,12 +4,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<ui:decorate template="/template.xhtml">
-		<ui:define name="menu">
-			<ui:include src="menu.xhtml"/>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="conteudo">
+			teste
 		</ui:define>
-		<ui:define name="centro">
-	        <ui:include src="cadastroPessoa.xhtml"/>
-	    </ui:define>
-	</ui:decorate>
+	</ui:composition>
 </html>
