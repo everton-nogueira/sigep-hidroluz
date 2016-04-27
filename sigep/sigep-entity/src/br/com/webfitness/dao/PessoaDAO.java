@@ -9,48 +9,48 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import br.com.webfitness.entidades.Poco;
+import br.com.webfitness.entidades.Pessoa;
 
 
 /**
  * @author Everton
  * Data: 23/02/2015
  */
-public class PocoDAO implements Dao<Poco> {
+public class PessoaDAO implements Dao<Pessoa> {
 
 	@Inject
 	EntityManager em;
 
 	@Override
-	public void salvar(Poco poco) {
+	public void salvar(Pessoa poco) {
 		em.getTransaction().begin();
 		em.persist(poco);
 		em.getTransaction().commit();
 	}
 
 	@Override
-	public Poco alterar(Poco poco) {
+	public Pessoa alterar(Pessoa poco) {
 		em.getTransaction().begin();
-		Poco alterado = em.merge(poco);
+		Pessoa alterado = em.merge(poco);
 		em.getTransaction().commit();
 		return alterado;
 	}
 
 	@Override
-	public void excluir(Poco poco) {
+	public void excluir(Pessoa poco) {
 		em.getTransaction().begin();
 		em.remove(poco);
 		em.getTransaction().commit();
 	}
 
 	@Override
-	public Poco buscar(Poco poco) {
-		return em.find(Poco.class, poco);
+	public Pessoa buscar(Pessoa poco) {
+		return em.find(Pessoa.class, poco);
 	}
 
 	@Override
-	public List<Poco> listar() {
-		TypedQuery<Poco> query = em.createNamedQuery("selectAll", Poco.class);
+	public List<Pessoa> listar() {
+		TypedQuery<Pessoa> query = em.createNamedQuery("selectAll", Pessoa.class);
 		return query.getResultList(); 
 	}
 	
