@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import br.com.webfitness.dao.generic.Dao;
 import br.com.webfitness.entidades.Pessoa;
 
 

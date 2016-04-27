@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  * Data: 23/02/2015
  */
 public class FactoryEntityManager {
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("PU_SIGEP"); 
+	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("PU_WEBFITNESS"); 
 	
 	@Produces
 	@RequestScoped

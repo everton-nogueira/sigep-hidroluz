@@ -1,7 +1,7 @@
 /**
  * Desenvolvido por Everton e Willian 23/02/2015
  */
-package br.com.webfitness.dao;
+package br.com.webfitness.dao.generic;
 
 import java.util.List;
 
