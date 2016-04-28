@@ -1,0 +1,23 @@
+package br.com.webfitness.entidades;
+
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import lombok.Getter;
+import lombok.Setter;
+
+/**
+ * @author Willian
+ * Data: 27/04/2016
+ */
+public class Video {
+	@Getter @Setter
+	@Id
+	private Integer idVideo;
+	@Getter @Setter
+	private String descricao;
+	@Getter @Setter
+	private String link;
+	@ManyToOne
+	private Pessoa pessoa;
+}
