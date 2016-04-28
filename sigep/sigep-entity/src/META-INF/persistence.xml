@@ -6,6 +6,10 @@
 	<persistence-unit name="PU_WEBFITNESS" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<!-- ENTIDADES CONHECIDAS PELO ENTITY MANAGER -->
+		<class>br.com.webfitness.entidades.Pessoa</class>
+		<class>br.com.webfitness.entidades.Academia</class>
+		<class>br.com.webfitness.entidades.Endereco</class>
+		<class>br.com.webfitness.entidades.Telefone</class>
 		<!-- FIM DAS ENTIDADES CONHECIDAS PELO ENTITY MANAGER -->
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
