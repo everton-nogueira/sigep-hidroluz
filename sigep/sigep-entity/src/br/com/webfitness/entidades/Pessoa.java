@@ -27,12 +27,12 @@ public class Pessoa {
 	@Getter @Setter
 	@Id
 	private Integer idPessoa;
-//	@Getter @Setter
-//	private Telefone telefone;
-//	@Getter @Setter
-//	private Academia academia;
-//	@Getter @Setter
-//	private Endereco endereco;
+	@Getter @Setter
+	private Telefone telefone;
+	@Getter @Setter
+	private Academia academia;
+	@Getter @Setter
+	private Endereco endereco;
 	@Getter @Setter
 	private String nome;
 	private String sexo;

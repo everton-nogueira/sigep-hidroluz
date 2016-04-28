@@ -23,30 +23,30 @@ public class PessoaDAO implements Dao<Pessoa> {
 	EntityManager em;
 
 	@Override
-	public void salvar(Pessoa poco) {
+	public void salvar(Pessoa pessoa) {
 		em.getTransaction().begin();
-		em.persist(poco);
+		em.persist(pessoa);
 		em.getTransaction().commit();
 	}
 
 	@Override
-	public Pessoa alterar(Pessoa poco) {
+	public Pessoa alterar(Pessoa pessoa) {
 		em.getTransaction().begin();
-		Pessoa alterado = em.merge(poco);
+		Pessoa alterado = em.merge(pessoa);
 		em.getTransaction().commit();
 		return alterado;
 	}
 
 	@Override
-	public void excluir(Pessoa poco) {
+	public void excluir(Pessoa pessoa) {
 		em.getTransaction().begin();
-		em.remove(poco);
+		em.remove(pessoa);
 		em.getTransaction().commit();
 	}
 
 	@Override
-	public Pessoa buscar(Pessoa poco) {
-		return em.find(Pessoa.class, poco);
+	public Pessoa buscar(Pessoa pessoa) {
+		return em.find(Pessoa.class, pessoa);
 	}
 
 	@Override
