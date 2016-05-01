@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -87,4 +88,18 @@ public class Pessoa {
 	@OneToMany (mappedBy = "amigo")
 	@Getter @Setter
 	private List<Amizade> amigos;
+	
+	@OneToMany (mappedBy = "pessoaOrigem")
+	@Getter @Setter
+	private List<PessoaMensagem> mensagensEnviadas;
+
+	@ManyToMany(mappedBy = "pessoas")
+	@Getter @Setter
+	private List<Suplemento> suplementos;
+	
+	@OneToMany(mappedBy = "pessoa")
+	@JoinColumn(name="idPessoa")
+	@Getter @Setter
+	private List<Treino> treinos;
+	
 }

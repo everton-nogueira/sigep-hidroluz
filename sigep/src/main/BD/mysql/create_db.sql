@@ -5,6 +5,8 @@
   ##															##
   ################################################################*/
 
+DROP DATABASE webfitness;
+
 CREATE DATABASE webfitness;
 
 USE webfitness;
@@ -172,10 +174,15 @@ CREATE TABLE dietaAlimento (
   PRIMARY KEY(idDieta, idAlimento)
 ) ENGINE = innodb;
 
+CREATE TABLE treinoExercicio (
+  idTreino INTEGER UNSIGNED NOT NULL,
+  idExercicio INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(idTreino, idExercicio)
+) ENGINE = innodb;
+
 CREATE TABLE exercicio (
   idExercicio INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   idGrupoMuscular INTEGER UNSIGNED NOT NULL,
-  idTreino INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(45) NOT NULL,
   qtdSeries INTEGER UNSIGNED NOT NULL,
   qtdRepeticoes INTEGER UNSIGNED NULL,
@@ -204,5 +211,6 @@ ALTER TABLE pessoaMensagem ADD CONSTRAINT pessoaOrigemFK FOREIGN KEY ( idPessoaO
 ALTER TABLE pessoaMensagem ADD CONSTRAINT mensagemFK FOREIGN KEY ( idMensagem ) REFERENCES mensagem ( idMensagem ) ;
 ALTER TABLE dietaAlimento ADD CONSTRAINT dietaFK FOREIGN KEY ( idDieta ) REFERENCES dieta ( idDieta ) ;
 ALTER TABLE dietaAlimento ADD CONSTRAINT alimentoFK FOREIGN KEY ( idAlimento ) REFERENCES alimento ( idAlimento ) ;
-ALTER TABLE exercicio ADD CONSTRAINT exercicioTreinoFK FOREIGN KEY ( idTreino ) REFERENCES treino ( idTreino ) ;
 ALTER TABLE exercicio ADD CONSTRAINT exercicioMusculoFK FOREIGN KEY ( idGrupoMuscular ) REFERENCES grupoMuscular ( idGrupoMuscular ) ;
+ALTER TABLE treinoExercicio ADD CONSTRAINT treinoFK FOREIGN KEY ( idTreino ) REFERENCES treino ( idTreino ) ;
+ALTER TABLE treinoExercicio ADD CONSTRAINT exercicioFK FOREIGN KEY ( idExercicio ) REFERENCES exercicio ( idExercicio ) ;

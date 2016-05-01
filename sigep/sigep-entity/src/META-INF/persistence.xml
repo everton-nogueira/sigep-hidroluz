@@ -12,12 +12,17 @@
 		<class>br.com.webfitness.entidades.CategoriaSuplemento</class>
 		<class>br.com.webfitness.entidades.Dieta</class>
 		<class>br.com.webfitness.entidades.Endereco</class>
+		<class>br.com.webfitness.entidades.Exercicio</class>
 		<class>br.com.webfitness.entidades.Foto</class>
+		<class>br.com.webfitness.entidades.GrupoMuscular</class>
 		<class>br.com.webfitness.entidades.HistoricoMedida</class>
+		<class>br.com.webfitness.entidades.Mensagem</class>
 		<class>br.com.webfitness.entidades.Pagina</class>
 		<class>br.com.webfitness.entidades.Pessoa</class>
+		<class>br.com.webfitness.entidades.PessoaMensagem</class>
 		<class>br.com.webfitness.entidades.Suplemento</class>
 		<class>br.com.webfitness.entidades.Telefone</class>
+		<class>br.com.webfitness.entidades.Treino</class>
 		<class>br.com.webfitness.entidades.Video</class>
 		<!-- FIM DAS ENTIDADES CONHECIDAS PELO ENTITY MANAGER -->
 		<properties>

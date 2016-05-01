@@ -1,7 +1,12 @@
 package br.com.webfitness.entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -29,4 +34,12 @@ public class Suplemento {
 	@ManyToOne
 	@Getter @Setter
 	private CategoriaSuplemento categoriaSuplemento;
+	
+	@ManyToMany
+	@JoinTable(name = "suplementoPessoa" , 
+		joinColumns = @JoinColumn(name = "idSuplemento"),
+		inverseJoinColumns = @JoinColumn(name = "idPessoa"))
+	@Getter @Setter
+	private List<Pessoa> pessoas;
+	
 }
