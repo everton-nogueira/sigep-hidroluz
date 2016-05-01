@@ -10,11 +10,11 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -28,87 +28,63 @@ import lombok.Setter;
 })
 public class Pessoa {
 
-	@Getter @Setter
 	@Id
+	@Getter @Setter
 	private Integer idPessoa;
-	@Getter @Setter
-	private Telefone telefone;
-	@Getter @Setter
-	private Academia academia;
-	@Getter @Setter
-	private Endereco endereco;
+	
 	@Getter @Setter
 	private String nome;
+	
+	@Getter @Setter
 	private String sexo;
+	
 	@Getter @Setter
 	private Date dataNascimento;
+	
 	@Getter @Setter
 	private String senha;
+	
 	@Getter @Setter
 	private String email;
+
+	@ManyToOne
+	@Getter @Setter
+	private Academia academia;
 	
-	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="pessoa_idpessoa")
+	@ManyToOne
+	@Getter @Setter
+	private Endereco endereco;
+	
+	@ManyToOne
+	@Getter @Setter
+	private Telefone telefone;
+	
+	@OneToMany (mappedBy = "pessoa")
+	@JoinColumn(name="idPessoa")
+	@Getter @Setter
 	private List<Pagina> paginas;
 	
-	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="pessoa_idpessoa")
-	private List<Amizade> amizades;
-	
-	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="pessoa_idpessoa")
+	@OneToMany (mappedBy = "pessoa")
+	@JoinColumn(name="idPessoa")
+	@Getter @Setter
 	private List<Video> Videos;
 	
 	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="pessoa_idpessoa")
+	@JoinColumn(name="idPessoa")
+	@Getter @Setter
 	private List<Foto> fotos;
 	
 	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="pessoa_idpessoa")
+	@JoinColumn(name="idPessoa")
+	@Getter @Setter
 	private List<HistoricoMedida> historicoMedidas;
 	
+	@OneToMany (mappedBy = "pessoa")
+	@JoinColumn(name="idPessoa")
+	@Getter @Setter
+	private List<Dieta> dietas;
 	
-	/**
-	 * @Descrição: Métodos sobreescritos para o GET sempre pegar pela descrição
-	 * E para o SET sempre setar pelo ID para salvar no Banco de Dados. 
-	 */
-	public String getSexo() {
-		return Sexo.getDescricao(sexo);
-	}
-	public void setSexo(String sexo) {
-		if(sexo.length() > Sexo.TAM_ID){
-			this.sexo = Sexo.getId(sexo);
-		}else{
-			this.sexo = sexo;
-		}
-	}
-}
-
-@AllArgsConstructor
-enum Sexo{
-	F("F", "Feminino"), M("M", "Masculino");
-	
-	public static final Integer TAM_ID = 1;
-	@Getter
-	private String id;
-	@Getter
-	private String valor;
-	
-	static String getDescricao(String id){
-		for (Sexo sexo : Sexo.values()) {
-			if(sexo.getId().equals(id)){
-				return sexo.getValor();
-			}
-		}
-		return "";
-	}
-	
-	static String getId(String valor){
-		for (Sexo sexo : Sexo.values()) {
-			if(sexo.getValor().equals(valor)){
-				return sexo.getId();
-			}
-		}
-		return "";
-	}
+	@OneToMany (mappedBy = "amigo")
+	@Getter @Setter
+	private List<Amizade> amigos;
 }

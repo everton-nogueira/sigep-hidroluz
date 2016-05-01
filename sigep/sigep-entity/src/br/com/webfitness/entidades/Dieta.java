@@ -1,34 +1,37 @@
+/**
+ * Desenvolvido por Everton 01/05/2016
+ */
 package br.com.webfitness.entidades;
 
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author Willian
- * Data: 27/04/2016
+ * @author Everton
+ * Data: 01/05/2016
  */
 @Entity
-public class Amizade {
+public class Dieta {
 	@Id
 	@Getter @Setter
-	private Integer idAmizade;
+	private Integer idDieta;
 	
 	@Getter @Setter
-	private Integer statusAmizade;
-
+	private Integer qtdRefeicoes;
+	
 	@ManyToOne
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
-	
-	@ManyToOne
-	@JoinColumn(name="idAmigo")
+
+	@ManyToMany(mappedBy="dietas")
 	@Getter @Setter
-	private Pessoa amigo;
+	private List<Alimento> alimentos;
+	
 }

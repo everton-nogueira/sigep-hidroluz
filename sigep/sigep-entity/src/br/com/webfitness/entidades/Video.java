@@ -11,13 +11,17 @@ import lombok.Setter;
  * Data: 27/04/2016
  */
 public class Video {
-	@Getter @Setter
 	@Id
+	@Getter @Setter
 	private Integer idVideo;
+	
 	@Getter @Setter
 	private String descricao;
+	
 	@Getter @Setter
 	private String link;
+	
 	@ManyToOne
+	@Getter @Setter
 	private Pessoa pessoa;
 }

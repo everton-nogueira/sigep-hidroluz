@@ -148,7 +148,6 @@ CREATE TABLE historicoMedida (
 
 CREATE TABLE dieta (
   idDieta INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  idAlimento INTEGER UNSIGNED NOT NULL,
   idPessoa INTEGER UNSIGNED NOT NULL,
   qtdRefeicoes INTEGER UNSIGNED NULL,
   PRIMARY KEY(idDieta)
@@ -165,6 +164,12 @@ CREATE TABLE pessoaMensagem (
   idPessoaDestino INTEGER UNSIGNED NOT NULL,
   idMensagem INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY(idPessoaOrigem, idPessoaDestino, idMensagem)
+) ENGINE = innodb;
+
+CREATE TABLE dietaAlimento (
+  idDieta INTEGER UNSIGNED NOT NULL,
+  idAlimento INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(idDieta, idAlimento)
 ) ENGINE = innodb;
 
 CREATE TABLE exercicio (
@@ -192,11 +197,12 @@ ALTER TABLE amizade ADD CONSTRAINT amizadeAmigoFK FOREIGN KEY ( idAmigo ) REFERE
 ALTER TABLE foto ADD CONSTRAINT fotoPessoaFK FOREIGN KEY ( idPessoa ) REFERENCES pessoa ( idPessoa ) ;
 ALTER TABLE historicoMedida ADD CONSTRAINT historicoMedidaPessoaFK FOREIGN KEY ( idPessoa ) REFERENCES pessoa ( idPessoa ) ;
 ALTER TABLE dieta ADD CONSTRAINT dietaPessoaFK FOREIGN KEY ( idPessoa ) REFERENCES pessoa ( idPessoa ) ;
-ALTER TABLE dieta ADD CONSTRAINT dietaAlimentoFK FOREIGN KEY ( idAlimento ) REFERENCES alimento ( idAlimento ) ;
 ALTER TABLE suplementoPessoa ADD CONSTRAINT suplementoFK FOREIGN KEY ( idSuplemento ) REFERENCES suplemento ( idSuplemento ) ;
 ALTER TABLE suplementoPessoa ADD CONSTRAINT pessoaFK FOREIGN KEY ( idPessoa ) REFERENCES pessoa ( idPessoa ) ;
 ALTER TABLE pessoaMensagem ADD CONSTRAINT pessoaDestinoFK FOREIGN KEY ( idPessoaDestino ) REFERENCES pessoa ( idPessoa ) ;
 ALTER TABLE pessoaMensagem ADD CONSTRAINT pessoaOrigemFK FOREIGN KEY ( idPessoaOrigem ) REFERENCES pessoa ( idPessoa ) ;
 ALTER TABLE pessoaMensagem ADD CONSTRAINT mensagemFK FOREIGN KEY ( idMensagem ) REFERENCES mensagem ( idMensagem ) ;
+ALTER TABLE dietaAlimento ADD CONSTRAINT dietaFK FOREIGN KEY ( idDieta ) REFERENCES dieta ( idDieta ) ;
+ALTER TABLE dietaAlimento ADD CONSTRAINT alimentoFK FOREIGN KEY ( idAlimento ) REFERENCES alimento ( idAlimento ) ;
 ALTER TABLE exercicio ADD CONSTRAINT exercicioTreinoFK FOREIGN KEY ( idTreino ) REFERENCES treino ( idTreino ) ;
 ALTER TABLE exercicio ADD CONSTRAINT exercicioMusculoFK FOREIGN KEY ( idGrupoMuscular ) REFERENCES grupoMuscular ( idGrupoMuscular ) ;
