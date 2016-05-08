@@ -189,6 +189,18 @@ CREATE TABLE exercicio (
   PRIMARY KEY(idExercicio)
 ) ENGINE = innodb;
 
+CREATE TABLE funcao(
+    idFuncao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(45) NOT NULL,
+    PRIMARY KEY(idFuncao)
+) ENGINE = innodb;
+ 
+create table pessoaFuncao(
+    idPessoa INTEGER UNSIGNED NOT NULL,
+    idFuncao INTEGER UNSIGNED NOT NULL,
+    PRIMARY KEY(idPessoa,idFuncao)
+) ENGINE = innodb;
+
 /*Criando as CONSTRAINTS*/
 ALTER TABLE suplemento ADD CONSTRAINT suplementoCategoriaFK FOREIGN KEY ( idCategoriaSuplemento ) REFERENCES categoriaSuplemento ( idCategoriaSuplemento ) ;
 ALTER TABLE academia ADD CONSTRAINT academiaEnderecoFK FOREIGN KEY ( idEndereco ) REFERENCES endereco ( idEndereco ) ;
@@ -214,3 +226,26 @@ ALTER TABLE dietaAlimento ADD CONSTRAINT alimentoFK FOREIGN KEY ( idAlimento ) R
 ALTER TABLE exercicio ADD CONSTRAINT exercicioMusculoFK FOREIGN KEY ( idGrupoMuscular ) REFERENCES grupoMuscular ( idGrupoMuscular ) ;
 ALTER TABLE treinoExercicio ADD CONSTRAINT treinoFK FOREIGN KEY ( idTreino ) REFERENCES treino ( idTreino ) ;
 ALTER TABLE treinoExercicio ADD CONSTRAINT exercicioFK FOREIGN KEY ( idExercicio ) REFERENCES exercicio ( idExercicio ) ;
+ALTER TABLE pessoaFuncao ADD CONSTRAINT pessoaFuncaoFK FOREIGN KEY ( idPessoa ) REFERENCES pessoa ( idPessoa ) ;
+ALTER TABLE pessoaFuncao ADD CONSTRAINT funcaoPessoaFK FOREIGN KEY ( idFuncao ) REFERENCES funcao ( idFuncao ) ;
+
+INSERT INTO endereco (idEndereco, estado, cidade, pais, endereco, pontoReferencia)
+			VALUES (null, 'DF', 'Brasília', 'Brasil', 'QNH 07 Casa 04', 'Escola Classe 12');
+INSERT INTO endereco (idEndereco, estado, cidade, pais, endereco, pontoReferencia)
+			VALUES (null, 'DF', 'Brasília', 'Brasil', 'CNB 12', 'Sesc Taguatinga Norte/Top Mall');
+INSERT INTO telefone (idTelefone, ddd, numero)
+			VALUES (null, 61, 84029970);
+INSERT INTO telefone (idTelefone, ddd, numero)
+			VALUES (null, 61, 33542226);
+INSERT INTO academia (idAcademia, idTelefone, idEndereco, nome, valor, nivel, horarioFuncionamento)
+			VALUES (null, 2, 2, 'SPAÇO FITNESS', '100,00', 0, 'seg a sex das 6 as 23');
+INSERT INTO pessoa (idPessoa, idTelefone, idAcademia, idEndereco, nome, sexo, dataNascimento, senha, email)
+			VALUES (null, 1, 1, 1, 'Administrador', 'M', '1992-03-15', 'admin', 'admin@gmail.com');
+INSERT INTO funcao (idFuncao, nome)
+			VALUES (null, 'ADMIN');
+INSERT INTO funcao (idFuncao, nome)
+			VALUES (null, 'USUARIO');
+INSERT INTO pessoaFuncao (idPessoa, idFuncao)
+			VALUES (1,1);
+INSERT INTO pessoaFuncao (idPessoa, idFuncao)
+			VALUES (1,2);

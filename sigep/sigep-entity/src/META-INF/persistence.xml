@@ -5,6 +5,7 @@
 
 	<persistence-unit name="PU_WEBFITNESS" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:jboss/datasources/WebFitnessDS</jta-data-source>
 		<!-- ENTIDADES CONHECIDAS PELO ENTITY MANAGER -->
 		<class>br.com.webfitness.entidades.Academia</class>
 		<class>br.com.webfitness.entidades.Alimento</class>

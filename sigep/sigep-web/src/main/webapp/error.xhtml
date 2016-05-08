@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<body>
+
+	<ui:composition template="templateLogin.xhtml">
+		<ui:define name="titulo">
+                Home
+            </ui:define>
+
+		<ui:define name="conteudo">
+			<h1>ERROOOOOOOOOOOOOOOOOOOR</h1>
+			<div id="container">
+				<div id="fomulario-login-cadastro">
+					<p:accordionPanel>
+						<p:tab title="Entrar">
+							<h:panelGrid columns="1" cellpadding="10">
+								<h:panelGrid columns="1">
+									<h:outputText value="E-mail: " />
+									<p:inputText />
+
+									<h:outputText value="Senha: " />
+									<p:inputText />
+
+									<p:commandButton value="Entrar" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+						<p:tab title="Cadastrar">
+							<h:panelGrid columns="1" cellpadding="2">
+								<h:panelGrid columns="1">
+									<h:outputText value="Nome: " />
+									<p:inputText />
+
+									<h:outputText value="E-mail: " />
+									<p:inputText />
+
+									<h:outputText value="Senha: " />
+									<p:inputText />
+
+									<h:outputText value="Confirmar Senha: " />
+									<p:inputText />
+
+								</h:panelGrid>
+								<h:panelGrid columns="2">
+									<p:commandButton value="Confirmar" />
+									<p:commandButton value="Cancelar" />
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:tab>
+					</p:accordionPanel>
+				</div>
+				<div id="contents">
+				
+				</div>
+				<div id="footer">Webfitness © 2016</div>
+			</div>
+		</ui:define>
+
+	</ui:composition>
+
+</body>
+</html>
