@@ -8,56 +8,56 @@
 <body>
 
 	<ui:composition template="templateLogin.xhtml">
-		<ui:define name="titulo">
-                Home
-            </ui:define>
-
 		<ui:define name="conteudo">
-			<div id="container">
-				<div id="fomulario-login-cadastro">
-					<p:accordionPanel>
-						<p:tab title="Entrar">
-							<h:panelGrid columns="1" cellpadding="10">
-								<h:panelGrid columns="1">
-									<h:outputText value="E-mail: " />
-									<p:inputText />
-
-									<h:outputText value="Senha: " />
-									<p:inputText />
-
-									<p:commandButton value="Entrar" />
+			<h:form id="formLogin">
+				<div id="container">
+					<div id="fomulario-login-cadastro">
+						<p:accordionPanel id="painelLogin">
+							<p:tab title="Entrar">
+								<h:panelGrid columns="1" cellpadding="10">
+									<h:panelGrid columns="1">
+										<p:message for="login"/>
+										<p:outputLabel for="login" value="E-mail" />
+										<p:inputText id="login" value="#{loginMBean.login}" required="true" requiredMessage="Informe o login"/>
+	
+										<p:message for="senha" />
+										<p:outputLabel for="senha" value="Senha" />
+										<p:password id="senha" value="#{loginMBean.senha}" required="true" requiredMessage="Informe a senha"/>
+	
+										<p:commandButton value="Entrar" action="#{loginMBean.logar()}" update="painelLogin"/>
+									</h:panelGrid>
 								</h:panelGrid>
-							</h:panelGrid>
-						</p:tab>
-						<p:tab title="Cadastrar">
-							<h:panelGrid columns="1" cellpadding="2">
-								<h:panelGrid columns="1">
-									<h:outputText value="Nome: " />
-									<p:inputText />
-
-									<h:outputText value="E-mail: " />
-									<p:inputText />
-
-									<h:outputText value="Senha: " />
-									<p:inputText />
-
-									<h:outputText value="Confirmar Senha: " />
-									<p:inputText />
-
+							</p:tab>
+							<p:tab title="Cadastrar">
+								<h:panelGrid columns="1" cellpadding="2">
+									<h:panelGrid columns="1">
+										<h:outputText value="Nome: " />
+										<p:inputText />
+	
+										<h:outputText value="E-mail: " />
+										<p:inputText />
+	
+										<h:outputText value="Senha: " />
+										<p:inputText />
+	
+										<h:outputText value="Confirmar Senha: " />
+										<p:inputText />
+	
+									</h:panelGrid>
+									<h:panelGrid columns="2">
+										<p:commandButton value="Confirmar" />
+										<p:commandButton value="Cancelar" />
+									</h:panelGrid>
 								</h:panelGrid>
-								<h:panelGrid columns="2">
-									<p:commandButton value="Confirmar" />
-									<p:commandButton value="Cancelar" />
-								</h:panelGrid>
-							</h:panelGrid>
-						</p:tab>
-					</p:accordionPanel>
+							</p:tab>
+						</p:accordionPanel>
+					</div>
+					<div id="contents">
+					
+					</div>
+					<div id="footer">Webfitness © 2016</div>
 				</div>
-				<div id="contents">
-				
-				</div>
-				<div id="footer">Webfitness © 2016</div>
-			</div>
+			</h:form>
 		</ui:define>
 
 	</ui:composition>
