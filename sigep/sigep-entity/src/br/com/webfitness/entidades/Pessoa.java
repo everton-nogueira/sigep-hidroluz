@@ -26,7 +26,8 @@ import lombok.Setter;
  */
 @Entity
 @NamedQueries(value = {
-		@NamedQuery(name="selectAll", query="SELECT p FROM Pessoa p")
+		@NamedQuery(name="selectAll", query="SELECT p FROM Pessoa p"),
+		@NamedQuery(name="selectLogin", query="SELECT p FROM Pessoa p WHERE p.email =:email")
 })
 public class Pessoa {
 

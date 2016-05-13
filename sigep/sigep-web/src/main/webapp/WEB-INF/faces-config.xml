@@ -4,14 +4,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	
-	<navigation-rule>
-        <navigation-case>
-            <from-outcome>logout</from-outcome>
-            <to-view-id>/usuario/cadastroPessoa.xhtml</to-view-id>
-            <redirect/>
-        </navigation-case>
-    </navigation-rule>
- 
     <application>
         <resource-bundle>
             <base-name>messages</base-name>
@@ -19,4 +11,7 @@
         </resource-bundle>
     </application>
 	
+	<lifecycle>
+    	<phase-listener>br.com.webfitness.jsf.LifeCyclePhaseListener</phase-listener>
+	</lifecycle>
 </faces-config>

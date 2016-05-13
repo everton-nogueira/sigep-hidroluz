@@ -20,6 +20,11 @@
 			<artifactId>sigep-dto</artifactId>
 			<version>${webfitness.sigep-dto.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>br.com.webfitness</groupId>
+			<artifactId>sigep-entity</artifactId>
+			<version>${webfitness.sigep-entity.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -31,6 +31,12 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>br.com.webfitness</groupId>
+			<artifactId>sigep-business</artifactId>
+			<version>${webfitness.sigep-business.version}</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.primefaces.themes</groupId>
 			<artifactId>all-themes</artifactId>
 			<version>1.0.10</version>

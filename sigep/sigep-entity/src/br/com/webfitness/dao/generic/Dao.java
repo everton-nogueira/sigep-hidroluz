@@ -25,9 +25,9 @@ public interface Dao <ENTIDADE> {
 	/**
 	 * @Descrição: Método responsável por realizar uma busca simples de informações no banco de dados. 
 	 */
-	ENTIDADE buscar(ENTIDADE entidade);
+	ENTIDADE buscar(ENTIDADE entidade, Class<ENTIDADE> classe);
 	/**
 	 * @Descrição: Método responsável por realizar uma listagem de informações no banco de dados. 
 	 */
-	List<ENTIDADE> listar();
+	List<ENTIDADE> listar(Class<ENTIDADE> classe);
 }
