@@ -34,7 +34,23 @@
 			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-business</artifactId>
 			<version>${webfitness.sigep-business.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>sigep-entity</artifactId>
+					<groupId>br.com.webfitness</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-entitymanager</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>sigep-dto</artifactId>
+					<groupId>br.com.webfitness</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+		
+		
 		
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>

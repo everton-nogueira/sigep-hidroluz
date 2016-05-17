@@ -3,9 +3,10 @@
  */
 package br.com.webfitness.entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -36,13 +37,11 @@ public class Endereco {
 	@Getter @Setter
 	private String pontoReferencia;
 	
-	@OneToMany(mappedBy="endereco")
-	@JoinColumn(name="idEndereco")
+	@OneToMany(targetEntity = Pessoa.class, mappedBy="endereco")
 	@Getter @Setter
-	private Pessoa pessoa;
+	private List<Pessoa> pessoa;
 	
-	@OneToMany(mappedBy="endereco")
-	@JoinColumn(name="idEndereco")
+	@OneToMany(targetEntity = Academia.class, mappedBy="endereco")
 	@Getter @Setter
-	private Academia academia;
+	private List<Academia> academia;
 }

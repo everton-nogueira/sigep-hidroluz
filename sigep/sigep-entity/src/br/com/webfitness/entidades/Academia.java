@@ -3,9 +3,10 @@
  */
 package br.com.webfitness.entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -31,10 +32,9 @@ public class Academia {
 	@Getter @Setter
 	private String horarioFuncionamento;
 	
-	@OneToMany(mappedBy="academia")
-	@JoinColumn(name="idPessoa")
+	@OneToMany(targetEntity = Pessoa.class, mappedBy="academia")
 	@Getter @Setter
-	private Pessoa pessoa;
+	private List<Pessoa> pessoa;
 	
 	@ManyToOne
 	@Getter @Setter

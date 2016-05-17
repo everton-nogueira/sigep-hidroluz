@@ -3,9 +3,10 @@
  */
 package br.com.webfitness.entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -28,12 +29,10 @@ public class Telefone {
 	private Integer ddd;
 	
 	@OneToMany(mappedBy="telefone")
-	@JoinColumn(name="idTelefone")
 	@Getter @Setter
-	private Pessoa pessoa;
+	private List<Pessoa> pessoa;
 	
 	@OneToMany(mappedBy="telefone")
-	@JoinColumn(name="idTelefone")
 	@Getter @Setter
-	private Academia academia;
+	private List<Academia> academia;
 }

@@ -1,5 +1,6 @@
 package br.com.webfitness.entidades;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -10,6 +11,7 @@ import lombok.Setter;
  * @author Willian
  * Data: 27/04/2016
  */
+@Entity
 public class Video {
 	@Id
 	@Getter @Setter

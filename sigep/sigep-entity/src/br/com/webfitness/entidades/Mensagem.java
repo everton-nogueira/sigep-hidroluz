@@ -27,5 +27,5 @@ public class Mensagem {
 	
 	@OneToMany (mappedBy = "mensagem")
 	@Getter @Setter
-	private List<PessoaMensagem> pessoas;
+	private List<PessoaMensagem> mensagens;
 }

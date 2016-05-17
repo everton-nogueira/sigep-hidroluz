@@ -21,12 +21,6 @@
 		</dependency>
 		<dependency>
 			<groupId>br.com.webfitness</groupId>
-			<artifactId>sigep-entity</artifactId>
-			<version>0.0.1</version>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-business</artifactId>
 			<version>0.0.1</version>
 			<type>ejb</type>
@@ -39,24 +33,28 @@
 
 	<build>
 		<finalName>sigep-ear</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-ear-plugin</artifactId>
-				<version>2.8</version>
-				<configuration>
-					<displayName>sigep</displayName>
-					<version>6</version>
+        <plugins>
+            <plugin>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <applicationName>sigep</applicationName>
+                    <displayName>WebFitness EAR</displayName>
+                    <generateApplicationXml>true</generateApplicationXml>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <version>6</version>
+                    <skinnyWars>false</skinnyWars>
+                    <archive>
+                        <manifest>
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                    </archive>
 					<modules>
 						<webModule>
 							<groupId>br.com.webfitness</groupId>
 							<artifactId>sigep-web</artifactId>
 							<contextRoot>/sigep-web</contextRoot>
 						</webModule>
-						<jarModule>
-							<groupId>br.com.webfitness</groupId>
-							<artifactId>sigep-entity</artifactId>
-						</jarModule>
 						<ejbModule>
 							<groupId>br.com.webfitness</groupId>
 							<artifactId>sigep-business</artifactId>

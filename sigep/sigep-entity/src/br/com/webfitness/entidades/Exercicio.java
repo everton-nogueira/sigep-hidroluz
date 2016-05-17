@@ -5,6 +5,8 @@ package br.com.webfitness.entidades;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -17,8 +19,10 @@ import lombok.Setter;
  * @author Everton
  * Data: 01/05/2016
  */
+@Entity
 public class Exercicio {
 
+	@Id
 	@Getter @Setter
 	private Integer idExercicio;
 	

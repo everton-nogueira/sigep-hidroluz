@@ -63,27 +63,22 @@ public class Pessoa {
 	private Telefone telefone;
 	
 	@OneToMany (mappedBy = "pessoa")
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private List<Pagina> paginas;
 	
 	@OneToMany (mappedBy = "pessoa")
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private List<Video> Videos;
 	
 	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private List<Foto> fotos;
 	
 	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private List<HistoricoMedida> historicoMedidas;
 	
 	@OneToMany (mappedBy = "pessoa")
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private List<Dieta> dietas;
 	
@@ -95,15 +90,19 @@ public class Pessoa {
 	@Getter @Setter
 	private List<PessoaMensagem> mensagensEnviadas;
 
+	@OneToMany (mappedBy = "pessoaDestino")
+	@Getter @Setter
+	private List<PessoaMensagem> mensagensRecebidas;
+	
 	@ManyToMany(mappedBy = "pessoas")
 	@Getter @Setter
 	private List<Suplemento> suplementos;
 	
 	@OneToMany(mappedBy = "pessoa")
-	@JoinColumn(name="idPessoa")
 	@Getter @Setter
 	private List<Treino> treinos;
 
+	@ManyToMany
 	@JoinTable(name = "pessoaFuncao" , 
 			joinColumns = @JoinColumn(name = "idPessoa"),
 			inverseJoinColumns = @JoinColumn(name = "idFuncao"))
