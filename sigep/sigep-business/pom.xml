@@ -11,11 +11,6 @@
 	
 	<dependencies>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.3.1.Final</version>
-		</dependency>
-		<dependency>
 			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-dto</artifactId>
 			<version>${webfitness.sigep-dto.version}</version>
@@ -24,6 +19,16 @@
 			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-entity</artifactId>
 			<version>${webfitness.sigep-entity.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>hibernate-entitymanager</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mysql-connector-java</artifactId>
+					<groupId>mysql</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 

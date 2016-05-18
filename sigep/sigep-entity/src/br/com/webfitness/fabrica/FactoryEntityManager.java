@@ -1,5 +1,5 @@
 /**
- * Desenvolvido por Everton e Willian 23/02/2015
+ * Desenvolvido por Everton e z 23/02/2015
  */
 package br.com.webfitness.fabrica;
 
@@ -9,6 +9,7 @@ import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 
 /**
  * @author Everton
@@ -19,6 +20,7 @@ public class FactoryEntityManager {
 	
 	@Produces
 	@RequestScoped
+	@PersistenceContext
 	public EntityManager createEntityManager(){
 		return factory.createEntityManager();
 	}

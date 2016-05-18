@@ -32,6 +32,7 @@ public class Suplemento {
 	private float valor;
 	
 	@ManyToOne
+	@JoinColumn(name = "idCategoriaSuplemento")
 	@Getter @Setter
 	private CategoriaSuplemento categoriaSuplemento;
 	

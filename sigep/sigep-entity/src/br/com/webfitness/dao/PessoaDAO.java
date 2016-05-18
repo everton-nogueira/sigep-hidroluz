@@ -17,7 +17,7 @@ import br.com.webfitness.entidades.Pessoa;
 public class PessoaDAO extends DaoImpl<Pessoa> {
 	
 	public Pessoa buscar(String email) {
-		TypedQuery<Pessoa> query = super.em.createNamedQuery("selectLogin", Pessoa.class);
+		TypedQuery<Pessoa> query = em.createNamedQuery("selectLogin", Pessoa.class);
 		query.setParameter("email", email);
 		return query.getSingleResult(); 
 	}

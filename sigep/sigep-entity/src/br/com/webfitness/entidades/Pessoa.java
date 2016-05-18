@@ -51,14 +51,17 @@ public class Pessoa {
 	private String email;
 
 	@ManyToOne
+	@JoinColumn(name = "idAcademia")
 	@Getter @Setter
 	private Academia academia;
 	
 	@ManyToOne
+	@JoinColumn(name = "idEndereco")
 	@Getter @Setter
 	private Endereco endereco;
 	
 	@ManyToOne
+	@JoinColumn(name = "idTelefone")
 	@Getter @Setter
 	private Telefone telefone;
 	

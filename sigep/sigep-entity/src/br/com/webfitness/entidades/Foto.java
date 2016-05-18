@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -29,6 +30,7 @@ public class Foto {
 	private Date dataFoto;
 	
 	@ManyToOne
+	@JoinColumn(name = "idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -28,6 +29,7 @@ public class Treino {
 	private String nome;
 	
 	@ManyToOne
+	@JoinColumn(name = "idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
 	

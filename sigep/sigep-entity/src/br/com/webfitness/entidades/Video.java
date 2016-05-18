@@ -2,6 +2,7 @@ package br.com.webfitness.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Video {
 	private String link;
 	
 	@ManyToOne
+	@JoinColumn(name = "idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -37,10 +38,12 @@ public class Academia {
 	private List<Pessoa> pessoa;
 	
 	@ManyToOne
+	@JoinColumn(name = "idEndereco")
 	@Getter @Setter
 	private Endereco endereco;
 	
 	@ManyToOne
+	@JoinColumn(name = "idTelefone")
 	@Getter @Setter
 	private Telefone telefone;
 	

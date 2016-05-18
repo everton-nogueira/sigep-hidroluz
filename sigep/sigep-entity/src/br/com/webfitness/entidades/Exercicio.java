@@ -36,6 +36,7 @@ public class Exercicio {
 	private String nome;
 	
 	@ManyToOne
+	@JoinColumn(name = "idGrupoMuscular")
 	@Getter @Setter
 	private GrupoMuscular grupoMuscular;
 	

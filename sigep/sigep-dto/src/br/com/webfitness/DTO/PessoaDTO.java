@@ -4,7 +4,6 @@
 package br.com.webfitness.DTO;
 
 import java.util.Date;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
