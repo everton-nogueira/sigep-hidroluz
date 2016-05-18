@@ -29,8 +29,16 @@ public class LoginMBean {
 	@Inject
 	private LoginServiceLocal loginService;
 	
-	public void logar() {
-		loginService.realizaLogin(login, senha);
+	public String logar() {
+		pessoa = loginService.realizaLogin(login, senha);
+		if(pessoa != null){
+			return "usuario/index.xhtml";
+		}
+		return null;
+	}
+	
+	public void sair(){
+		loginService.realizaLogout();
 	}
 	
 	public void limpar() {
