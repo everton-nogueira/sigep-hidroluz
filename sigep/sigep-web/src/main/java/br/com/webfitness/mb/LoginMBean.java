@@ -3,9 +3,11 @@
  */
 package br.com.webfitness.mb;
 
+import java.io.Serializable;
+
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.inject.Inject;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,15 +20,15 @@ import br.com.webfitness.servico.LoginServiceLocal;
  */
 @ManagedBean
 @SessionScoped
-public class LoginMBean {
-
+public class LoginMBean implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Getter @Setter
 	private String login;
 	@Getter @Setter
 	private String senha;
 	@Getter @Setter
 	private PessoaDTO pessoa;
-	@Inject
+	@EJB
 	private LoginServiceLocal loginService;
 	
 	public String logar() {

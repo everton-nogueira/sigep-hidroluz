@@ -39,7 +39,11 @@ public class LoginService implements LoginServiceLocal {
 			} catch (ServletException e) {
 				System.out.println("Erro ao efetuar o logout do usuário: " + e.getMessage());
 			}
-			realizaLoginJaas(login, senha, request);
+			try{
+				realizaLoginJaas(login, senha, request);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
 		return pessoa;
 	}
@@ -55,13 +59,9 @@ public class LoginService implements LoginServiceLocal {
 		}
 	}
 
-	private void realizaLoginJaas(String login, String senha, HttpServletRequest request) {
+	private void realizaLoginJaas(String login, String senha, HttpServletRequest request) throws Exception {
 		request.setAttribute(AtributoHttpRequest.ATRIBUTO_LOGIN.getValor(), login);
 		request.setAttribute(AtributoHttpRequest.ATRIBUTO_SENHA.getValor(), senha);
-		try {
-			request.login(login, senha);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		request.login(login, senha);
 	}
 }

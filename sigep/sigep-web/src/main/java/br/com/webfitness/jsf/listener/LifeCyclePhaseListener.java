@@ -1,7 +1,7 @@
 /**
  * Desenvolvido por Everton 12/05/2016
  */
-package br.com.webfitness.jsf;
+package br.com.webfitness.jsf.listener;
 
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
@@ -19,7 +19,7 @@ public class LifeCyclePhaseListener implements PhaseListener {
 	 */
 	@Override
 	public void afterPhase(PhaseEvent fase) {
-		System.out.print("Finalizou a fase: "+fase.getPhaseId());
+		System.out.println("Finalizou a fase: "+fase.getPhaseId());
 
 	}
 
@@ -28,7 +28,7 @@ public class LifeCyclePhaseListener implements PhaseListener {
 	 */
 	@Override
 	public void beforePhase(PhaseEvent fase) {
-		System.out.print("Vai iniciar a fase: "+fase.getPhaseId());
+		System.out.println("Vai iniciar a fase: "+fase.getPhaseId());
 	}
 
 	/* (non-Javadoc)

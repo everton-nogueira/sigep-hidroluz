@@ -29,7 +29,7 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
-	<!-- Map these files with JSF -->
+	<!-- Map these files with JSF--> 
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
@@ -86,5 +86,26 @@
 			<transport-guarantee>NONE</transport-guarantee>
 		</user-data-constraint>
 	</security-constraint>
+	
+	<session-config>
+    	<session-timeout>5</session-timeout>
+    </session-config>
+    
+    <listener>
+		<listener-class>br.com.webfitness.jsf.listener.SessionListener</listener-class>
+    </listener>
+	
+	<filter>
+		<filter-name>Login</filter-name>
+		<filter-class>br.com.webfitness.jsf.filter.LoginFilter</filter-class>
+		<init-param>
+			<param-name>urlsLiberadas</param-name>
+			<param-value>/login.xhtml, templateLogin.xhtml</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>Login</filter-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</filter-mapping>
 
 </web-app>
