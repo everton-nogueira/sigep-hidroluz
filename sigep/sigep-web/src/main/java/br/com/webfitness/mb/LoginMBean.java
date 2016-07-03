@@ -6,8 +6,10 @@ package br.com.webfitness.mb;
 import java.io.Serializable;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -32,11 +34,13 @@ public class LoginMBean implements Serializable{
 	private LoginServiceLocal loginService;
 	
 	public String logar() {
-		pessoa = loginService.realizaLogin(login, senha);
-		if(pessoa != null){
-			return "usuario/index.xhtml";
+		try {
+			pessoa = loginService.realizaLogin(login, senha);
+			return "usuario/index.xhtml?faces-redirect=true";
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Login e/ou senha inválidos!"));
+			return null;
 		}
-		return null;
 	}
 	
 	public void sair(){

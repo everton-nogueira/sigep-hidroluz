@@ -11,6 +11,6 @@ import br.com.webfitness.DTO.PessoaDTO;
  * Data: 12/05/2016
  */
 public interface LoginServiceLocal {
-	PessoaDTO realizaLogin(String login, String senha);
+	PessoaDTO realizaLogin(String login, String senha) throws Exception;
 	void realizaLogout();
 }
