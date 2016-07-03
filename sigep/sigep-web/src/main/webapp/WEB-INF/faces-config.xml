@@ -16,4 +16,5 @@
      		br.com.webfitness.jsf.exception.CustomExceptionHandlerFactory
   		</exception-handler-factory>
 	</factory>
+	
 </faces-config>
