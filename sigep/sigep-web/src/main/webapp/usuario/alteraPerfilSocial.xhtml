@@ -1,0 +1,145 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+	<div id="dadosPessoais">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+				<div class="panel panel-green">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-1">
+								<i class="fa fa-fw fa-user" />
+							</div>
+							<div class="col-xs-1 text-left">
+								<div class="fa-1x">SOCIAL</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<form>
+
+							<div class="row">
+								<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<label for="nome"> Nome: </label>
+									<h:inputText styleClass="form-control" id="nome"
+										value="willian fernandes de oliveira bueno" />
+
+								</div>
+
+								<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<label for="email"> e-mail: </label> <input type="email"
+										class="form-control" id="email" />
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<label for="celular"> Telefone Celular: </label>
+									<h:inputText styleClass="form-control" id="celular" />
+								</div>
+
+								<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<label for="fixo">Telefone Fixo: </label>
+									<h:inputText styleClass="form-control" id="fixo" />
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<label for="nome">Relacionamento: </label>
+									<h:selectOneMenu id="list1" class="form-control">
+										<f:selectItem itemLabel="Solteiro" itemValue="null" />
+										<f:selectItem itemLabel="Relacionamento Serio"
+											itemValue="null" />
+										<f:selectItem itemLabel="Enrolado" itemValue="null" />
+										<f:selectItem itemLabel="Noivo" itemValue="null" />
+										<f:selectItem itemLabel="Casado" itemValue="null" />
+									</h:selectOneMenu>
+								</div>
+
+								<div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6">
+									<label for="nome">Data Nascimento: </label>
+									<div class="row">
+										<div class="col-xs-3 col-sm-3 col-md-4 col-lg-4">
+											<h:selectOneMenu id="dia" class="form-control">
+												<f:selectItem itemValue="null" itemLabel="Dia" />
+												<!-- usar selectItems 
+																		        <f:selectItem itemLabel="1" itemValue="null" />
+																		        <f:selectItem itemLabel="2" itemValue="null" />
+																		        <f:selectItem itemLabel="3" itemValue="null" />
+																		        <f:selectItem itemLabel="4" itemValue="null" />
+																		        <f:selectItem itemLabel="5" itemValue="null" />
+																		        <f:selectItem itemLabel="6" itemValue="null" />
+																		        <f:selectItem itemLabel="7" itemValue="null" />
+																		        <f:selectItem itemLabel="8" itemValue="null" />
+																		        <f:selectItem itemLabel="9" itemValue="null" />
+																		        <f:selectItem itemLabel="1" itemValue="null" />
+																		        -->
+											</h:selectOneMenu>
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<h:selectOneMenu id="mes" class="form-control">
+												<f:selectItem itemValue="null" itemLabel="Mês" />
+												<!-- usar selectItems
+																		        <f:selectItem itemLabel="Janeiro" itemValue="null" />
+																		        <f:selectItem itemLabel="Fevereiro" itemValue="null" />
+																		        <f:selectItem itemLabel="Março" itemValue="null" />
+																		        <f:selectItem itemLabel="Abril" itemValue="null" />
+																		        <f:selectItem itemLabel="Maio" itemValue="null" />
+																		        <f:selectItem itemLabel="Junho" itemValue="null" />
+																		        <f:selectItem itemLabel="Julho" itemValue="null" />
+																		        <f:selectItem itemLabel="Agosto" itemValue="null" />
+																		        <f:selectItem itemLabel="Setembro" itemValue="null" />
+																		        <f:selectItem itemLabel="Outubro" itemValue="null" />
+																		        <f:selectItem itemLabel="Novembro" itemValue="null" />
+																		        <f:selectItem itemLabel="Dezembro" itemValue="null" />
+																		        -->
+											</h:selectOneMenu>
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<h:selectOneMenu id="ano" class="form-control">
+												<f:selectItem itemValue="null" itemLabel="Ano" />
+												<!-- usar selectItems
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        <f:selectItem itemLabel="1992" itemValue="null" />
+																		        -->
+											</h:selectOneMenu>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+							<div class="row">
+								<div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<label for="nome">Quem sou eu: </label>
+									<h:inputTextarea class="form-control" rows="5" />
+								</div>
+							</div>
+
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Fechar</button>
+								<button type="button" class="btn btn-success">Confirmar</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

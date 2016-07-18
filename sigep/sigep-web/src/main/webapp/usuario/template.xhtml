@@ -1,3 +1,4 @@
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
@@ -8,21 +9,44 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Webfitness</title>
 	<h:outputStylesheet name="style.css" library="css" />
-	<h:outputStylesheet name="bootstrap.min.css" library="css" />
+	<h:outputStylesheet name="bootstrap.css" library="css" />
 	<h:outputStylesheet name="sb-admin.css" library="css" />
 	<h:outputStylesheet name="plugins/morris.css" library="css" />
-	<h:outputStylesheet name="font-awesome/4.3.0/css/font-awesome-jsf.css" library="webjars"/>
-	<h:outputStylesheet name="js/jquery.js"/>
-	<h:outputStylesheet name="js/bootstrap.min.js"/>
-	<h:outputStylesheet name="js/plugins/morris/raphael.min.js"/>
-	<h:outputStylesheet name="js/plugins/morris/morris.min.js"/>
-	<h:outputStylesheet name="js/plugins/morris/morris-data.js"/>
+	<h:outputStylesheet name="font-awesome/4.3.0/css/font-awesome-jsf.css"
+		library="webjars" />
+	<h:outputScript name="jquery.js" library="js" />
+	<h:outputScript name="bootstrap.min.js" library="js" />
+	<h:outputStylesheet name="js/plugins/morris/raphael.min.js" />
+	<h:outputStylesheet name="js/plugins/morris/morris.min.js" />
+	<h:outputStylesheet name="js/plugins/morris/morris-data.js" />
 </h:head>
 
 <h:body>
+
 	<div id="wrapper">
 		<ui:include src="menus.xhtml" />
-		<ui:insert name="conteudo" />
+		<div id="page-wrapper">
+			<div class="container-fluid">
+				<div class="col-lg-8 col-md-8">
+					<div class="panel-body">
+						<ui:insert name="conteudoSuperior"/>
+						<ui:insert name="conteudo" />
+					</div>	
+				</div>
+				
+				<div class="col-lg-4 col-md-4">
+					<div class="panel-body">
+						<div class="row">
+							<ui:insert name="amigos" />
+						</div>
+						<div class="row">
+							<ui:insert name="grupos" />
+						</div>
+					</div>	
+				</div>
+				
+			</div>
+		</div>
 	</div>
 </h:body>
 </html>

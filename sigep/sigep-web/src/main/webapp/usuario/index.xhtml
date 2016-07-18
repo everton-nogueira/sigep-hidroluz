@@ -4,102 +4,18 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-	<ui:composition template="/usuario/template.xhtml">
-		<ui:define name="conteudo">
-			<div id="page-wrapper">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-8 col-md-8">
-							<div class="panel panel-green visible-sm visible-xs">
-								<div class="panel-footer ">
-									<div class="form-group">
-									 <h:graphicImage library="imagens" name="bill.jpg" height="120px" width="120px"/>
-										asldfkaçjsdflaksdjf asdflkasdçjfalsdkjfa
-										dsfadslfkjçlsdkjfadslfkj
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-green">
-								<div class="panel-heading">
-									<div class="row">
-										<div class="col-xs-1">
-											<i class="fa fa-comments fa-1x"></i>
-										</div>
-										<div class="col-xs-1 text-left">
-											<div class="fa-1x">Postagem</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel-footer">
-									<div class="form-group">
-										<label for="comment">Postagem:</label>
-										<p>
-											<textarea class="form-control" rows="5" id="postagem"></textarea>
-										</p>
-										<button type="button" class="btn btn-success">ENVIAR</button>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-green">
-								<div class="panel-footer">
-									<div class="form-group">aldfjasçdflkjasdçlfkajsdflçkj
-										asldfkaçjsdflaksdjf asdflkasdçjfalsdkjfa
-										dsfadslfkjçlsdkjfadslfkj</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 visible-md visible-lg">
-							<div class="panel panel-green">
-								<div class="panel-heading">
-									<div class="row">
-										<div class="col-xs-1">
-											<i class="fa fa-comments fa-1x"></i>
-										</div>
-										<div class="col-xs-1 text-left">
-											<div class="fa-1x">AMIGOS</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel-footer"></div>
-							</div>
-						</div>
-					</div>
-	
-					<div class="row">
-						<div class="col-lg-8 col-md-8"></div>
-						<div class="col-lg-4 col-md-4 visible-md visible-lg">
-							<div class="panel panel-green">
-								<div class="panel-heading">
-									<div class="row">
-										<div class="col-xs-1">
-											<i class="fa fa-comments fa-1x"></i>
-										</div>
-										<div class="col-xs-1 text-left">
-											<div class="fa-1x">GRUPOS</div>
-										</div>
-									</div>
-								</div>
-								<div class="panel-footer">
-									<p:dataTable var="car" value="#{null}">
-										<p:column headerText="Id">
-											<h:outputText value="asdfasdf}" />
-										</p:column>
-										<p:column headerText="Year">
-											<h:outputText value="asdfasdf" />
-										</p:column>
-										<p:column headerText="Brand">
-											<h:outputText value="asdfasdfasdf" />
-										</p:column>
-										<p:column headerText="Color">
-											<h:outputText value="asfqwerqwer" />
-										</p:column>
-									</p:dataTable>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</ui:define>
-	</ui:composition>
+<ui:composition template="/usuario/template.xhtml">
+	<ui:define name="conteudoSuperior">
+		<ui:include src="enviarPost.xhtml" />
+	</ui:define>
+	<ui:define name="conteudo">
+		<ui:include src="postagem.xhtml" />
+	</ui:define>
+	<ui:define name="amigos">
+		<ui:include src="amigos.xhtml" />
+	</ui:define>
+	<ui:define name="grupos">
+		<ui:include src="grupos.xhtml" />
+	</ui:define>
+</ui:composition>
 </html>

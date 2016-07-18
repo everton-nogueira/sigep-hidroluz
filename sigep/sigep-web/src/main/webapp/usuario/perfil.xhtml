@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/usuario/template.xhtml">		
+	<ui:define name="conteudoSuperior">
+		<div class="row">
+			<div class="panel panel-green">
+				<div class="panel-body">
+					<div class="row">
+			    		<div class="col-md-12 col-lg-12">
+							<h2>Willian Bueno</h2>
+						</div>
+					</div>
+					<h:graphicImage library="imagens" name="musculo.png" height="20" width="100"/> 
+					<h:graphicImage library="imagens" name="confiavel.png" height="20" width="100"/>  
+					<h:graphicImage library="imagens" name="sexy.png" height="20" width="100"/>
+			  	</div>
+			</div>
+			<div class="panel-body-no-padding">
+				<div class="btn-group btn-group">
+					<button type="button" class="btn btn-success">Dados Pessoais</button>
+					<button type="button" class="btn btn-success">Medidas</button>
+					<button type="button" class="btn btn-success">Fotos</button>
+					<button type="button" class="btn btn-success">Videos</button>
+					<button type="button" class="btn btn-success">Minhas Postagens</button>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+	<ui:define name="conteudo">
+		<ui:include src="dadosPessoais.xhtml" />
+	</ui:define>
+	<ui:define name="amigos">
+		<ui:include src="amigos.xhtml" />
+	</ui:define>
+	<ui:define name="grupos">
+		<ui:include src="grupos.xhtml" />
+	</ui:define>
+</ui:composition>
+</html>
