@@ -81,6 +81,7 @@ public class LoginService implements LoginServiceLocal {
 		}
 	}
 
+
 	private void realizaLoginJaas(String login, String senha, HttpServletRequest request) throws Exception {
 		request.setAttribute(AtributoHttpRequest.ATRIBUTO_LOGIN.getValor(), login);
 		request.setAttribute(AtributoHttpRequest.ATRIBUTO_SENHA.getValor(), senha);

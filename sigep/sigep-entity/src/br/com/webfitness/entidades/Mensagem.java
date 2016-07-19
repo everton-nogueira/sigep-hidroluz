@@ -3,6 +3,7 @@
  */
 package br.com.webfitness.entidades;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -28,6 +29,9 @@ public class Mensagem {
 	@OneToMany (mappedBy = "mensagem")
 	@Getter @Setter
 	private List<PessoaMensagem> mensagens;
+	
+	@Getter @Setter
+	private Date data;
 
 	@Override
 	public int hashCode() {

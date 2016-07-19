@@ -43,8 +43,9 @@ public class LoginMBean implements Serializable{
 		}
 	}
 	
-	public void sair(){
+	public String sair(){
 		loginService.realizaLogout();
+		return "/login.xhtml?faces-redirect=true";
 	}
 	
 	public void limpar() {

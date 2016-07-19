@@ -33,6 +33,7 @@ CREATE TABLE telefone (
 CREATE TABLE mensagem (
   idMensagem INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   mensagem VARCHAR(500) NULL,
+  data DATE NOT NULL,
   PRIMARY KEY(idMensagem)
 ) ENGINE = innodb;
 
@@ -240,7 +241,7 @@ INSERT INTO telefone (idTelefone, ddd, numero)
 INSERT INTO academia (idAcademia, idTelefone, idEndereco, nome, valor, nivel, horarioFuncionamento)
 			VALUES (null, 2, 2, 'SPAÇO FITNESS', '100,00', 0, 'seg a sex das 6 as 23');
 INSERT INTO pessoa (idPessoa, idTelefone, idAcademia, idEndereco, nome, sexo, dataNascimento, senha, email)
-			VALUES (null, 1, 1, 1, 'Administrador', 'M', '1992-03-15', 'admin', 'admin@gmail.com');
+			VALUES (null, 1, 1, 1, 'Administrador', 'M', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
 INSERT INTO funcao (idFuncao, nome)
 			VALUES (null, 'ADMIN');
 INSERT INTO funcao (idFuncao, nome)

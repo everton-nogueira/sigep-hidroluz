@@ -32,25 +32,31 @@
 									</h:commandLink>
 								</td>
 								<td width="120">
-									<h:commandLink>
-										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="33% bodybuilder porra"/>
+									<h:commandLink actionListener="#{perfilMBean.votacao('musculo', 33)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="33% bodybuilder porra" rendered="#{!perfilMBean.musculo33}"/>
+										<h:graphicImage library="imagens" name="musculo_ok.png" height="35" width="35" title="33% bodybuilder porra" rendered="#{perfilMBean.musculo33}"/>
 									</h:commandLink>
-									<h:commandLink>
-										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="66% bodybuilder porra"/>
+									<h:commandLink actionListener="#{perfilMBean.votacao('musculo', 66)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="66% bodybuilder porra" rendered="#{!perfilMBean.musculo66}"/>
+										<h:graphicImage library="imagens" name="musculo_ok.png" height="35" width="35" title="66% bodybuilder porra" rendered="#{perfilMBean.musculo66}"/>
 									</h:commandLink>
-									<h:commandLink>
-										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="100% bodybuilder porra"/>
+									<h:commandLink actionListener="#{perfilMBean.votacao('musculo', 100)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="100% bodybuilder porra" rendered="#{!perfilMBean.musculo100}"/>
+										<h:graphicImage library="imagens" name="musculo_ok.png" height="35" width="35" title="100% bodybuilder porra" rendered="#{perfilMBean.musculo100}"/>
 									</h:commandLink>
 								</td>
 								<td width="120">
-									<h:commandLink>
-										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="33% Água com Músculo"/>
+									<h:commandLink actionListener="#{perfilMBean.votacao('gordo', 33)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="33% Água com Músculo" rendered="#{!perfilMBean.gordo33}"/>
+										<h:graphicImage library="imagens" name="gordo_ok.png" height="35" width="35" title="33% Água com Músculo" rendered="#{perfilMBean.gordo33}"/>
 									</h:commandLink>
-									<h:commandLink>
-										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="66% Água com Músculo"/>
+									<h:commandLink actionListener="#{perfilMBean.votacao('gordo', 66)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="66% Água com Músculo" rendered="#{!perfilMBean.gordo66}"/>
+										<h:graphicImage library="imagens" name="gordo_ok.png" height="35" width="35" title="33% Água com Músculo" rendered="#{perfilMBean.gordo66}"/>
 									</h:commandLink>
-									<h:commandLink>
-										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="100% Água com Músculo"/>
+									<h:commandLink actionListener="#{perfilMBean.votacao('gordo', 100)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="100% Água com Músculo" rendered="#{!perfilMBean.gordo100}"/>
+										<h:graphicImage library="imagens" name="gordo_ok.png" height="35" width="35" title="33% Água com Músculo" rendered="#{perfilMBean.gordo100}"/>
 									</h:commandLink>
 								</td>
 							</tr>

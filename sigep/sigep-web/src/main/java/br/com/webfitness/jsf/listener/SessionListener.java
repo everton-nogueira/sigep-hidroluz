@@ -37,7 +37,7 @@ public class SessionListener implements HttpSessionListener {
 				nomeUsuario = usuario.getValue().getNome();
 			}
          }
-         System.out.println("Sessão do usuario "+nomeUsuario+" expirada. Ultimo Acesso = "+ultimoAcesso);
+         System.out.println("Sessão do usuario "+nomeUsuario+" encerrada. Ultimo Acesso = "+ultimoAcesso);
          System.out.println("Sessões ativas: "+(--totalActiveSessions));
     }
  

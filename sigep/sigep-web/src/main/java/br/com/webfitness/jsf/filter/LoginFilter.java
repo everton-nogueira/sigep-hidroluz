@@ -23,7 +23,7 @@ import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.constante.ConstantesWebFitness;
 
 /**
- * @Descrição: Esse filtro poderá ser excluído futuramente, pois o controle de acesso está sendo feito pelo JAAS
+ * @Descrição: Filtro para redirecionamentos, pois o controle de acesso está sendo feito pelo JAAS
  * @author Everton
  * Data: 24/05/2016
  */
@@ -51,7 +51,7 @@ public class LoginFilter implements Filter {
         } else {
         	//Existe uma pessoa logada
         	if (pessoa != null || !isFiltered(URL)){
-        		if(URL.equals("/sigep-web/")){
+        		if(pessoa != null && (URL.equals("/sigep-web/") || URL.contains("/sigep-web/login.xhtml"))){
         			httpResponse.sendRedirect(httpRequest.getContextPath() + "/usuario/index.xhtml");
         			return;
         		} else {
