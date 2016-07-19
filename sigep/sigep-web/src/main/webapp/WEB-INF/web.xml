@@ -88,7 +88,7 @@
 	</security-constraint>
 	
 	<session-config>
-    	<session-timeout>5</session-timeout>
+    	<session-timeout>10</session-timeout>
     </session-config>
     
     <listener>
@@ -100,7 +100,7 @@
 		<filter-class>br.com.webfitness.jsf.filter.LoginFilter</filter-class>
 		<init-param>
 			<param-name>urlsLiberadas</param-name>
-			<param-value>/login.xhtml, templateLogin.xhtml</param-value>
+			<param-value>/login.xhtml, templateLogin.xhtml, /sigep-web/</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

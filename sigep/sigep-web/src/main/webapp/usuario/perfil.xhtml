@@ -6,32 +6,71 @@
 
 <ui:composition template="/usuario/template.xhtml">		
 	<ui:define name="conteudoSuperior">
-		<div class="row">
-			<div class="panel panel-green">
-				<div class="panel-body">
-					<div class="row">
-			    		<div class="col-md-12 col-lg-12">
-							<h2>Willian Bueno</h2>
+		<h:form>
+			<div class="row">
+				<div class="panel panel-green">
+					<div class="panel-body">
+						<div class="row">
+				    		<div class="col-md-12 col-lg-12">
+								<h2>Willian Bueno</h2>
+							</div>
 						</div>
+						<table >
+							<tr>
+								<td width="120">
+									<h:commandLink actionListener="#{perfilMBean.votacao('frango', 33)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="frango.png" height="35" width="35" title="33% frango" rendered="#{!perfilMBean.frango33}"/>
+										<h:graphicImage library="imagens" name="frango_ok.png" height="35" width="35" title="33% frango" rendered="#{perfilMBean.frango33}"/>
+									</h:commandLink>
+									<h:commandLink actionListener="#{perfilMBean.votacao('frango', 66)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="frango.png" height="35" width="35" title="66% frango" rendered="#{!perfilMBean.frango66}"/>
+										<h:graphicImage library="imagens" name="frango_ok.png" height="35" width="35" title="33% frango" rendered="#{perfilMBean.frango66}"/>
+									</h:commandLink>
+									<h:commandLink actionListener="#{perfilMBean.votacao('frango', 100)}" disabled="#{perfilMBean.usuarioVotou()}">
+										<h:graphicImage library="imagens" name="frango.png" height="35" width="35" title="100% frango" rendered="#{!perfilMBean.frango100}"/>
+										<h:graphicImage library="imagens" name="frango_ok.png" height="35" width="35" title="33% frango" rendered="#{perfilMBean.frango100}"/>
+									</h:commandLink>
+								</td>
+								<td width="120">
+									<h:commandLink>
+										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="33% bodybuilder porra"/>
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="66% bodybuilder porra"/>
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage library="imagens" name="musculo.png" height="35" width="35" title="100% bodybuilder porra"/>
+									</h:commandLink>
+								</td>
+								<td width="120">
+									<h:commandLink>
+										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="33% Água com Músculo"/>
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="66% Água com Músculo"/>
+									</h:commandLink>
+									<h:commandLink>
+										<h:graphicImage library="imagens" name="gordo.png" height="35" width="35" title="100% Água com Músculo"/>
+									</h:commandLink>
+								</td>
+							</tr>
+						</table>
+				  	</div>
+				</div>
+				<div class="panel-body-no-padding">
+					<div class="btn-group btn-group">
+						<h:commandButton class="btn btn-success" actionListener="#{perfilMBean.mudaAba('pessoal')}" value="Dados Pessoais"/>
+						<h:commandButton class="btn btn-success" actionListener="#{perfilMBean.mudaAba('medidas')}" value="Medidas" />
+						<h:commandButton class="btn btn-success" actionListener="#{perfilMBean.mudaAba('fotos')}"   value="Fotos"/>
+						<h:commandButton class="btn btn-success" actionListener="#{perfilMBean.mudaAba('videos')}"  value="Videos"/>
+						<h:commandButton class="btn btn-success" actionListener="#{perfilMBean.mudaAba('postagens')}" value="Minhas Postagens"/>
 					</div>
-					<h:graphicImage library="imagens" name="musculo.png" height="20" width="100"/> 
-					<h:graphicImage library="imagens" name="confiavel.png" height="20" width="100"/>  
-					<h:graphicImage library="imagens" name="sexy.png" height="20" width="100"/>
-			  	</div>
-			</div>
-			<div class="panel-body-no-padding">
-				<div class="btn-group btn-group">
-					<button type="button" class="btn btn-success">Dados Pessoais</button>
-					<button type="button" class="btn btn-success">Medidas</button>
-					<button type="button" class="btn btn-success">Fotos</button>
-					<button type="button" class="btn btn-success">Videos</button>
-					<button type="button" class="btn btn-success">Minhas Postagens</button>
 				</div>
 			</div>
-		</div>
+		</h:form>
 	</ui:define>
 	<ui:define name="conteudo">
-		<ui:include src="dadosPessoais.xhtml" />
+		<ui:include src="#{perfilMBean.pagina}" />
 	</ui:define>
 	<ui:define name="amigos">
 		<ui:include src="amigos.xhtml" />
