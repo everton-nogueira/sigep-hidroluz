@@ -42,6 +42,12 @@ public class Pessoa {
 	private String sexo;
 	
 	@Getter @Setter
+	private Integer relacionamento;
+	
+	@Getter @Setter
+	private String descricao;
+	
+	@Getter @Setter
 	private Date dataNascimento;
 	
 	@Getter @Setter

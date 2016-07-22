@@ -83,6 +83,8 @@ CREATE TABLE pessoa (
   idEndereco INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(255) NOT NULL,
   sexo VARCHAR(1) NOT NULL,
+  relacionamento INTEGER UNSIGNED,
+  descricao VARCHAR(500),
   dataNascimento DATE NOT NULL,
   senha VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
@@ -240,8 +242,8 @@ INSERT INTO telefone (idTelefone, ddd, numero)
 			VALUES (null, 61, 33542226);
 INSERT INTO academia (idAcademia, idTelefone, idEndereco, nome, valor, nivel, horarioFuncionamento)
 			VALUES (null, 2, 2, 'SPAÇO FITNESS', '100,00', 0, 'seg a sex das 6 as 23');
-INSERT INTO pessoa (idPessoa, idTelefone, idAcademia, idEndereco, nome, sexo, dataNascimento, senha, email)
-			VALUES (null, 1, 1, 1, 'Administrador', 'M', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
+INSERT INTO pessoa (idPessoa, idTelefone, idAcademia, idEndereco, nome, sexo, relacionamento, descricao, dataNascimento, senha, email)
+			VALUES (null, 1, 1, 1, 'Administrador', 'M', 0, 'Teste de descrição do administrador!', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
 INSERT INTO funcao (idFuncao, nome)
 			VALUES (null, 'ADMIN');
 INSERT INTO funcao (idFuncao, nome)

@@ -39,7 +39,7 @@ public class Endereco {
 	
 	@OneToMany(targetEntity = Pessoa.class, mappedBy="endereco")
 	@Getter @Setter
-	private List<Pessoa> pessoa;
+	private List<Pessoa> pessoas;
 	
 	@OneToMany(targetEntity = Academia.class, mappedBy="endereco")
 	@Getter @Setter

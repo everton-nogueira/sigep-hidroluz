@@ -9,70 +9,58 @@
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">Quem sou eu:</label>
+						<label for="nome"><h:outputText value="Quem sou eu"/></label>
 					</div>
 					<div class="col-md-9 col-lg-9">
-						<div class="text-justify">Por conseguinte, a percepção das
-							dificuldades garante a contribuição de um grupo importante na
-							determinação das formas de ação. O incentivo ao avanço
-							tecnológico, assim como a contínua expansão de nossa atividade
-							oferece uma interessante oportunidade para verificação das
-							diretrizes de desenvolvimento para o futuro. Ainda assim, existem
-							dúvidas a respeito de como a crescente influência da mídia
-							estende o alcance e a importância das condições financeiras e
-							administrativas exigidas. Todavia, a expansão dos mercados
-							mundiais pode nos levar a considerar a reestruturação do
-							remanejamento dos quadros funcionais. Gostaria de enfatizar que o
-							entendimento das metas propostas afeta positivamente a correta
-							previsão do retorno esperado a longo prazo.</div>
+						<div class="text-justify">
+							<h:outputText value="#{loginMBean.pessoa.descricao}"/>
+						</div>
 					</div>
 				</div>
 				<br />
-				<div class="row">
-					<div class="col-md-3 col-lg-3">
-						<label for="nome">Relacionamento:</label>
-					</div>
-					<div class="col-md-9 col-lg-9">Solteiro</div>
-				</div>
 
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">E-mail:</label>
+						<label for="nome"><h:outputText value="E-mail"/></label>
 					</div>
-					<div class="col-md-9 col-lg-9">willianbueno92@gmail.com</div>
+					<div class="col-md-9 col-lg-9"><h:outputText value="#{loginMBean.pessoa.email}"/></div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">Aniversario:</label>
+						<label for="nome"><h:outputText value="Aniversario"/></label>
 					</div>
-					<div class="col-md-9 col-lg-9">03/04/1992</div>
+					<div class="col-md-9 col-lg-9">
+						<h:outputText value="#{loginMBean.pessoa.dataNascimento}">
+							<f:convertDateTime pattern="dd/MM"/>
+						</h:outputText>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">Idade</label>
+						<label for="nome"><h:outputText value="Idade"/></label>
 					</div>
-					<div class="col-md-9 col-lg-9">24</div>
+					<div class="col-md-9 col-lg-9"><h:outputText value="#{loginMBean.pessoa.idade}"/></div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">Cidade:</label>
+						<label for="nome"><h:outputText value="Cidade"/></label>
 					</div>
-					<div class="col-md-9 col-lg-9">Luziânia-GO</div>
+					<div class="col-md-9 col-lg-9"><h:outputText value="#{loginMBean.pessoa.endereco.cidade} - #{loginMBean.pessoa.endereco.estado}"/></div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">Gênero:</label>
+						<label for="nome"><h:outputText value="Gênero"/></label>
 					</div>
-					<div class="col-md-9 col-lg-9">Masculino</div>
+					<div class="col-md-9 col-lg-9"><h:outputText value="#{loginMBean.pessoa.sexo}"/></div>
 				</div>
 				<div class="row">
 					<div class="col-md-3 col-lg-3">
-						<label for="nome">Relacionamento:</label>
+						<label for="nome"><h:outputText value="Relacionamento"/></label>
 					</div>
-					<div class="col-md-9 col-lg-9">Solteiro</div>
+					<div class="col-md-9 col-lg-9"><h:outputText value="#{loginMBean.pessoa.relacionamento}"/></div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalSocial">Editar</button>
+					<h:commandButton value="Editar" class="btn btn-success" data-toggle="modal" data-target="#modalSocial"/>
 				</div>
 			</div>
 		</div>
