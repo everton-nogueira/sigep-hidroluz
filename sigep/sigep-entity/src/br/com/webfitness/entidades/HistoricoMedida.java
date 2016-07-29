@@ -24,10 +24,10 @@ public class HistoricoMedida {
 	private Date dataMedicao;
 	
 	@Getter @Setter
-	private float brancoEsquerdo;
+	private float bracoEsquerdo;
 	
 	@Getter @Setter
-	private float brancoDireito;
+	private float bracoDireito;
 	
 	@Getter @Setter
 	private float anteBracoEsquerdo;

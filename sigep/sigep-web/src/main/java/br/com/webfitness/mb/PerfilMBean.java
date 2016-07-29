@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 
 import lombok.Getter;
 import lombok.Setter;
-import br.com.webfitness.DTO.MensagemDTO;
+import br.com.webfitness.entidades.Mensagem;
 
 /**
  * @author Everton
@@ -38,7 +38,7 @@ public class PerfilMBean implements Serializable{
 	private boolean gordo33, gordo66, gordo100;
 	
 	@Getter @Setter
-	private List<MensagemDTO> mensagensRecentes;
+	private List<Mensagem> mensagensRecentes;
 	
 	@PostConstruct
 	public void init(){

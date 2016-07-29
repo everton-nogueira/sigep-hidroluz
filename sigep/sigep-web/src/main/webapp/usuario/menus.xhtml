@@ -24,11 +24,11 @@
 							<b class="caret"/>
 						</a>
 						<ul class="dropdown-menu message-dropdown">
-							<div class="media-body text-center">
-								<h5 class="media-heading">
+							<h5 class="media-heading">
+								<div class="media-body text-center">
 									<strong><h:outputText value="Nenhuma mensagem recente" rendered="#{empty perfilMBean.mensagensRecentes}"/></strong>
-								</h5>
-							</div>
+								</div>
+							</h5>
 							<ui:repeat value="#{perfilMBean.mensagensRecentes}" var="msg">
 								<li class="message-preview">
 									<div class="media">

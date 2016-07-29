@@ -38,6 +38,13 @@
 		
 		<dependency>
 			<groupId>br.com.webfitness</groupId>
+			<artifactId>sigep-entity</artifactId>
+			<version>${webfitness.sigep-entity.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-business</artifactId>
 			<version>${webfitness.sigep-business.version}</version>
 			<exclusions>

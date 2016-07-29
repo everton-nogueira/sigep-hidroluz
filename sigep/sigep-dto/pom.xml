@@ -17,6 +17,12 @@
 			<version>1.14.8</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>br.com.webfitness</groupId>
+			<artifactId>sigep-entity</artifactId>
+			<version>${webfitness.sigep-entity.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 	
 	<build>

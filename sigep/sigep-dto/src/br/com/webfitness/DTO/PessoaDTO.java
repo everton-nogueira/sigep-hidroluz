@@ -6,9 +6,23 @@ package br.com.webfitness.DTO;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import br.com.webfitness.entidades.Academia;
+import br.com.webfitness.entidades.Amizade;
+import br.com.webfitness.entidades.Dieta;
+import br.com.webfitness.entidades.Endereco;
+import br.com.webfitness.entidades.Foto;
+import br.com.webfitness.entidades.Funcao;
+import br.com.webfitness.entidades.HistoricoMedida;
+import br.com.webfitness.entidades.Pagina;
+import br.com.webfitness.entidades.PessoaMensagem;
+import br.com.webfitness.entidades.Suplemento;
+import br.com.webfitness.entidades.Telefone;
+import br.com.webfitness.entidades.Treino;
+import br.com.webfitness.entidades.Video;
 
 /**
  * @author Everton
@@ -31,32 +45,32 @@ public class PessoaDTO {
 	private String senha;
 	@Getter @Setter
 	private String email;
-//	@Getter @Setter
-//	private AcademiaDTO academia;
 	@Getter @Setter
-	private EnderecoDTO endereco;
-//	@Getter @Setter
-//	private TelefoneDTO telefone;
-//	@Getter @Setter
-//	private List<PaginaDTO> paginas;
-//	@Getter @Setter
-//	private List<VideoDTO> Videos;
-//	@Getter @Setter
-//	private List<FotoDTO> fotos;
-//	@Getter @Setter
-//	private List<HistoricoMedidaDTO> historicoMedidas;
-//	@Getter @Setter
-//	private List<DietaDTO> dietas;
-//	@Getter @Setter
-//	private List<AmizadeDTO> amigos;
-//	@Getter @Setter
-//	private List<PessoaMensagemDTO> mensagensEnviadas;
-//	@Getter @Setter
-//	private List<SuplementoDTO> suplementos;
-//	@Getter @Setter
-//	private List<TreinoDTO> treinos;
-//	@Getter @Setter
-//	private List<FuncaoDTO> funcoes;
+	private Academia academia;
+	@Getter @Setter
+	private Endereco endereco;
+	@Getter @Setter
+	private Telefone telefone;
+	@Getter @Setter
+	private List<Pagina> paginas;
+	@Getter @Setter
+	private List<Video> Videos;
+	@Getter @Setter
+	private List<Foto> fotos;
+	@Getter @Setter
+	private List<HistoricoMedida> historicoMedidas;
+	@Getter @Setter
+	private List<Dieta> dietas;
+	@Getter @Setter
+	private List<Amizade> amigos;
+	@Getter @Setter
+	private List<PessoaMensagem> mensagensEnviadas;
+	@Getter @Setter
+	private List<Suplemento> suplementos;
+	@Getter @Setter
+	private List<Treino> treinos;
+	@Getter @Setter
+	private List<Funcao> funcoes;
 	
 	public Integer getIdade(){
 		Integer idade = 0;

@@ -14,6 +14,20 @@
 			<groupId>br.com.webfitness</groupId>
 			<artifactId>sigep-dto</artifactId>
 			<version>${webfitness.sigep-dto.version}</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>sigep-entity</artifactId>
+					<groupId>br.com.webfitness</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>hibernate-entitymanager</artifactId>
+					<groupId>org.hibernate</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>mysql-connector-java</artifactId>
+					<groupId>mysql</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>br.com.webfitness</groupId>
