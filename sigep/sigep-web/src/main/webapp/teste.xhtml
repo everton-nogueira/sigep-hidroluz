@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputScript library="js" name="funcoes.js" />
+</h:head>
+<h:body>
+	<h:form id="cadastrar">
+		<p:panel header="Detalhes Pessoais">
+			<p:messages closable="true" autoUpdate="true" />
+			<div class="ui-fluid">
+
+				<p:panelGrid columns="1"
+					columnClasses="ui-grid-col-2,ui-grid-col-10" layout="grid"
+					styleClass="ui-panelgrid-blank;">
+
+					<p:graphicImage height="100" id="pic"
+						url="#{fotoPerfilMBean.retornaFoto()}" style="width: 110px" />
+
+					<p:commandButton onclick="PF('dlgfoto').show();" update=":foto"
+						id="foto" immediate="true" value="Carregar" style="width: 110px" />
+				</p:panelGrid>
+			</div>
+		</p:panel>
+	</h:form>
+	<p:dialog header="Enviar foto" width="60%" height="350"
+		widgetVar="dlgfoto" resizable="false" modal="true" appendTo="@(body)"
+		closable="true" draggable="false" closeOnEscid="modal">
+		<h:form id="foto" enctype="multipart/form-data">
+			<p:fileUpload id="upload" mode="advanced" required="true"
+				cancelLabel="Cancelar" style="margin-top: 15px;"
+				requiredMessage="Selecione  uma foto!"
+				allowTypes="/(\.|\/)(gif|jpe?g|png|jpg)$/"
+				invalidFileMessage="Tipo de arquivo nao permitido"
+				invalidSizeMessage="Tamanho excedido(100kb)"
+				uploadLabel="Processar foto" fileLimit="1"
+				fileLimitMessage="Apenas uma foto por vez"
+				fileUploadListener="#{fotoPerfilMBean.uploadAction}"
+				dragDropSupport="true" label="Selecionar foto..." multiple="false"
+				update="@form"
+				oncomplete="PF('statusDialog').hide();" />
+		</h:form>
+	</p:dialog>
+</h:body>
+</html>

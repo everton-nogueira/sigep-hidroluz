@@ -100,7 +100,7 @@
 		<filter-class>br.com.webfitness.jsf.filter.LoginFilter</filter-class>
 		<init-param>
 			<param-name>urlsLiberadas</param-name>
-			<param-value>/login.xhtml, templateLogin.xhtml, /sigep-web/</param-value>
+			<param-value>/login.xhtml,/teste.xhtml, templateLogin.xhtml, /sigep-web/</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>

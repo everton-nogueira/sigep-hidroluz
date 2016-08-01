@@ -5007,7 +5007,7 @@ a.badge:focus {
 .thumbnail {
   display: block;
   padding: 4px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   line-height: 1.42857143;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -5030,6 +5030,35 @@ a.thumbnail.active {
   padding: 9px;
   color: #333;
 }
+
+.item {}
+	
+.descricao {
+	display: none;
+}
+	
+div .texto {
+	width: 90%;
+	height: 40px;
+	color: #fff;
+	vertical-align: middle;
+	display: table-cell;
+	text-align: center;
+}
+	
+.item:hover .descricao {
+	margin-right: auto;
+  	margin-left: auto;
+	width: 100%;
+	position: absolute;
+	top: 150;
+	display: block;
+	opacity: 0.5;
+	background-color: black;
+	cursor:pointer;
+	
+}
+
 .alert {
   padding: 15px;
   margin-bottom: 20px;

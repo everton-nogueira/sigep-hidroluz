@@ -60,20 +60,17 @@
 					<div class="col-md-9 col-lg-9"><h:outputText value="#{loginMBean.pessoa.relacionamento}"/></div>
 				</div>
 				<div class="modal-footer">
-					<h:commandButton value="Editar" class="btn btn-success" data-toggle="modal" data-target="#modalSocial"/>
+					<button class="btn btn-success" data-toggle="modal" data-target="#modalSocial">Editar</button>
 				</div>
 			</div>
 		</div>
-	</div>
-
+	</div>	
 	<div class="modal fade" id="modalSocial">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<ui:include src="alteraPerfilSocial.xhtml" />
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<ui:include src="alteraPerfilSocial.xhtml" />
+				</div>
 			</div>
-
-		</div>
-	</div>
+	</div>	
 </h:body>
 </html>

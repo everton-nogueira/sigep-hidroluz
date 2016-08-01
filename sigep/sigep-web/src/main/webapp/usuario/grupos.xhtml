@@ -4,8 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
-	<div class="col-lg-12 col-md-12 visible-md visible-lg">
-		<h:form>
+	<h:form>
+		<div class="col-lg-12 col-md-12 visible-md visible-lg">
 			<div class="panel panel-green">
 				<div class="panel-heading">
 					<div class="row">
@@ -13,79 +13,35 @@
 							<i class="fa fa-comments fa-1x"></i>
 						</div>
 						<div class="col-xs-1 text-left">
-							<div class="fa-1x">AMIGOS</div>
+							<div class="fa-1x">GRUPOS</div>
 						</div>
 					</div>
 				</div>
-				<div class="panel-body">
-					<table>
-						<tr>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-							<td>
-								<h:commandLink class="thumbnail">
-									<h:graphicImage library="imagens" name="perfil.png" width="150" height="140"/>
-									<h:outputText value="nome" />
-								</h:commandLink>
-							</td>
-						</tr>
-					</table>
-				</div>
-				<div class="panel-footer">
-					<button type="button" class="btn btn-success">Ver todos</button>
+<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+							<h:commandLink class="thumbnail img">
+								<h:graphicImage library="imgGrupos" name="correr.jpg" style="width: auto;height: auto;"/>
+								<h:outputText value="nome" />
+							</h:commandLink>
+						</div>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+							<h:commandLink class="thumbnail">
+								<h:graphicImage library="imgGrupos" name="natacao.jpg" style="margin-right: auto;margin-left: auto;"/>
+								<h:outputText value="nome" />
+							</h:commandLink>
+						</div>
+				
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+							<h:commandLink class="thumbnail">
+								<h:graphicImage library="imgGrupos" name="danca.jpg" style="margin-right: auto;margin-left: auto;"/>
+								<h:outputText value="nome" />
+							</h:commandLink>
+						</div>
+					</div>
 				</div>
 			</div>
-		</h:form>
-	</div>
+		</div>
+	</h:form>
 </h:body>
 </html>
