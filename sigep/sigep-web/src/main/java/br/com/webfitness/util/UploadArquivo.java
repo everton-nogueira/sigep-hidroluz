@@ -1,18 +1,12 @@
 package br.com.webfitness.util;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletResponse;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.UploadedFile;
 
 public class UploadArquivo {
 	private String caminho;
@@ -38,11 +32,7 @@ public class UploadArquivo {
 		this.caminho = caminho;
 	}
 
-
-	//getRealPath pega o diretório completo da sua aplicação no servidor
 	public String getRealPath() {
-		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-		HttpServletResponse response = 	(HttpServletResponse) externalContext.getResponse();
 		FacesContext aFacesContext = FacesContext.getCurrentInstance();
 		ServletContext context = (ServletContext) aFacesContext.getExternalContext().getContext();
 		return context.getRealPath("/");
@@ -57,8 +47,6 @@ public class UploadArquivo {
 			this.arquivo = event.getFile().getContents();
 			File file = new File(getRealPath() + diretorio);
 			file.mkdirs();
-			System.out.println("CAMINHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-			System.out.println(caminho);
 		} catch (Exception ex) {
 			System.out.println("Erro no upload do arquivo" + ex);
 		}
