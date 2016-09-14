@@ -57,19 +57,14 @@ public class Pessoa {
 	private String email;
 
 	@ManyToOne
-	@JoinColumn(name = "idAcademia")
+	@JoinColumn(name = "academia_idAcademia")
 	@Getter @Setter
 	private Academia academia;
 	
 	@ManyToOne
-	@JoinColumn(name = "idEndereco")
+	@JoinColumn(name = "endereco_idEndereco")
 	@Getter @Setter
 	private Endereco endereco;
-	
-	@ManyToOne
-	@JoinColumn(name = "idTelefone")
-	@Getter @Setter
-	private Telefone telefone;
 	
 	@OneToMany (mappedBy = "pessoa")
 	@Getter @Setter
@@ -105,16 +100,16 @@ public class Pessoa {
 	
 	@ManyToMany(mappedBy = "pessoas")
 	@Getter @Setter
-	private List<Suplemento> suplementos;
+	private List<Telefone> telefones;
 	
 	@OneToMany(mappedBy = "pessoa")
 	@Getter @Setter
 	private List<Treino> treinos;
 
 	@ManyToMany
-	@JoinTable(name = "pessoaFuncao" , 
-			joinColumns = @JoinColumn(name = "idPessoa"),
-			inverseJoinColumns = @JoinColumn(name = "idFuncao"))
+	@JoinTable(name = "pessoa_has_funcao" , 
+			joinColumns = @JoinColumn(name = "pessoa_idPessoa"),
+			inverseJoinColumns = @JoinColumn(name = "funcao_idFuncao"))
 	@Getter @Setter
 	private List<Funcao> funcoes;
 

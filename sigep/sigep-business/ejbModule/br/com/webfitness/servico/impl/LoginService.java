@@ -37,7 +37,7 @@ public class LoginService implements LoginServiceLocal {
 	private Map<String, PessoaDTO> mapaSessaoPessoa = new HashMap<String, PessoaDTO>();
 	
 	@Override
-	public PessoaDTO realizaLogin(String login, String senha) throws Exception {
+	public PessoaDTO realizaLogin(String login, String senha) throws ServletException {
 		PessoaDTO pessoa = adapter.getDTO(pessoaDao.buscar(login));
 		if (pessoa != null) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -82,7 +82,7 @@ public class LoginService implements LoginServiceLocal {
 	}
 
 
-	private void realizaLoginJaas(String login, String senha, HttpServletRequest request) throws Exception {
+	private void realizaLoginJaas(String login, String senha, HttpServletRequest request) throws ServletException{
 		request.setAttribute(AtributoHttpRequest.ATRIBUTO_LOGIN.getValor(), login);
 		request.setAttribute(AtributoHttpRequest.ATRIBUTO_SENHA.getValor(), senha);
 		request.login(login, senha);

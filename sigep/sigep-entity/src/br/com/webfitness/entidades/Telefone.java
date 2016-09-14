@@ -7,7 +7,9 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,11 +30,17 @@ public class Telefone {
 	@Getter @Setter
 	private Integer ddd;
 	
-	@OneToMany(mappedBy="telefone")
+	@ManyToMany
+	@JoinTable(name = "pessoa_has_telefone" , 
+		joinColumns = @JoinColumn(name = "telefone_idTelefone"),
+		inverseJoinColumns = @JoinColumn(name = "pessoa_idPessoa"))
 	@Getter @Setter
-	private List<Pessoa> pessoa;
+	private List<Pessoa> pessoas;
 	
-	@OneToMany(mappedBy="telefone")
+	@ManyToMany
+	@JoinTable(name = "academia_has_telefone" , 
+	joinColumns = @JoinColumn(name = "telefone_idTelefone"),
+		inverseJoinColumns = @JoinColumn(name = "academia_idAcademia"))
 	@Getter @Setter
-	private List<Academia> academia;
+	private List<Academia> academias;
 }

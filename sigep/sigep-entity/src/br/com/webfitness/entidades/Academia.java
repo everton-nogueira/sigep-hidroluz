@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -38,13 +39,12 @@ public class Academia {
 	private List<Pessoa> pessoa;
 	
 	@ManyToOne
-	@JoinColumn(name = "idEndereco")
+	@JoinColumn(name = "endereco_idEndereco")
 	@Getter @Setter
 	private Endereco endereco;
 	
-	@ManyToOne
-	@JoinColumn(name = "idTelefone")
+	@ManyToMany(mappedBy = "academias")
 	@Getter @Setter
-	private Telefone telefone;
+	private List<Telefone> telefones;
 	
 }

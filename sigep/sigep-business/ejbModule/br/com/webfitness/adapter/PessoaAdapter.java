@@ -19,7 +19,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		Pessoa pessoa = preencheParteBasicaEntidade(dto);
 		pessoa.setEndereco(dto.getEndereco());
 		pessoa.setAcademia(dto.getAcademia());
-		pessoa.setTelefone(dto.getTelefone());
+		pessoa.setTelefones(dto.getTelefones());
 		pessoa.setPaginas(dto.getPaginas());
 		pessoa.setVideos(dto.getVideos());
 		pessoa.setFotos(dto.getFotos());
@@ -27,7 +27,6 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		pessoa.setDietas(dto.getDietas());
 		pessoa.setAmigos(dto.getAmigos());
 		pessoa.setMensagensEnviadas(dto.getMensagensEnviadas());
-		pessoa.setSuplementos(dto.getSuplementos());
 		pessoa.setTreinos(dto.getTreinos());
 		pessoa.setFuncoes(dto.getFuncoes());
 		return pessoa;
@@ -52,7 +51,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		PessoaDTO dto = preencheParteBasicaDTO(entidade);
 		dto.setEndereco(entidade.getEndereco());
 		dto.setAcademia(entidade.getAcademia());
-		dto.setTelefone(entidade.getTelefone());
+		dto.setTelefones(entidade.getTelefones());
 		dto.setPaginas(entidade.getPaginas());
 		dto.setVideos(entidade.getVideos());
 		dto.setFotos(entidade.getFotos());
@@ -60,7 +59,6 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		dto.setDietas(entidade.getDietas());
 		dto.setAmigos(entidade.getAmigos());
 		dto.setMensagensEnviadas(entidade.getMensagensEnviadas());
-		dto.setSuplementos(entidade.getSuplementos());
 		dto.setTreinos(entidade.getTreinos());
 		dto.setFuncoes(entidade.getFuncoes());
 		return dto;

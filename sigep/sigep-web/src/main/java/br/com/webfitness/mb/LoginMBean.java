@@ -10,6 +10,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletException;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -37,7 +38,7 @@ public class LoginMBean implements Serializable{
 		try {
 			pessoa = loginService.realizaLogin(login, senha);
 			return "usuario/index.xhtml?faces-redirect=true";
-		} catch (Exception e) {
+		} catch (ServletException e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Login e/ou senha inválidos!"));
 			return null;
 		}

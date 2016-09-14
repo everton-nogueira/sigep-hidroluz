@@ -50,7 +50,7 @@ public class PessoaDTO {
 	@Getter @Setter
 	private Endereco endereco;
 	@Getter @Setter
-	private Telefone telefone;
+	private List<Telefone> telefones;
 	@Getter @Setter
 	private List<Pagina> paginas;
 	@Getter @Setter
