@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.servico.LoginServiceLocal;
+import br.com.webfitness.util.Authenticator;
 
 /**
  * @author Everton
@@ -46,6 +47,7 @@ public class LoginMBean implements Serializable{
 	
 	public String sair(){
 		loginService.realizaLogout();
+		Authenticator.removeUsuarioLogado();
 		return "/login.xhtml?faces-redirect=true";
 	}
 	

@@ -3,6 +3,7 @@
  */
 package br.com.webfitness.entidades;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import lombok.Setter;
  * Data: 01/05/2016
  */
 @Entity
-public class Treino {
+public class Treino implements Comparable<Treino>{
 
 	@Id
 	@Getter @Setter
@@ -27,6 +28,15 @@ public class Treino {
 	
 	@Getter @Setter
 	private String nome;
+	
+	@Getter @Setter
+	private Date dataInicio;
+	
+	@Getter @Setter
+	private Date dataFim;
+	
+	@Getter @Setter
+	private Integer objetivo;
 	
 	@ManyToOne
 	@JoinColumn(name = "idPessoa")
@@ -36,4 +46,10 @@ public class Treino {
 	@ManyToMany (mappedBy = "treinos")
 	@Getter @Setter
 	private List<Exercicio> exercicios;
+
+	@Override
+	public int compareTo(Treino o) {
+		return this.dataInicio.compareTo(o.getDataInicio());
+	}
+	
 }

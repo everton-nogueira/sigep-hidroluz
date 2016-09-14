@@ -24,7 +24,7 @@ CREATE TABLE comunidade (
 
 CREATE TABLE grupoMuscular (
   idGrupoMuscular INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
-  nome INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(50) NOT NULL,
   PRIMARY KEY(idGrupoMuscular)
 ) ENGINE = innodb;
 
@@ -88,9 +88,11 @@ CREATE TABLE exercicio (
   idExercicio INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   grupoMuscular_idGrupoMuscular INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(45) NOT NULL,
-  qtdSeries INTEGER UNSIGNED NOT NULL,
+  qtdSeries INTEGER UNSIGNED NULL,
   qtdRepeticoes INTEGER UNSIGNED NULL,
   nivelDificuldade INTEGER UNSIGNED NOT NULL,
+  imagem VARCHAR(100) NULL,
+  descricao VARCHAR (500) NOT NULL,
   PRIMARY KEY(idExercicio),
   INDEX exercicio_FKIndex2(grupoMuscular_idGrupoMuscular),
   FOREIGN KEY(grupoMuscular_idGrupoMuscular)
@@ -191,6 +193,7 @@ CREATE TABLE treino (
   nome VARCHAR(45) NOT NULL,
   dataInicio DATE NULL,
   dataFim DATE NULL,
+  objetivo INTEGER UNSIGNED NULL,
   PRIMARY KEY(idTreino),
   INDEX treino_FKIndex1(pessoa_idpessoa),
   FOREIGN KEY(pessoa_idpessoa)
@@ -410,6 +413,39 @@ CREATE TABLE pessoa_has_funcao (
 ) ENGINE = innodb;
 
 
+/* CARGAS */
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Peitoral');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Dorsais');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Ombros');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Bíceps');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Tríceps');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Antebraços');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Abdominais');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Lombares');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Quadríceps');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Glúteos');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Isquiotibiais(Posterior de Coxa)');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Adutores');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Abdutores');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Panturrilhas');
+
+
+
+
 INSERT INTO endereco (idEndereco, estado, cidade, pais, endereco, pontoReferencia)
 			VALUES (null, 'DF', 'BrasÃ­lia', 'Brasil', 'QNH 07 Casa 04', 'Escola Classe 12');
 INSERT INTO endereco (idEndereco, estado, cidade, pais, endereco, pontoReferencia)
@@ -423,7 +459,7 @@ INSERT INTO academia (idAcademia, endereco_idEndereco, nome, valor, nivel, horar
 INSERT INTO academia_has_telefone (academia_idAcademia, telefone_idTelefone)
 			VALUES (1, 2);
 INSERT INTO pessoa (idPessoa, academia_idAcademia, endereco_idEndereco, nome, sexo, relacionamento, descricao, dataNascimento, senha, email)
-			VALUES (null, 1, 1, 'Administrador', 'M', 0, 'Teste de descriÃ§Ã£o do administrador!', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
+			VALUES (null, 1, 1, 'Administrador', 'M', 0, 'Teste de descrição do administrador!', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
 INSERT INTO pessoa_has_telefone (pessoa_idPessoa, telefone_idTelefone)
 			VALUES (1, 1);
 INSERT INTO funcao (idFuncao, nome)
@@ -434,3 +470,5 @@ INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 			VALUES (1,1);
 INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 			VALUES (1,2);
+INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, qtdSeries, qtdRepeticoes, nome, nivelDificuldade, imagem, descricao)
+            VALUES (null, 1 , null, null, 'Supino Reto - Barra', 1, null, 'Supinão Maroto');

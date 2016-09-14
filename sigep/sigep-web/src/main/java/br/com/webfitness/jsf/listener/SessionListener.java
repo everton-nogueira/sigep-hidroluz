@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSessionListener;
 
 import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.constante.ConstantesWebFitness;
+import br.com.webfitness.util.Authenticator;
 
 /**
  * @author Everton
@@ -28,7 +29,8 @@ public class SessionListener implements HttpSessionListener {
     }
  
     @SuppressWarnings("unchecked")
-	public void sessionDestroyed(HttpSessionEvent event) {     
+	public void sessionDestroyed(HttpSessionEvent event) {  
+    	 Authenticator.removeUsuarioLogado();
          String ultimoAcesso = (new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")).format(new Date(event.getSession().getLastAccessedTime()));
          Map<String, PessoaDTO> mapaUsuarios = (Map<String, PessoaDTO>) event.getSession().getAttribute(ConstantesWebFitness.LOGIN_USER.getValor());
          String nomeUsuario = "";

@@ -5,7 +5,6 @@ package br.com.webfitness.jsf.filter;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Map;
 
 import javax.faces.application.ResourceHandler;
 import javax.servlet.Filter;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.com.webfitness.DTO.PessoaDTO;
-import br.com.webfitness.constante.ConstantesWebFitness;
+import br.com.webfitness.util.Authenticator;
 
 /**
  * @Descrição: Filtro para redirecionamentos, pois o controle de acesso está sendo feito pelo JAAS
@@ -43,7 +42,7 @@ public class LoginFilter implements Filter {
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         HttpSession httpSession = httpRequest.getSession(false);
-        PessoaDTO pessoa = recuperaPessoaSessao(httpSession, httpRequest);
+        PessoaDTO pessoa = Authenticator.recuperaPessoaSessao(httpSession, httpRequest);
         String URL = httpRequest.getRequestURI();
         
         if (contains(URL, "css", "js", "png")){
@@ -83,16 +82,6 @@ public class LoginFilter implements Filter {
         }
     }
     
-	@SuppressWarnings("unchecked")
-	private PessoaDTO recuperaPessoaSessao(HttpSession httpSession, HttpServletRequest httpRequest) {
-		if (httpSession != null && httpRequest != null) {
-			Map<String, PessoaDTO> mapaSessaoPessoa = (Map<String, PessoaDTO>) httpSession.getAttribute(ConstantesWebFitness.LOGIN_USER.getValor());
-			if (mapaSessaoPessoa != null) {
-				return mapaSessaoPessoa.get(httpRequest.getRemoteUser());
-			}
-		}
-		return null;
-	}
 
 	/**
      * @Descrição: Não utiliza o filtro para os valores passados 

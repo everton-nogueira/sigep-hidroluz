@@ -35,15 +35,24 @@ public class Exercicio {
 	@Getter @Setter
 	private String nome;
 	
+	@Getter @Setter
+	private Integer nivelDificuldade;
+	
+	@Getter @Setter
+	private String imagem;
+	
+	@Getter @Setter
+	private String descricao;
+	
 	@ManyToOne
 	@JoinColumn(name = "idGrupoMuscular")
 	@Getter @Setter
 	private GrupoMuscular grupoMuscular;
 	
 	@ManyToMany
-	@JoinTable(name = "treinoExercicio" , 
-		joinColumns = @JoinColumn(name = "idExercicio"),
-		inverseJoinColumns = @JoinColumn(name = "idTreino"))
+	@JoinTable(name = "treino_has_exercicio" , 
+		joinColumns = @JoinColumn(name = "exercicio_idExercicio"),
+		inverseJoinColumns = @JoinColumn(name = "treino_idTreino"))
 	@Getter @Setter
 	private List<Treino> treinos;
 	
