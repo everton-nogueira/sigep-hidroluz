@@ -17,8 +17,9 @@ import br.com.webfitness.entidades.Endereco;
 import br.com.webfitness.entidades.Foto;
 import br.com.webfitness.entidades.Funcao;
 import br.com.webfitness.entidades.HistoricoMedida;
-import br.com.webfitness.entidades.Pagina;
+import br.com.webfitness.entidades.Comunidade;
 import br.com.webfitness.entidades.PessoaMensagem;
+import br.com.webfitness.entidades.Postagem;
 import br.com.webfitness.entidades.Suplemento;
 import br.com.webfitness.entidades.Telefone;
 import br.com.webfitness.entidades.Treino;
@@ -46,13 +47,15 @@ public class PessoaDTO {
 	@Getter @Setter
 	private String email;
 	@Getter @Setter
+	private String status;
+	@Getter @Setter
 	private Academia academia;
 	@Getter @Setter
 	private Endereco endereco;
 	@Getter @Setter
 	private List<Telefone> telefones;
 	@Getter @Setter
-	private List<Pagina> paginas;
+	private List<Comunidade> comunidades;
 	@Getter @Setter
 	private List<Video> Videos;
 	@Getter @Setter
@@ -66,11 +69,11 @@ public class PessoaDTO {
 	@Getter @Setter
 	private List<PessoaMensagem> mensagensEnviadas;
 	@Getter @Setter
-	private List<Suplemento> suplementos;
-	@Getter @Setter
 	private List<Treino> treinos;
 	@Getter @Setter
 	private List<Funcao> funcoes;
+	@Getter @Setter
+	private List<Postagem> postagens;
 	
 	public Integer getIdade(){
 		Integer idade = 0;
@@ -80,7 +83,7 @@ public class PessoaDTO {
 			dataNascimento.setTime(getDataNascimento());
 			idade = dataAtual.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR);
 			dataNascimento.set(Calendar.YEAR, dataAtual.get(Calendar.YEAR));
-			//Ainda não fez aniversário
+			//Ainda nï¿½o fez aniversï¿½rio
 			if(dataAtual.before(dataNascimento)){
 				idade = idade - 1;
 			}

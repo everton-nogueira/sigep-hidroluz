@@ -20,7 +20,7 @@
 		<class>br.com.webfitness.entidades.GrupoMuscular</class>
 		<class>br.com.webfitness.entidades.HistoricoMedida</class>
 		<class>br.com.webfitness.entidades.Mensagem</class>
-		<class>br.com.webfitness.entidades.Pagina</class>
+		<class>br.com.webfitness.entidades.Comunidade</class>
 		<class>br.com.webfitness.entidades.Pessoa</class>
 		<class>br.com.webfitness.entidades.PessoaMensagem</class>
 		<class>br.com.webfitness.entidades.Suplemento</class>

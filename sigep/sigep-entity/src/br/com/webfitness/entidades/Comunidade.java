@@ -15,10 +15,10 @@ import lombok.Setter;
  * Data: 27/04/2016
  */
 @Entity
-public class Pagina {
+public class Comunidade {
 	@Id
 	@Getter @Setter
-	private Integer idPagina;
+	private Integer idComunidade;
 	
 	@Getter @Setter
 	private String nome;

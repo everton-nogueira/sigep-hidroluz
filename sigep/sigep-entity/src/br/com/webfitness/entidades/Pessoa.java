@@ -55,6 +55,9 @@ public class Pessoa {
 	
 	@Getter @Setter
 	private String email;
+	
+	@Getter @Setter
+	private Integer status;
 
 	@ManyToOne
 	@JoinColumn(name = "academia_idAcademia")
@@ -66,11 +69,12 @@ public class Pessoa {
 	@Getter @Setter
 	private Endereco endereco;
 	
-	@OneToMany (mappedBy = "pessoa")
+	@ManyToMany
+	@JoinTable(name = "pessoa_has_comunidade" , 
 	@Getter @Setter
-	private List<Pagina> paginas;
+	private List<Comunidade> comunidades;
 	
-	@OneToMany (mappedBy = "pessoa")
+	@OneToMany (cascade = CascadeType.ALL , mappedBy = "pessoa")
 	@Getter @Setter
 	private List<Video> Videos;
 	
@@ -112,6 +116,11 @@ public class Pessoa {
 			inverseJoinColumns = @JoinColumn(name = "funcao_idFuncao"))
 	@Getter @Setter
 	private List<Funcao> funcoes;
+	
+	@OneToMany(mappedBy = "pessoa")
+	@Getter @Setter
+	private List<Postagem> postagens;
+	
 
 	@Override
 	public int hashCode() {

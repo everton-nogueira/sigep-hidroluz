@@ -4,6 +4,7 @@
 package br.com.webfitness.adapter;
 
 import br.com.webfitness.DTO.PessoaDTO;
+import br.com.webfitness.dominio.PessoaStatus;
 import br.com.webfitness.dominio.Relacionamento;
 import br.com.webfitness.entidades.Pessoa;
 
@@ -20,7 +21,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		pessoa.setEndereco(dto.getEndereco());
 		pessoa.setAcademia(dto.getAcademia());
 		pessoa.setTelefones(dto.getTelefones());
-		pessoa.setPaginas(dto.getPaginas());
+		pessoa.setComunidades(dto.getComunidades());
 		pessoa.setVideos(dto.getVideos());
 		pessoa.setFotos(dto.getFotos());
 		pessoa.setHistoricoMedidas(dto.getHistoricoMedidas());
@@ -29,6 +30,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		pessoa.setMensagensEnviadas(dto.getMensagensEnviadas());
 		pessoa.setTreinos(dto.getTreinos());
 		pessoa.setFuncoes(dto.getFuncoes());
+		pessoa.setPostagens(dto.getPostagens());
 		return pessoa;
 	}
 	
@@ -43,6 +45,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		pessoa.setEmail(dto.getEmail());
 		pessoa.setRelacionamento(Relacionamento.recuperaId(dto.getRelacionamento()));
 		pessoa.setDescricao(dto.getDescricao());
+		pessoa.setStatus(PessoaStatus.recuperaId(dto.getStatus()));
 		return pessoa;
 	}
 
@@ -52,7 +55,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		dto.setEndereco(entidade.getEndereco());
 		dto.setAcademia(entidade.getAcademia());
 		dto.setTelefones(entidade.getTelefones());
-		dto.setPaginas(entidade.getPaginas());
+		dto.setComunidades(entidade.getComunidades());
 		dto.setVideos(entidade.getVideos());
 		dto.setFotos(entidade.getFotos());
 		dto.setHistoricoMedidas(entidade.getHistoricoMedidas());
@@ -61,6 +64,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		dto.setMensagensEnviadas(entidade.getMensagensEnviadas());
 		dto.setTreinos(entidade.getTreinos());
 		dto.setFuncoes(entidade.getFuncoes());
+		dto.setPostagens(entidade.getPostagens());
 		return dto;
 	}
 
@@ -75,6 +79,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		dto.setEmail(entidade.getEmail());
 		dto.setRelacionamento(Relacionamento.recuperaNome(entidade.getRelacionamento()));
 		dto.setDescricao(entidade.getDescricao());
+		dto.setStatus(PessoaStatus.recuperaNome(entidade.getStatus()));
 		return dto;
 	}
 
