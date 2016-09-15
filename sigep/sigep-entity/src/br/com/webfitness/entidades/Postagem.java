@@ -3,6 +3,7 @@
  */
 package br.com.webfitness.entidades;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,6 +15,7 @@ import lombok.Setter;
  * @Autor Belgrano
  * @Data:  14/09/2016
  */
+@Entity
 public class Postagem {
 
 	@Id
@@ -24,8 +26,8 @@ public class Postagem {
 	private String texto;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "pessoa_idPessoa")
 	@Getter @Setter
-	private Pessoa pessoa; 
+	private Pessoa pessoa;
 	
 }

@@ -70,8 +70,7 @@ public class Pessoa {
 	@Getter @Setter
 	private Endereco endereco;
 	
-	@ManyToMany
-	@JoinTable(name = "pessoa_has_comunidade")
+	@ManyToMany(mappedBy = "pessoas")
 	@Getter @Setter
 	private List<Comunidade> comunidades;
 	

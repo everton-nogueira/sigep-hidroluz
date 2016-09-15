@@ -1,11 +1,13 @@
 package br.com.webfitness.entidades;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,8 +31,10 @@ public class Comunidade {
 	@Getter @Setter
 	private Date dataCriacao;
 	
-	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@ManyToMany
+	@JoinTable(name = "pessoa_has_comunidade" , 
+	joinColumns = @JoinColumn(name = "comunidade_idComunidade"),
+	inverseJoinColumns = @JoinColumn(name = "pessoa_idPessoa"))
 	@Getter @Setter
-	private Pessoa pessoa;
+	private List<Pessoa> pessoas;
 }
