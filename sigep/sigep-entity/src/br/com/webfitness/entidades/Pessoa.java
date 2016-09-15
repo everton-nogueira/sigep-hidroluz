@@ -20,6 +20,7 @@ import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+
 /**
  * @author Everton
  * Data: 23/02/2015
@@ -70,7 +71,7 @@ public class Pessoa {
 	private Endereco endereco;
 	
 	@ManyToMany
-	@JoinTable(name = "pessoa_has_comunidade" , 
+	@JoinTable(name = "pessoa_has_comunidade")
 	@Getter @Setter
 	private List<Comunidade> comunidades;
 	
