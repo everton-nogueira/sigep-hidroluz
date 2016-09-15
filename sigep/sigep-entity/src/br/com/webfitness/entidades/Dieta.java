@@ -3,13 +3,14 @@
  */
 package br.com.webfitness.entidades;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,15 +26,21 @@ public class Dieta {
 	private Integer idDieta;
 	
 	@Getter @Setter
-	private Integer qtdRefeicoes;
+	private Date dataInicio;
+	
+	@Getter @Setter
+	private Date dataFim;
+	
+	@Getter @Setter
+	private String objetivo;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "pessoa_idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
-
-	@ManyToMany(mappedBy="dietas")
+	
+	@OneToMany(mappedBy ="dieta")
 	@Getter @Setter
-	private List<Alimento> alimentos;
+	private List<Refeicao> refeicoes;
 	
 }

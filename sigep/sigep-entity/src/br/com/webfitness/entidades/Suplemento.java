@@ -1,8 +1,12 @@
 package br.com.webfitness.entidades;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -28,8 +32,16 @@ public class Suplemento {
 	private float valor;
 	
 	@ManyToOne
-	@JoinColumn(name = "idCategoriaSuplemento")
+	@JoinColumn(name ="categoriaSuplemento_idCategoriaSuplemento")
 	@Getter @Setter
-	private CategoriaSuplemento categoriaSuplemento;
+	private CategoriaSuplemento categoria;
+	
+	@ManyToMany
+	@JoinTable(name = "refeicao_has_suplemento" , 
+		joinColumns = @JoinColumn(name = "suplemento_idSuplemento"),
+		inverseJoinColumns = @JoinColumn(name = "refeicao_idRefeicao"))
+	@Getter @Setter
+	private List<Refeicao> refeicoes;
+
 	
 }

@@ -1,8 +1,12 @@
 package br.com.webfitness.entidades;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import lombok.Getter;
@@ -24,8 +28,15 @@ public class Video {
 	@Getter @Setter
 	private String link;
 	
+	@Getter @Setter
+	private Date dataVideo;
+	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "pessoa_idpessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
+
+	@ManyToMany(mappedBy = "videos")
+	@Getter @Setter
+	private List<Postagem> postagens;
 }

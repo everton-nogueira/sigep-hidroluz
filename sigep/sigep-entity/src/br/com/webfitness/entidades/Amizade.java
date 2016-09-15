@@ -23,12 +23,12 @@ public class Amizade {
 	private Integer statusAmizade;
 
 	@ManyToOne
-	@JoinColumn(name="idPessoa")
+	@JoinColumn(name="pessoa_idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
 	
 	@ManyToOne
-	@JoinColumn(name="idAmigo")
+	@JoinColumn(name="pessoa_idAmigo")
 	@Getter @Setter
 	private Pessoa amigo;
 }

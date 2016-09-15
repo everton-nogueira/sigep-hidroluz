@@ -31,7 +31,7 @@ public class Mensagem {
 	private List<PessoaMensagem> mensagens;
 	
 	@Getter @Setter
-	private Date data;
+	private Date dataMensagem;
 
 	@Override
 	public int hashCode() {

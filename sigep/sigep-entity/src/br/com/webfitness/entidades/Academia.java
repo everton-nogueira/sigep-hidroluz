@@ -36,7 +36,7 @@ public class Academia {
 	
 	@OneToMany(targetEntity = Pessoa.class, mappedBy="academia")
 	@Getter @Setter
-	private List<Pessoa> pessoa;
+	private List<Pessoa> pessoas;
 	
 	@ManyToOne
 	@JoinColumn(name = "endereco_idEndereco")

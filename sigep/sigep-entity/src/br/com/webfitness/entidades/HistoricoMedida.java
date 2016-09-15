@@ -60,7 +60,7 @@ public class HistoricoMedida {
 	private float panturrilhaDireita;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name = "pessoa_idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
 

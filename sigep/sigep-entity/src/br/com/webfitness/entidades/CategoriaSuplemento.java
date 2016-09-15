@@ -23,7 +23,7 @@ public class CategoriaSuplemento {
 	@Getter @Setter
 	private String nomeCategoria;
 	
-	@OneToMany (cascade = CascadeType.ALL , mappedBy = "categoriaSuplemento")
+	@OneToMany (cascade = CascadeType.ALL , mappedBy = "categoria")
 	@Getter @Setter
 	private List<Suplemento> suplementos;
 }

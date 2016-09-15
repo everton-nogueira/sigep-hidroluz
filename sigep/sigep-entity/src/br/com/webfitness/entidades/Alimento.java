@@ -17,18 +17,21 @@ import lombok.Setter;
  */
 @Entity
 public class Alimento {
+	
 	@Id
 	@Getter @Setter
 	private Integer idAlimento;
+	
 	@Getter @Setter
 	private String nome;
+	
 	@Getter @Setter
 	private Integer quantidade;
 	
 	@ManyToMany
-	@JoinTable(name = "dietaAlimento" , 
-		joinColumns = @JoinColumn(name = "idAlimento"),
-		inverseJoinColumns = @JoinColumn(name = "idDieta"))
+	@JoinTable(name = "refeicao_has_alimento" , 
+		joinColumns = @JoinColumn(name = "alimento_idAlimento"),
+		inverseJoinColumns = @JoinColumn(name = "refeicao_idRefeicao"))
 	@Getter @Setter
-	private List<Dieta> dietas;
+	private List<Refeicao> refeicoes;
 }
