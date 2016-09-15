@@ -421,19 +421,19 @@ INSERT INTO grupoMuscular (idGrupoMuscular, nome)
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
                    VALUES (null, 'Ombros');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
-                   VALUES (null, 'Bíceps');
+                   VALUES (null, 'BÃ­ceps');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
-                   VALUES (null, 'Tríceps');
+                   VALUES (null, 'TrÃ­ceps');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
-                   VALUES (null, 'Antebraços');
+                   VALUES (null, 'AntebraÃ§os');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
                    VALUES (null, 'Abdominais');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
                    VALUES (null, 'Lombares');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
-                   VALUES (null, 'Quadríceps');
+                   VALUES (null, 'QuadrÃ­ceps');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
-                   VALUES (null, 'Glúteos');
+                   VALUES (null, 'GlÃºteos');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
                    VALUES (null, 'Isquiotibiais(Posterior de Coxa)');
 INSERT INTO grupoMuscular (idGrupoMuscular, nome)
@@ -459,7 +459,7 @@ INSERT INTO academia (idAcademia, endereco_idEndereco, nome, valor, nivel, horar
 INSERT INTO academia_has_telefone (academia_idAcademia, telefone_idTelefone)
 			VALUES (1, 2);
 INSERT INTO pessoa (idPessoa, academia_idAcademia, endereco_idEndereco, nome, sexo, relacionamento, descricao, dataNascimento, senha, email)
-			VALUES (null, 1, 1, 'Administrador', 'M', 0, 'Teste de descrição do administrador!', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
+			VALUES (null, 1, 1, 'Administrador', 'M', 0, 'Teste de descriÃ§Ã£o do administrador!', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com'); /*senha = admin123*/
 INSERT INTO pessoa_has_telefone (pessoa_idPessoa, telefone_idTelefone)
 			VALUES (1, 1);
 INSERT INTO funcao (idFuncao, nome)
@@ -471,4 +471,4 @@ INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 			VALUES (1,2);
 INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, qtdSeries, qtdRepeticoes, nome, nivelDificuldade, imagem, descricao)
-            VALUES (null, 1 , null, null, 'Supino Reto - Barra', 1, null, 'Supinão Maroto');
+            VALUES (null, 1 , null, null, 'Supino Reto - Barra', 1, null, 'SupinÃ£o');
