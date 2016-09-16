@@ -35,46 +35,32 @@
 								</div>
 							</div>
 						</div>
-						<div class="panel">
-							<div class="row foo ml-10 mr-10">
-								<div class="col-md-2 col-lg-2 foo">
-									<strong><h:outputText value="Treino"/></strong>
-								</div>
-								<div class="col-md-3 col-lg-3 foo">
-									<strong><h:outputText value="Nome do Exercício"/></strong>
-								</div>
-								<div class="col-md-2 col-lg-2 foo">
-									<strong><h:outputText value="Séries"/></strong>
-								</div>
-								<div class="col-md-2 col-lg-2 foo">
-									<strong><h:outputText value="Repetições"/></strong>
-								</div>
-								<div class="col-md-3 col-lg-3 foo">
-									<strong><h:outputText value="Observações"/></strong>
-								</div>
-							</div>
-						</div>
 						
-						<ui:repeat var="treinoExercicio" value="#{treinoMBean.ultimoTreino.exerciciosDoTreino}" varStatus="var">
-							<div class="row ml-10 mr-10">
-								<div class="col-md-2 col-lg-2 foo">
-									#{treinoExercicio.treino.nome}#{var.index}
-								</div>
-								<div class="col-md-3 col-lg-3 foo" onmouseup="abreModal('#modalDetalhaExercicio');" onmousedown="carregaModal();">
-									<p:remoteCommand name="carregaModal" actionListener="#{treinoMBean.carregarModal(var.index)}" update="formDialog"/>
+						<p:dataTable var="treinoExercicio" value="#{treinoMBean.ultimoTreino.exerciciosDoTreino}" rowKey="#{treinoExercicio.exercicio.idExercicio}"
+									 selection="#{treinoMBean.treinoExercicio}" selectionMode="single">
+								<p:ajax event="rowSelect" listener="#{treinoMBean.carregarModal()}" oncomplete="abreModal('#modalDetalhaExercicio');" update="formDialog" />
+								<p:column>
+									<f:facet name="header"><h:outputText value="Treino"/></f:facet>
+									#{treinoExercicio.treino.nome}
+								</p:column>
+								<p:column>
+									<f:facet name="header"><h:outputText value="Nome do Exercício"/></f:facet>
 									#{treinoExercicio.exercicio.nome}
-								</div>
-								<div class="col-md-2 col-lg-2 foo">
+								</p:column>
+								<p:column>
+								<f:facet name="header"><h:outputText value="Séries"/></f:facet>
 									#{treinoExercicio.qtdSeries}
-								</div>
-								<div class="col-md-2 col-lg-2 foo">
+								</p:column>
+								<p:column>
+								<f:facet name="header"><h:outputText value="Repetições"/></f:facet>
 									#{treinoExercicio.qtdRepeticoes}
-								</div>
-								<div class="col-md-3 col-lg-3 foo">
+								</p:column>
+								<p:column>
+								<f:facet name="header"><h:outputText value="Observações"/></f:facet>
 									#{treinoExercicio.exercicio.descricao}
-								</div>
-							</div>
-						</ui:repeat>
+								</p:column>
+							<!-- </div> -->
+						</p:dataTable>
 					</div>
 				</div>
 			</h:form>
@@ -82,8 +68,16 @@
 				<div class="modal fade" id="modalDetalhaExercicio">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<h:graphicImage library="imgExercicios" name="#{treinoMBean.exercicio.imagem}" style="width: auto;height: auto;"/>
-							<h:outputText value="#{treinoMBean.exercicio.descricao}"/>
+							<div class="row">
+								<div class="col-md-offset-2 col-lg-offset-2">
+									<h:graphicImage library="imgExercicios" name="#{treinoMBean.exercicio.imagem}" style="width: auto;height: auto;"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-offset-5 col-lg-offset-5">
+									<h:outputText value="#{treinoMBean.exercicio.descricao}"/>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

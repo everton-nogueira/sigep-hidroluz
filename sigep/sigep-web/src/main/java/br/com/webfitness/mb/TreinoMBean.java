@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.entidades.Exercicio;
 import br.com.webfitness.entidades.Treino;
+import br.com.webfitness.entidades.TreinoExercicio;
 import br.com.webfitness.servico.LoginServiceLocal;
 import br.com.webfitness.util.Authenticator;
 
@@ -30,9 +31,11 @@ public class TreinoMBean {
 	
 	private Treino ultimoTreino;
 	
+	private TreinoExercicio treinoExercicio;
+	
 
-	public void carregarModal(Integer index){
-		exercicio = ultimoTreino.getExerciciosDoTreino().get(index).getExercicio();
+	public void carregarModal(){
+		exercicio = treinoExercicio.getExercicio();
 	}
 	
 	public Treino obtemTreinoAtual(){
@@ -61,6 +64,14 @@ public class TreinoMBean {
 
 	public void setExercicio(Exercicio exercicio) {
 		this.exercicio = exercicio;
+	}
+
+	public TreinoExercicio getTreinoExercicio() {
+		return treinoExercicio;
+	}
+
+	public void setTreinoExercicio(TreinoExercicio treinoExercicio) {
+		this.treinoExercicio = treinoExercicio;
 	}
 
 }
