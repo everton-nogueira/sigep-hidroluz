@@ -30,7 +30,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		pessoa.setMensagensEnviadas(dto.getMensagensEnviadas());
 		pessoa.setTreinos(dto.getTreinos());
 		pessoa.setFuncoes(dto.getFuncoes());
-		pessoa.setPostagens(dto.getPostagens());
+//		pessoa.setPostagens(dto.getPostagens());
 		return pessoa;
 	}
 	
@@ -45,7 +45,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		pessoa.setEmail(dto.getEmail());
 		pessoa.setRelacionamento(Relacionamento.recuperaId(dto.getRelacionamento()));
 		pessoa.setDescricao(dto.getDescricao());
-		pessoa.setStatus(PessoaStatus.recuperaId(dto.getStatus()));
+//		pessoa.setStatus(PessoaStatus.recuperaId(dto.getStatus()));
 		return pessoa;
 	}
 
@@ -64,7 +64,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		dto.setMensagensEnviadas(entidade.getMensagensEnviadas());
 		dto.setTreinos(entidade.getTreinos());
 		dto.setFuncoes(entidade.getFuncoes());
-		dto.setPostagens(entidade.getPostagens());
+//		dto.setPostagens(entidade.getPostagens());
 		return dto;
 	}
 
@@ -79,7 +79,7 @@ public class PessoaAdapter implements Adapter<Pessoa, PessoaDTO>
 		dto.setEmail(entidade.getEmail());
 		dto.setRelacionamento(Relacionamento.recuperaNome(entidade.getRelacionamento()));
 		dto.setDescricao(entidade.getDescricao());
-		dto.setStatus(PessoaStatus.recuperaNome(entidade.getStatus()));
+//		dto.setStatus(PessoaStatus.recuperaNome(entidade.getStatus()));
 		return dto;
 	}
 

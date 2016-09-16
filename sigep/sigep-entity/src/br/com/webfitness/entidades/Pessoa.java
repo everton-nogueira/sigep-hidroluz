@@ -3,6 +3,7 @@
  */
 package br.com.webfitness.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +31,8 @@ import lombok.Setter;
 		@NamedQuery(name="selectAll", query="SELECT p FROM Pessoa p"),
 		@NamedQuery(name="selectLogin", query="SELECT p FROM Pessoa p WHERE p.email =:email")
 })
-public class Pessoa {
+public class Pessoa implements Serializable{
+	private static final long serialVersionUID = 7154687087890408836L;
 
 	@Id
 	@Getter @Setter
@@ -57,8 +59,8 @@ public class Pessoa {
 	@Getter @Setter
 	private String email;
 	
-	@Getter @Setter
-	private Integer status;
+//	@Getter @Setter
+//	private Integer status;
 
 	@ManyToOne
 	@JoinColumn(name = "academia_idAcademia")

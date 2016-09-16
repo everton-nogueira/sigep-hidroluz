@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import lombok.Setter;
  * Data: 01/05/2016
  */
 @Entity
+@Table(name = "pessoa_has_mensagem")
 public class PessoaMensagem implements Serializable{
 	private static final long serialVersionUID = 8655605307491069252L;
 

@@ -1,5 +1,5 @@
 /**
- * Desenvolvido por Éverton Nogueira em 14/09/2016
+ * Desenvolvido por Ã‰verton Nogueira em 14/09/2016
  */
 package br.com.webfitness.util;
 

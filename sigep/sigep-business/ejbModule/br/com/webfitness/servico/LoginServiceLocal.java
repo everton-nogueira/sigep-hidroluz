@@ -14,5 +14,6 @@ import br.com.webfitness.DTO.PessoaDTO;
  */
 public interface LoginServiceLocal {
 	PessoaDTO realizaLogin(String login, String senha) throws ServletException;
+	PessoaDTO buscaPessoa(Integer idPessoa);
 	void realizaLogout();
 }

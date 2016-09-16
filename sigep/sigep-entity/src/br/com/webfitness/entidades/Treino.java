@@ -3,14 +3,15 @@
  */
 package br.com.webfitness.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,7 +21,8 @@ import lombok.Setter;
  * Data: 01/05/2016
  */
 @Entity
-public class Treino implements Comparable<Treino>{
+public class Treino implements Comparable<Treino> , Serializable{
+	private static final long serialVersionUID = -8806803445359483677L;
 
 	@Id
 	@Getter @Setter
@@ -39,13 +41,13 @@ public class Treino implements Comparable<Treino>{
 	private Integer objetivo;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPessoa")
+	@JoinColumn(name ="pessoa_idPessoa")
 	@Getter @Setter
 	private Pessoa pessoa;
 	
-	@ManyToMany (mappedBy = "treinos")
+	@OneToMany(mappedBy = "treino")
 	@Getter @Setter
-	private List<Exercicio> exercicios;
+	private List<TreinoExercicio> exerciciosDoTreino;
 
 	@Override
 	public int compareTo(Treino o) {

@@ -44,8 +44,8 @@ public abstract class DaoImpl<ENTIDADE> implements Dao<ENTIDADE> {
 	}
 
 	@Override
-	public ENTIDADE buscar(ENTIDADE entidade, Class<ENTIDADE> classe) {
-		return em.find(classe, entidade);
+	public ENTIDADE buscar(Object id, Class<ENTIDADE> classe) {
+		return em.find(classe, id);
 	}
 
 	@Override

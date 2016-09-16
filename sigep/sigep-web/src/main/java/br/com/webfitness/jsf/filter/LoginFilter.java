@@ -22,7 +22,7 @@ import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.util.Authenticator;
 
 /**
- * @DescriÁ„o: Filtro para redirecionamentos, pois o controle de acesso est· sendo feito pelo JAAS
+ * @Descri√ß√£o: Filtro para redirecionamentos, pois o controle de acesso est√° sendo feito pelo JAAS
  * @author Everton
  * Data: 24/05/2016
  */
@@ -84,7 +84,7 @@ public class LoginFilter implements Filter {
     
 
 	/**
-     * @DescriÁ„o: N„o utiliza o filtro para os valores passados 
+     * @Descri√ß√£o: N√£o utiliza o filtro para os valores passados 
      * Ex.: CSS, PNG, JS, etc..
      */
     private boolean contains(String URI, String... values){

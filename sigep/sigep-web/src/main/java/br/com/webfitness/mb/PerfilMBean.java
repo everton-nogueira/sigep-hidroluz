@@ -46,7 +46,7 @@ public class PerfilMBean implements Serializable{
 	}
 	
 	/**
-	 * @DescriÁ„o: MÈtodo utilizado para chamar a p·gina correta quando o usu·rio alterar uma aba na p·gina principal do perfil. 
+	 * @Descri√ß√£o: M√©todo utilizado para chamar a p√°gina correta quando o usu√°rio alterar uma aba na p√°gina principal do perfil. 
 	 */
 	public void mudaAba(String aba){
 		switch (aba) {
@@ -60,7 +60,7 @@ public class PerfilMBean implements Serializable{
 	}
 	
 	/**
-	 * @DescriÁ„o: MÈtodo respons·vel por atualizar o percentual da pessoa quando alguÈm votar nela. 
+	 * @Descri√ß√£o: M√©todo respons√°vel por atualizar o percentual da pessoa quando algu√©m votar nela. 
 	 */
 	public void votacao(String tipo, Long porcentagem){
 		if(tipo.equals("frango")){
@@ -73,14 +73,14 @@ public class PerfilMBean implements Serializable{
 	}
 	
 	/**
-	 * @DescriÁ„o: Verifica se a pessoa que vai votar, j· votou nessa pessoa. 
+	 * @Descri√ß√£o: Verifica se a pessoa que vai votar, j√° votou nessa pessoa. 
 	 */
 	public boolean usuarioVotou(){
 		return false;
 	}
 	
 	/**
-	 * @DescriÁ„o: redireciona para a p·gina de mensagens 
+	 * @Descri√ß√£o: redireciona para a p√°gina de mensagens 
 	 */
 	public String lerTodasMensagens(){
 		return "";

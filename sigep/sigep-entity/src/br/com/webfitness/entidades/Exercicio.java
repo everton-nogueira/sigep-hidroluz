@@ -8,9 +8,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -27,12 +26,6 @@ public class Exercicio {
 	private Integer idExercicio;
 	
 	@Getter @Setter
-	private Integer qtdSeries;
-	
-	@Getter @Setter
-	private Integer qtdRepeticoes;
-	
-	@Getter @Setter
 	private String nome;
 	
 	@Getter @Setter
@@ -45,15 +38,12 @@ public class Exercicio {
 	private String descricao;
 	
 	@ManyToOne
-	@JoinColumn(name = "idGrupoMuscular")
+	@JoinColumn(name = "grupoMuscular_idGrupoMuscular")
 	@Getter @Setter
 	private GrupoMuscular grupoMuscular;
 	
-	@ManyToMany
-	@JoinTable(name = "treino_has_exercicio" , 
-		joinColumns = @JoinColumn(name = "exercicio_idExercicio"),
-		inverseJoinColumns = @JoinColumn(name = "treino_idTreino"))
+	@OneToMany(mappedBy = "exercicio")
 	@Getter @Setter
-	private List<Treino> treinos;
+	private List<TreinoExercicio> treinosDoExercicio;
 	
 }

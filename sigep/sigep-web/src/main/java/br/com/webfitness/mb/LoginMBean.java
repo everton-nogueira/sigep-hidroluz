@@ -40,7 +40,7 @@ public class LoginMBean implements Serializable{
 			pessoa = loginService.realizaLogin(login, senha);
 			return "usuario/index.xhtml?faces-redirect=true";
 		} catch (ServletException e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Login e/ou senha inv·lidos!"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Login e/ou senha inv√°lidos!"));
 			return null;
 		}
 	}

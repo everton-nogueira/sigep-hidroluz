@@ -6,18 +6,88 @@
 
 	<ui:composition template="/usuario/template.xhtml">
 		<ui:define name="conteudo">
-			<div class="panel panel-green">
-				<div class="panel-footer">
+			<h:form id="formTreino">
+				<div class="panel panel-green">
 					<div class="form-group">
-						<h:dataTable value="treinoMBean.ultimoTreino" var="treino">
-							<h:column>
-								<f:facet name="header"><h:outputText value="Teste"/></f:facet>
-								<h:outputText value="treino.nome"/>
-							</h:column>
-						</h:dataTable>
+						<div class="panel panel-header">
+							<div class="row">
+								<div class="col-md-1 col-lg-1">
+									<h:outputLabel value="Nome: " for="nome"/>
+								</div>
+								<div class="col-md-3 col-lg-3">
+									<h:outputText id="nome" value="#{loginMBean.pessoa.nome}"/>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-1 col-lg-1">
+									<h:outputLabel value="Objetivo: " for="obj"/>
+								</div>
+								<div class="col-md-3 col-lg-3">
+									<h:outputText id="obj" value="#{treinoMBean.ultimoTreino.objetivo}"/>
+								</div>
+							</div>
+						</div>
+						 
+						<div class="panel panel-header">
+							<div class="row">
+								<div class="col-md-12 col-lg-12 col-md-offset-5 col-lg-offset-5">
+									<strong><h:outputText value="Ultimo Treino"/></strong>
+								</div>
+							</div>
+						</div>
+						<div class="panel">
+							<div class="row foo ml-10 mr-10">
+								<div class="col-md-2 col-lg-2 foo">
+									<strong><h:outputText value="Treino"/></strong>
+								</div>
+								<div class="col-md-3 col-lg-3 foo">
+									<strong><h:outputText value="Nome do Exercício"/></strong>
+								</div>
+								<div class="col-md-2 col-lg-2 foo">
+									<strong><h:outputText value="Séries"/></strong>
+								</div>
+								<div class="col-md-2 col-lg-2 foo">
+									<strong><h:outputText value="Repetições"/></strong>
+								</div>
+								<div class="col-md-3 col-lg-3 foo">
+									<strong><h:outputText value="Observações"/></strong>
+								</div>
+							</div>
+						</div>
+						
+						<ui:repeat var="treinoExercicio" value="#{treinoMBean.ultimoTreino.exerciciosDoTreino}" varStatus="var">
+							<div class="row ml-10 mr-10">
+								<div class="col-md-2 col-lg-2 foo">
+									#{treinoExercicio.treino.nome}#{var.index}
+								</div>
+								<div class="col-md-3 col-lg-3 foo" onmouseup="abreModal('#modalDetalhaExercicio');" onmousedown="carregaModal();">
+									<p:remoteCommand name="carregaModal" actionListener="#{treinoMBean.carregarModal(var.index)}" update="formDialog"/>
+									#{treinoExercicio.exercicio.nome}
+								</div>
+								<div class="col-md-2 col-lg-2 foo">
+									#{treinoExercicio.qtdSeries}
+								</div>
+								<div class="col-md-2 col-lg-2 foo">
+									#{treinoExercicio.qtdRepeticoes}
+								</div>
+								<div class="col-md-3 col-lg-3 foo">
+									#{treinoExercicio.exercicio.descricao}
+								</div>
+							</div>
+						</ui:repeat>
 					</div>
 				</div>
-			</div>
+			</h:form>
+			<h:form id="formDialog">
+				<div class="modal fade" id="modalDetalhaExercicio">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<h:graphicImage library="imgExercicios" name="#{treinoMBean.exercicio.imagem}" style="width: auto;height: auto;"/>
+							<h:outputText value="#{treinoMBean.exercicio.descricao}"/>
+						</div>
+					</div>
+				</div>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </html>

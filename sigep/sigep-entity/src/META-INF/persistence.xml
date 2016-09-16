@@ -23,9 +23,12 @@
 		<class>br.com.webfitness.entidades.Comunidade</class>
 		<class>br.com.webfitness.entidades.Pessoa</class>
 		<class>br.com.webfitness.entidades.PessoaMensagem</class>
+		<class>br.com.webfitness.entidades.Postagem</class>
+		<class>br.com.webfitness.entidades.Refeicao</class>
 		<class>br.com.webfitness.entidades.Suplemento</class>
 		<class>br.com.webfitness.entidades.Telefone</class>
 		<class>br.com.webfitness.entidades.Treino</class>
+		<class>br.com.webfitness.entidades.TreinoExercicio</class>
 		<class>br.com.webfitness.entidades.Video</class>
 		<!-- FIM DAS ENTIDADES CONHECIDAS PELO ENTITY MANAGER -->
 		<properties>

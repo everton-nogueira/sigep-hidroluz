@@ -17,7 +17,7 @@ public enum Relacionamento {
 	SOLTEIRO(0, "Solteiro(a)"),
 	NAMORANDO(1, "Namorando"),
 	CASADO(2, "Casado(a)"),
-	VIUVO(3, "Viúvo(a)");
+	VIUVO(3, "ViÃºvo(a)");
 	
 	@Getter @Setter
 	private Integer id;

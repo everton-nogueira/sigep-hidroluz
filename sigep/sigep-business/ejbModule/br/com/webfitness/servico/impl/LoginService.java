@@ -20,6 +20,7 @@ import br.com.webfitness.adapter.PessoaAdapter;
 import br.com.webfitness.constante.ConstantesWebFitness;
 import br.com.webfitness.dao.PessoaDAO;
 import br.com.webfitness.dominio.AtributoHttpRequest;
+import br.com.webfitness.entidades.Pessoa;
 import br.com.webfitness.servico.LoginServiceLocal;
 
 /**
@@ -47,7 +48,7 @@ public class LoginService implements LoginServiceLocal {
 					request.logout();
 				}
 			} catch (ServletException e) {
-				System.out.println("Erro ao efetuar o logout do usuário: " + e.getMessage());
+				System.out.println("Erro ao efetuar o logout do usuï¿½rio: " + e.getMessage());
 			}
 			realizaLoginJaas(login, senha, request);
 			adicionaPessoaNaSessao(pessoa, facesContext);
@@ -55,15 +56,20 @@ public class LoginService implements LoginServiceLocal {
 		return pessoa;
 	}
 	
+	@Override
+	public PessoaDTO buscaPessoa(Integer idPessoa) {
+		return adapter.getDTO(pessoaDao.buscar(idPessoa, Pessoa.class));
+	}
+	
 	private void adicionaPessoaNaSessao(PessoaDTO pessoa, FacesContext facesContext) {
-		//Obtém a sessão atual ou cria uma nova
+		//Obtï¿½m a sessï¿½o atual ou cria uma nova
 		HttpSession httpSession = (HttpSession) facesContext.getExternalContext().getSession(true);
 		Object usuario = httpSession.getAttribute(ConstantesWebFitness.LOGIN_USER.getValor());
 		if(usuario == null){
 			mapaSessaoPessoa.put(pessoa.getEmail(), pessoa);
 			httpSession.setAttribute(ConstantesWebFitness.LOGIN_USER.getValor(), mapaSessaoPessoa);
 		}else{
-			//Caso já exista alguém na sessão atual, ela é encerrada e o novo usuario é adicionado.
+			//Caso jï¿½ exista alguï¿½m na sessï¿½o atual, ela ï¿½ encerrada e o novo usuario ï¿½ adicionado.
 			httpSession.invalidate();
 			mapaSessaoPessoa.put(pessoa.getEmail(), pessoa);
 			httpSession.setAttribute(ConstantesWebFitness.LOGIN_USER.getValor(), mapaSessaoPessoa);
@@ -77,7 +83,7 @@ public class LoginService implements LoginServiceLocal {
 			((HttpServletRequest) facesContext.getExternalContext().getRequest()).logout();
 			facesContext.getExternalContext().invalidateSession();
 		} catch (ServletException e) {
-			System.out.println("Erro ao efetuar o logout do usuário: " + e.getMessage());
+			System.out.println("Erro ao efetuar o logout do usuï¿½rio: " + e.getMessage());
 		}
 	}
 

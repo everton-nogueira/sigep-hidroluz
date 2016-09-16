@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 
+function abreModal(idModal){
+	$(idModal).modal('show');
+}
+
+function fechaModal(idModal){
+	$(idModal).modal('hide');
+}
 
 function removerDesabilitados() {
     $("input").removeClass("ui-state-disabled");

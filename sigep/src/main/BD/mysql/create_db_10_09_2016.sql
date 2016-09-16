@@ -88,8 +88,6 @@ CREATE TABLE exercicio (
   idExercicio INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   grupoMuscular_idGrupoMuscular INTEGER UNSIGNED NOT NULL,
   nome VARCHAR(45) NOT NULL,
-  qtdSeries INTEGER UNSIGNED NULL,
-  qtdRepeticoes INTEGER UNSIGNED NULL,
   nivelDificuldade INTEGER UNSIGNED NOT NULL,
   imagem VARCHAR(100) NULL,
   descricao VARCHAR (500) NOT NULL,
@@ -298,6 +296,8 @@ CREATE TABLE video_has_postagem (
 CREATE TABLE treino_has_exercicio (
   treino_idTreino INTEGER UNSIGNED NOT NULL,
   exercicio_idExercicio INTEGER UNSIGNED NOT NULL,
+  qtdSeries INTEGER UNSIGNED NULL,
+  qtdRepeticoes INTEGER UNSIGNED NULL,
   PRIMARY KEY(treino_idTreino, exercicio_idExercicio),
   INDEX treino_has_exercicio_FKIndex1(treino_idTreino),
   INDEX treino_has_exercicio_FKIndex2(exercicio_idExercicio),
@@ -470,5 +470,13 @@ INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 			VALUES (1,1);
 INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 			VALUES (1,2);
-INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, qtdSeries, qtdRepeticoes, nome, nivelDificuldade, imagem, descricao)
-            VALUES (null, 1 , null, null, 'Supino Reto - Barra', 1, null, 'Supinão');
+INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, nome, nivelDificuldade, imagem, descricao)
+            VALUES (null, 1 ,'Supino Reto - Barra', 1, null, 'Supinão');
+INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, nome, nivelDificuldade, imagem, descricao)
+            VALUES (null, 1 ,'Supino Reto - Halter', 1, null, 'Supinão');
+INSERT INTO treino(idTreino, pessoa_idPessoa, nome, dataInicio, dataFim, objetivo)
+			VALUES(null, 1, 'A', '2016-09-01', '2016-09-30', 0);
+INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
+			VALUES (1, 1, 3, 15);
+INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
+			VALUES (1, 2, 3, 10);

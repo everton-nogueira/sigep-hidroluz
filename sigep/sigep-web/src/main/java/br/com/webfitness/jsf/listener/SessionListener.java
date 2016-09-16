@@ -24,8 +24,8 @@ public class SessionListener implements HttpSessionListener {
 	private static int totalActiveSessions;
 	
     public void sessionCreated(HttpSessionEvent event) {        
-         System.out.println("Sess„o criada");
-         System.out.println("Sessıes ativas: "+(++totalActiveSessions));
+         System.out.println("Sess√£o criada");
+         System.out.println("Sess√µes ativas: "+(++totalActiveSessions));
     }
  
     @SuppressWarnings("unchecked")
@@ -39,8 +39,8 @@ public class SessionListener implements HttpSessionListener {
 				nomeUsuario = usuario.getValue().getNome();
 			}
          }
-         System.out.println("Sess„o do usuario "+nomeUsuario+" encerrada. Ultimo Acesso = "+ultimoAcesso);
-         System.out.println("Sessıes ativas: "+(--totalActiveSessions));
+         System.out.println("Sess√£o do usuario "+nomeUsuario+" encerrada. Ultimo Acesso = "+ultimoAcesso);
+         System.out.println("Sess√µes ativas: "+(--totalActiveSessions));
     }
  
 }
