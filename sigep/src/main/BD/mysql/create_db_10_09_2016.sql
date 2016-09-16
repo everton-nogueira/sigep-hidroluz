@@ -1,6 +1,10 @@
+/*!40101 SET NAMES utf8 */;
+
 DROP DATABASE webfitness;
 
-CREATE DATABASE webfitness;
+CREATE DATABASE webfitness 
+	DEFAULT CHARACTER SET = utf8
+	DEFAULT COLLATE utf8_general_ci;
 
 USE webfitness;
 
@@ -12,7 +16,7 @@ CREATE TABLE endereco (
   endereco VARCHAR(100) NULL,
   pontoReferencia VARCHAR(45) NULL,
   PRIMARY KEY(idEndereco)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE comunidade (
   idPagina INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -20,40 +24,40 @@ CREATE TABLE comunidade (
   descricao VARCHAR(255) NULL,
   dataCriacao DATE NULL,
   PRIMARY KEY(idPagina)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE grupoMuscular (
   idGrupoMuscular INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(50) NOT NULL,
   PRIMARY KEY(idGrupoMuscular)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE telefone (
   idTelefone INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   numero INTEGER UNSIGNED NOT NULL,
   ddd INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY(idTelefone)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE mensagem (
   idMensagem INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   mensagem VARCHAR(255) NULL,
   dataMensagem DATE NULL,
   PRIMARY KEY(idMensagem)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE alimento (
   idAlimento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NOT NULL,
   quantidade INTEGER UNSIGNED NOT NULL,
   PRIMARY KEY(idAlimento)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE categoriaSuplemento (
   idCategoriaSuplemento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nomeCategoria VARCHAR(45) NOT NULL,
   PRIMARY KEY(idCategoriaSuplemento)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE suplemento (
   idSuplemento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -67,7 +71,7 @@ CREATE TABLE suplemento (
     REFERENCES categoriaSuplemento(idCategoriaSuplemento)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE academia (
   idAcademia INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -82,7 +86,7 @@ CREATE TABLE academia (
     REFERENCES endereco(idEndereco)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE exercicio (
   idExercicio INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -97,7 +101,7 @@ CREATE TABLE exercicio (
     REFERENCES grupoMuscular(idGrupoMuscular)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE pessoa (
   idpessoa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -121,7 +125,7 @@ CREATE TABLE pessoa (
     REFERENCES academia(idAcademia)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE academia_has_telefone (
   academia_idAcademia INTEGER UNSIGNED NOT NULL,
@@ -137,7 +141,7 @@ CREATE TABLE academia_has_telefone (
     REFERENCES telefone(idTelefone)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE pessoa_has_mensagem (
   pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
@@ -153,7 +157,7 @@ CREATE TABLE pessoa_has_mensagem (
     REFERENCES mensagem(idMensagem)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE pessoa_has_telefone (
   pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
@@ -169,7 +173,7 @@ CREATE TABLE pessoa_has_telefone (
     REFERENCES telefone(idTelefone)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE video (
   idVideo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -183,7 +187,7 @@ CREATE TABLE video (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE treino (
   idTreino INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -198,7 +202,7 @@ CREATE TABLE treino (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE postagem (
   idPostagem INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -210,7 +214,7 @@ CREATE TABLE postagem (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE amizade (
   idAmizade INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -222,7 +226,7 @@ CREATE TABLE amizade (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE dieta (
   idDieta INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -236,7 +240,7 @@ CREATE TABLE dieta (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE historicoMedida (
   idMedida INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -260,7 +264,7 @@ CREATE TABLE historicoMedida (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE foto (
   idFoto INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -274,7 +278,7 @@ CREATE TABLE foto (
     REFERENCES pessoa(idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE video_has_postagem (
   video_idVideo INTEGER UNSIGNED NOT NULL,
@@ -291,7 +295,7 @@ CREATE TABLE video_has_postagem (
     REFERENCES postagem(idPostagem, pessoa_idpessoa)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE treino_has_exercicio (
   treino_idTreino INTEGER UNSIGNED NOT NULL,
@@ -309,7 +313,7 @@ CREATE TABLE treino_has_exercicio (
     REFERENCES exercicio(idExercicio)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE pessoa_has_comunidade (
   pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
@@ -326,7 +330,7 @@ CREATE TABLE pessoa_has_comunidade (
     REFERENCES comunidade(idPagina)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE postagem_has_foto (
   postagem_idPostagem INTEGER UNSIGNED NOT NULL,
@@ -343,7 +347,7 @@ CREATE TABLE postagem_has_foto (
     REFERENCES foto(idFoto)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE refeicao (
   idRefeicao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -356,7 +360,7 @@ CREATE TABLE refeicao (
     REFERENCES dieta(idDieta)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE refeicao_has_suplemento (
   refeicao_idRefeicao INTEGER UNSIGNED NOT NULL,
@@ -372,7 +376,7 @@ CREATE TABLE refeicao_has_suplemento (
     REFERENCES suplemento(idSuplemento)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE refeicao_has_alimento (
   refeicao_idRefeicao INTEGER UNSIGNED NOT NULL,
@@ -388,13 +392,13 @@ CREATE TABLE refeicao_has_alimento (
     REFERENCES alimento(idAlimento)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE funcao (
   idfuncao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   nome VARCHAR(45) NULL,
   PRIMARY KEY(idfuncao)
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 CREATE TABLE pessoa_has_funcao (
   pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
@@ -410,7 +414,7 @@ CREATE TABLE pessoa_has_funcao (
     REFERENCES funcao(idfuncao)
       ON DELETE NO ACTION
       ON UPDATE NO ACTION
-) ENGINE = innodb;
+) ENGINE = innodb DEFAULT CHARSET=utf8;
 
 
 /* CARGAS */
@@ -471,9 +475,9 @@ INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
 			VALUES (1,2);
 INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, nome, nivelDificuldade, imagem, descricao)
-            VALUES (null, 1 ,'Supino Reto - Barra', 1, null, 'Supinão');
+            VALUES (null, 1 ,'Supino Reto - Barra', 1, 'supino_barra.jpg', 'Supinão');
 INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, nome, nivelDificuldade, imagem, descricao)
-            VALUES (null, 1 ,'Supino Reto - Halter', 1, null, 'Supinão');
+            VALUES (null, 1 ,'Supino Inclinado - Barra', 1, 'supino_inclinado_barra.jpg', 'Supinão Inclinado');
 INSERT INTO treino(idTreino, pessoa_idPessoa, nome, dataInicio, dataFim, objetivo)
 			VALUES(null, 1, 'A', '2016-09-01', '2016-09-30', 0);
 INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
