@@ -48,7 +48,7 @@ public class LoginService implements LoginServiceLocal {
 					request.logout();
 				}
 			} catch (ServletException e) {
-				System.out.println("Erro ao efetuar o logout do usu�rio: " + e.getMessage());
+				System.out.println("Erro ao efetuar o logout do usuário: " + e.getMessage());
 			}
 			realizaLoginJaas(login, senha, request);
 			adicionaPessoaNaSessao(pessoa, facesContext);
@@ -62,14 +62,14 @@ public class LoginService implements LoginServiceLocal {
 	}
 	
 	private void adicionaPessoaNaSessao(PessoaDTO pessoa, FacesContext facesContext) {
-		//Obt�m a sess�o atual ou cria uma nova
+		//Obtém a sessão atual ou cria uma nova
 		HttpSession httpSession = (HttpSession) facesContext.getExternalContext().getSession(true);
 		Object usuario = httpSession.getAttribute(ConstantesWebFitness.LOGIN_USER.getValor());
 		if(usuario == null){
 			mapaSessaoPessoa.put(pessoa.getEmail(), pessoa);
 			httpSession.setAttribute(ConstantesWebFitness.LOGIN_USER.getValor(), mapaSessaoPessoa);
 		}else{
-			//Caso j� exista algu�m na sess�o atual, ela � encerrada e o novo usuario � adicionado.
+			//Caso já exista alguém na sessão atual, ela é encerrada e o novo usuario é adicionado.
 			httpSession.invalidate();
 			mapaSessaoPessoa.put(pessoa.getEmail(), pessoa);
 			httpSession.setAttribute(ConstantesWebFitness.LOGIN_USER.getValor(), mapaSessaoPessoa);

@@ -51,7 +51,7 @@ public class Treino implements Comparable<Treino> , Serializable{
 
 	@Override
 	public int compareTo(Treino o) {
-		return this.dataInicio.compareTo(o.getDataInicio());
+		return this.nome.compareTo(o.getNome());
 	}
 	
 }

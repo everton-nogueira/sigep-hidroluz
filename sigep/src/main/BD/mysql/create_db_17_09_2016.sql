@@ -1,0 +1,493 @@
+/*!40101 SET NAMES utf8 */;
+
+DROP DATABASE webfitness;
+
+CREATE DATABASE webfitness 
+	DEFAULT CHARACTER SET = utf8
+	DEFAULT COLLATE utf8_general_ci;
+
+USE webfitness;
+
+CREATE TABLE endereco (
+  idEndereco INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  estado VARCHAR(2) NOT NULL,
+  cidade VARCHAR(45) NOT NULL,
+  pais VARCHAR(45) NOT NULL,
+  endereco VARCHAR(100) NULL,
+  pontoReferencia VARCHAR(45) NULL,
+  PRIMARY KEY(idEndereco)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE grupoMuscular (
+  idGrupoMuscular INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  PRIMARY KEY(idGrupoMuscular)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE telefone (
+  idTelefone INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  numero INTEGER UNSIGNED NOT NULL,
+  ddd INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(idTelefone)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE mensagem (
+  idMensagem INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  mensagem VARCHAR(500) NULL,
+  dataMensagem DATE NULL,
+  PRIMARY KEY(idMensagem)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE comunidade (
+  idComunidade INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NULL,
+  descricao VARCHAR(500) NULL,
+  dataCriacao DATE NULL,
+  PRIMARY KEY(idComunidade)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE alimento (
+  idAlimento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NOT NULL,
+  quantidade INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(idAlimento)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE categoriaSuplemento (
+  idCategoriaSuplemento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nomeCategoria VARCHAR(45) NOT NULL,
+  PRIMARY KEY(idCategoriaSuplemento)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE funcao (
+  idfuncao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(45) NULL,
+  PRIMARY KEY(idfuncao)
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE academia (
+  idAcademia INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  endereco_idEndereco INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  valor VARCHAR(250) NOT NULL,
+  nivel INTEGER UNSIGNED NOT NULL,
+  horarioFuncionamento VARCHAR(250) NULL,
+  PRIMARY KEY(idAcademia),
+  INDEX academia_FKIndex1(endereco_idEndereco),
+  FOREIGN KEY(endereco_idEndereco)
+    REFERENCES endereco(idEndereco)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE pessoa (
+  idpessoa INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  academia_idAcademia INTEGER UNSIGNED NOT NULL,
+  endereco_idEndereco INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(255) NOT NULL,
+  sexo VARCHAR(1) NOT NULL,
+  dataNascimento DATE NOT NULL,
+  senha VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  relacionamento INTEGER UNSIGNED NULL,
+  descricao VARCHAR(255) NULL,
+  pessoaStatus INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(idpessoa),
+  INDEX pessoa_FKIndex1(endereco_idEndereco),
+  INDEX pessoa_FKIndex2(academia_idAcademia),
+  FOREIGN KEY(endereco_idEndereco)
+    REFERENCES endereco(idEndereco)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(academia_idAcademia)
+    REFERENCES academia(idAcademia)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE suplemento (
+  idSuplemento INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  categoriaSuplemento_idCategoriaSuplemento INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  marca VARCHAR(45) NOT NULL,
+  valor FLOAT NULL,
+  PRIMARY KEY(idSuplemento),
+  INDEX suplemento_FKIndex1(categoriaSuplemento_idCategoriaSuplemento),
+  FOREIGN KEY(categoriaSuplemento_idCategoriaSuplemento)
+    REFERENCES categoriaSuplemento(idCategoriaSuplemento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE exercicio (
+  idExercicio INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  grupoMuscular_idGrupoMuscular INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  nivelDificuldade INTEGER UNSIGNED NOT NULL,
+  imagem VARCHAR(250) NULL,
+  descricao VARCHAR(500) NULL,
+  PRIMARY KEY(idExercicio),
+  INDEX exercicio_FKIndex2(grupoMuscular_idGrupoMuscular),
+  FOREIGN KEY(grupoMuscular_idGrupoMuscular)
+    REFERENCES grupoMuscular(idGrupoMuscular)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE academia_has_telefone (
+  academia_idAcademia INTEGER UNSIGNED NOT NULL,
+  telefone_idTelefone INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(academia_idAcademia, telefone_idTelefone),
+  INDEX academia_has_telefone_FKIndex1(academia_idAcademia),
+  INDEX academia_has_telefone_FKIndex2(telefone_idTelefone),
+  FOREIGN KEY(academia_idAcademia)
+    REFERENCES academia(idAcademia)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(telefone_idTelefone)
+    REFERENCES telefone(idTelefone)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE pessoa_has_mensagem (
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  mensagem_idMensagem INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(pessoa_idpessoa, mensagem_idMensagem),
+  INDEX pessoa_has_mensagem_FKIndex1(pessoa_idpessoa),
+  INDEX pessoa_has_mensagem_FKIndex2(mensagem_idMensagem),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(mensagem_idMensagem)
+    REFERENCES mensagem(idMensagem)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE pessoa_has_telefone (
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  telefone_idTelefone INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(pessoa_idpessoa, telefone_idTelefone),
+  INDEX pessoa_has_telefone_FKIndex1(pessoa_idpessoa),
+  INDEX pessoa_has_telefone_FKIndex2(telefone_idTelefone),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(telefone_idTelefone)
+    REFERENCES telefone(idTelefone)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE treino (
+  idTreino INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  nome VARCHAR(45) NOT NULL,
+  dataInicio DATE NULL,
+  dataFim DATE NULL,
+  objetivo VARCHAR(50) NULL,
+  PRIMARY KEY(idTreino),
+  INDEX treino_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE postagem (
+  idpostagem INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  texto VARCHAR(250) NULL,
+  dataPostagem DATE NOT NULL,
+  PRIMARY KEY(idpostagem),
+  INDEX postagem_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE video (
+  idVideo INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  descricao VARCHAR(250) NOT NULL,
+  link VARCHAR(250) NOT NULL,
+  dataVideo DATE NULL,
+  PRIMARY KEY(idVideo),
+  INDEX video_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE foto (
+  idFoto INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  localizacao VARCHAR(250) NOT NULL,
+  descricao VARCHAR(250) NOT NULL,
+  dataFoto DATE NOT NULL,
+  PRIMARY KEY(idFoto),
+  INDEX foto_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE dieta (
+  idDieta INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  dataInicio DATE NULL,
+  dataFim DATE NULL,
+  objetivo VARCHAR(50) NULL,
+  PRIMARY KEY(idDieta),
+  INDEX dieta_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE historicoMedida (
+  idMedida INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  dataMedicao DATE NULL,
+  bracoEsquerdo FLOAT NULL,
+  bracoDireito FLOAT NULL,
+  anteBracoEsquerdo FLOAT NULL,
+  anteBracoDireito FLOAT NULL,
+  ombro FLOAT NULL,
+  torax FLOAT NULL,
+  abdomem FLOAT NULL,
+  gluteos FLOAT NULL,
+  coxaEsquerda FLOAT NULL,
+  coxaDireita FLOAT NULL,
+  panturrilhaEsquerda FLOAT NULL,
+  panturrilhaDireita FLOAT NULL,
+  PRIMARY KEY(idMedida),
+  INDEX historicoMedida_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE amizade (
+  idAmizade INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  statusAmizade INTEGER UNSIGNED NULL,
+  PRIMARY KEY(idAmizade),
+  INDEX amizade_FKIndex1(pessoa_idpessoa),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE treino_has_exercicio (
+  treino_idTreino INTEGER UNSIGNED NOT NULL,
+  exercicio_idExercicio INTEGER UNSIGNED NOT NULL,
+  qtdSeries INTEGER UNSIGNED NOT NULL,
+  qtdRepeticoes INTEGER UNSIGNED NULL,
+  PRIMARY KEY(treino_idTreino, exercicio_idExercicio),
+  INDEX treino_has_exercicio_FKIndex1(treino_idTreino),
+  INDEX treino_has_exercicio_FKIndex2(exercicio_idExercicio),
+  FOREIGN KEY(treino_idTreino)
+    REFERENCES treino(idTreino)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(exercicio_idExercicio)
+    REFERENCES exercicio(idExercicio)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE pessoa_has_comunidade (
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  comunidade_idComunidade INTEGER UNSIGNED NOT NULL,
+  perfil INTEGER UNSIGNED NULL,
+  PRIMARY KEY(pessoa_idpessoa, comunidade_idComunidade),
+  INDEX pessoa_has_comunidade_FKIndex1(pessoa_idpessoa),
+  INDEX pessoa_has_comunidade_FKIndex2(comunidade_idComunidade),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(comunidade_idComunidade)
+    REFERENCES comunidade(idComunidade)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE pessoa_has_funcao (
+  pessoa_idpessoa INTEGER UNSIGNED NOT NULL,
+  funcao_idfuncao INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(pessoa_idpessoa, funcao_idfuncao),
+  INDEX pessoa_has_funcao_FKIndex1(pessoa_idpessoa),
+  INDEX pessoa_has_funcao_FKIndex2(funcao_idfuncao),
+  FOREIGN KEY(pessoa_idpessoa)
+    REFERENCES pessoa(idpessoa)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(funcao_idfuncao)
+    REFERENCES funcao(idfuncao)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE postagem_has_foto (
+  postagem_idpostagem INTEGER UNSIGNED NOT NULL,
+  foto_idFoto INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(postagem_idpostagem, foto_idFoto),
+  INDEX postagem_has_foto_FKIndex1(postagem_idpostagem),
+  INDEX postagem_has_foto_FKIndex2(foto_idFoto),
+  FOREIGN KEY(postagem_idpostagem)
+    REFERENCES postagem(idpostagem)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(foto_idFoto)
+    REFERENCES foto(idFoto)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE postagem_has_video (
+  postagem_idpostagem INTEGER UNSIGNED NOT NULL,
+  video_idVideo INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(postagem_idpostagem, video_idVideo),
+  INDEX postagem_has_video_FKIndex1(postagem_idpostagem),
+  INDEX postagem_has_video_FKIndex2(video_idVideo),
+  FOREIGN KEY(postagem_idpostagem)
+    REFERENCES postagem(idpostagem)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(video_idVideo)
+    REFERENCES video(idVideo)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE refeicao (
+  idRefeicao INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  dieta_idDieta INTEGER UNSIGNED NOT NULL,
+  horario DATE NOT NULL,
+  descricao VARCHAR(50) NOT NULL,
+  PRIMARY KEY(idRefeicao),
+  INDEX refeicao_FKIndex1(dieta_idDieta),
+  FOREIGN KEY(dieta_idDieta)
+    REFERENCES dieta(idDieta)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE refeicao_has_alimento (
+  refeicao_idRefeicao INTEGER UNSIGNED NOT NULL,
+  alimento_idAlimento INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(refeicao_idRefeicao, alimento_idAlimento),
+  INDEX refeicao_has_alimento_FKIndex1(refeicao_idRefeicao),
+  INDEX refeicao_has_alimento_FKIndex2(alimento_idAlimento),
+  FOREIGN KEY(refeicao_idRefeicao)
+    REFERENCES refeicao(idRefeicao)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(alimento_idAlimento)
+    REFERENCES alimento(idAlimento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+CREATE TABLE refeicao_has_suplemento (
+  refeicao_idRefeicao INTEGER UNSIGNED NOT NULL,
+  suplemento_idSuplemento INTEGER UNSIGNED NOT NULL,
+  PRIMARY KEY(refeicao_idRefeicao, suplemento_idSuplemento),
+  INDEX refeicao_has_suplemento_FKIndex1(refeicao_idRefeicao),
+  INDEX refeicao_has_suplemento_FKIndex2(suplemento_idSuplemento),
+  FOREIGN KEY(refeicao_idRefeicao)
+    REFERENCES refeicao(idRefeicao)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION,
+  FOREIGN KEY(suplemento_idSuplemento)
+    REFERENCES suplemento(idSuplemento)
+      ON DELETE NO ACTION
+      ON UPDATE NO ACTION
+) ENGINE = innodb DEFAULT CHARSET=utf8;
+
+
+
+/* CARGAS */
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Peitoral');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Dorsais');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Ombros');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Bíceps');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Tríceps');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Antebraços');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Abdominais');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Lombares');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Quadríceps');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Glúteos');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Isquiotibiais(Posterior de Coxa)');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Adutores');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Abdutores');
+INSERT INTO grupoMuscular (idGrupoMuscular, nome)
+                   VALUES (null, 'Panturrilhas');
+
+
+
+
+INSERT INTO endereco (idEndereco, estado, cidade, pais, endereco, pontoReferencia)
+			VALUES (null, 'DF', 'Brasília', 'Brasil', 'QNH 07 Casa 04', 'Escola Classe 12');
+INSERT INTO endereco (idEndereco, estado, cidade, pais, endereco, pontoReferencia)
+			VALUES (null, 'DF', 'Brasília', 'Brasil', 'CNB 12', 'Sesc Taguatinga Norte/Top Mall');
+INSERT INTO telefone (idTelefone, ddd, numero)
+			VALUES (null, 61, 84029970);
+INSERT INTO telefone (idTelefone, ddd, numero)
+			VALUES (null, 61, 33542226);
+INSERT INTO academia (idAcademia, endereco_idEndereco, nome, valor, nivel, horarioFuncionamento)
+			VALUES (null, 2, 'SPAÇO FITNESS', '100,00', 0, 'seg a sex das 6 as 23');
+INSERT INTO academia_has_telefone (academia_idAcademia, telefone_idTelefone)
+			VALUES (1, 2);
+INSERT INTO pessoa (idPessoa, academia_idAcademia, endereco_idEndereco, nome, sexo, relacionamento, descricao, dataNascimento, senha, email, pessoaStatus)
+			VALUES (null, 1, 1, 'Administrador', 'M', 0, 'Teste de descrição do administrador!', '1992-03-15', 'AZICOnu9cyUFFvBp3xi1AA==', 'admin@gmail.com', 1); /*senha = admin123*/
+INSERT INTO pessoa_has_telefone (pessoa_idPessoa, telefone_idTelefone)
+			VALUES (1, 1);
+INSERT INTO funcao (idFuncao, nome)
+			VALUES (null, 'ADMIN');
+INSERT INTO funcao (idFuncao, nome)
+			VALUES (null, 'USUARIO');
+INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
+			VALUES (1,1);
+INSERT INTO pessoa_has_funcao (pessoa_idPessoa, funcao_idFuncao)
+			VALUES (1,2);
+INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, nome, nivelDificuldade, imagem, descricao)
+            VALUES (null, 1 ,'Supino Reto - Barra', 1, 'supino_barra.jpg', 'Supinão');
+INSERT INTO exercicio (idExercicio, grupoMuscular_idGrupoMuscular, nome, nivelDificuldade, imagem, descricao)
+            VALUES (null, 1 ,'Supino Inclinado - Barra', 1, 'supino_inclinado_barra.jpg', 'Supinão Inclinado');
+INSERT INTO treino(idTreino, pessoa_idPessoa, nome, dataInicio, dataFim, objetivo)
+			VALUES(null, 1, 'A', '2016-09-01', '2016-09-30', 0);
+INSERT INTO treino(idTreino, pessoa_idPessoa, nome, dataInicio, dataFim, objetivo)
+			VALUES(null, 1, 'B', '2016-09-01', '2016-09-30', 0);
+INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
+			VALUES (1, 1, 3, 15);
+INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
+			VALUES (1, 2, 3, 10);
+INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
+			VALUES (2, 1, 4, 8);
+INSERT INTO treino_has_exercicio(treino_idTreino, exercicio_idExercicio, qtdSeries, qtdRepeticoes) 
+			VALUES (2, 2, 4, 12);

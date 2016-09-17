@@ -12,15 +12,14 @@ import lombok.Getter;
 import lombok.Setter;
 import br.com.webfitness.entidades.Academia;
 import br.com.webfitness.entidades.Amizade;
+import br.com.webfitness.entidades.Comunidade;
 import br.com.webfitness.entidades.Dieta;
 import br.com.webfitness.entidades.Endereco;
 import br.com.webfitness.entidades.Foto;
 import br.com.webfitness.entidades.Funcao;
 import br.com.webfitness.entidades.HistoricoMedida;
-import br.com.webfitness.entidades.Comunidade;
 import br.com.webfitness.entidades.PessoaMensagem;
 import br.com.webfitness.entidades.Postagem;
-import br.com.webfitness.entidades.Suplemento;
 import br.com.webfitness.entidades.Telefone;
 import br.com.webfitness.entidades.Treino;
 import br.com.webfitness.entidades.Video;
@@ -47,7 +46,7 @@ public class PessoaDTO {
 	@Getter @Setter
 	private String email;
 	@Getter @Setter
-	private String status;
+	private String pessoaStatus;
 	@Getter @Setter
 	private Academia academia;
 	@Getter @Setter
@@ -83,7 +82,7 @@ public class PessoaDTO {
 			dataNascimento.setTime(getDataNascimento());
 			idade = dataAtual.get(Calendar.YEAR) - dataNascimento.get(Calendar.YEAR);
 			dataNascimento.set(Calendar.YEAR, dataAtual.get(Calendar.YEAR));
-			//Ainda n�o fez anivers�rio
+			//Ainda não fez aniversário
 			if(dataAtual.before(dataNascimento)){
 				idade = idade - 1;
 			}

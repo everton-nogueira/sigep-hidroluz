@@ -2,6 +2,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:f="http://java.sun.com/jsf/core">
 
 	<ui:composition template="/usuario/template.xhtml">
@@ -23,7 +24,7 @@
 									<h:outputLabel value="Objetivo: " for="obj"/>
 								</div>
 								<div class="col-md-3 col-lg-3">
-									<h:outputText id="obj" value="#{treinoMBean.ultimoTreino.objetivo}"/>
+									<h:outputText id="obj" value="#{treinoMBean.treinosAtuais.get(0).objetivo}" rendered="#{not empty treinoMBean.treinosAtuais}"/>
 								</div>
 							</div>
 						</div>
@@ -35,32 +36,32 @@
 								</div>
 							</div>
 						</div>
-						
-						<p:dataTable var="treinoExercicio" value="#{treinoMBean.ultimoTreino.exerciciosDoTreino}" rowKey="#{treinoExercicio.exercicio.idExercicio}"
-									 selection="#{treinoMBean.treinoExercicio}" selectionMode="single">
-								<p:ajax event="rowSelect" listener="#{treinoMBean.carregarModal()}" oncomplete="abreModal('#modalDetalhaExercicio');" update="formDialog" />
-								<p:column>
-									<f:facet name="header"><h:outputText value="Treino"/></f:facet>
-									#{treinoExercicio.treino.nome}
-								</p:column>
-								<p:column>
-									<f:facet name="header"><h:outputText value="Nome do Exercício"/></f:facet>
-									#{treinoExercicio.exercicio.nome}
-								</p:column>
-								<p:column>
-								<f:facet name="header"><h:outputText value="Séries"/></f:facet>
-									#{treinoExercicio.qtdSeries}
-								</p:column>
-								<p:column>
-								<f:facet name="header"><h:outputText value="Repetições"/></f:facet>
-									#{treinoExercicio.qtdRepeticoes}
-								</p:column>
-								<p:column>
-								<f:facet name="header"><h:outputText value="Observações"/></f:facet>
-									#{treinoExercicio.exercicio.descricao}
-								</p:column>
-							<!-- </div> -->
-						</p:dataTable>
+						<ui:repeat var="treinoAtual" value="#{treinoMBean.treinosAtuais}" varStatus="loop">
+							<p:dataTable var="treinoExercicio" value="#{treinoAtual.exerciciosDoTreino}" rowKey="#{treinoExercicio.exercicio.idExercicio}"
+										 selection="#{treinoMBean.treinoExercicio}" selectionMode="single">
+									<p:ajax event="rowSelect" listener="#{treinoMBean.carregarModal()}" oncomplete="abreModal('#modalDetalhaExercicio');" update="formDialog" />
+									<p:column>
+										<f:facet name="header"><h:outputText value="Treino" rendered="#{loop.first}"/></f:facet>
+										#{treinoExercicio.treino.nome}
+									</p:column>
+									<p:column>
+										<f:facet name="header"><h:outputText value="Nome do Exercício" rendered="#{loop.first}"/></f:facet>
+										#{treinoExercicio.exercicio.nome}
+									</p:column>
+									<p:column>
+										<f:facet name="header"><h:outputText value="Séries" rendered="#{loop.first}"/></f:facet>
+										#{treinoExercicio.qtdSeries}
+									</p:column>
+									<p:column>
+										<f:facet name="header"><h:outputText value="Repetições" rendered="#{loop.first}"/></f:facet>
+										#{treinoExercicio.qtdRepeticoes}
+									</p:column>
+									<p:column>
+										<f:facet name="header"><h:outputText value="Observações" rendered="#{loop.first}"/></f:facet>
+										#{treinoExercicio.exercicio.descricao}
+									</p:column>
+							</p:dataTable>
+						</ui:repeat>
 					</div>
 				</div>
 			</h:form>
@@ -68,12 +69,12 @@
 				<div class="modal fade" id="modalDetalhaExercicio">
 					<div class="modal-dialog">
 						<div class="modal-content">
-							<div class="row">
-								<div class="col-md-offset-2 col-lg-offset-2">
+							<div class="row ml-15">
+								<div class="col-md-offset-5 col-lg-offset-2">
 									<h:graphicImage library="imgExercicios" name="#{treinoMBean.exercicio.imagem}" style="width: auto;height: auto;"/>
 								</div>
 							</div>
-							<div class="row">
+							<div class="row ml-15">
 								<div class="col-md-offset-5 col-lg-offset-5">
 									<h:outputText value="#{treinoMBean.exercicio.descricao}"/>
 								</div>

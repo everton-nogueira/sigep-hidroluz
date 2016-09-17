@@ -4,6 +4,7 @@
 package br.com.webfitness.mb;
 
 import java.util.Collections;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -14,6 +15,7 @@ import br.com.webfitness.entidades.Exercicio;
 import br.com.webfitness.entidades.Treino;
 import br.com.webfitness.entidades.TreinoExercicio;
 import br.com.webfitness.servico.LoginServiceLocal;
+import br.com.webfitness.servico.TreinoServiceLocal;
 import br.com.webfitness.util.Authenticator;
 
 /**
@@ -26,10 +28,13 @@ public class TreinoMBean {
 	
 	@Inject
 	private LoginServiceLocal loginService;
+	
+	@Inject
+	private TreinoServiceLocal treinoService;
 
 	private Exercicio exercicio;
 	
-	private Treino ultimoTreino;
+	private List<Treino> treinosAtuais;
 	
 	private TreinoExercicio treinoExercicio;
 	
@@ -38,24 +43,25 @@ public class TreinoMBean {
 		exercicio = treinoExercicio.getExercicio();
 	}
 	
-	public Treino obtemTreinoAtual(){
+	public List<Treino> obtemTreinosAtuais(){
 		PessoaDTO pessoa = loginService.buscaPessoa(Authenticator.getUsuarioLogado().getIdPessoa());
 		if(pessoa.getTreinos() != null && !pessoa.getTreinos().isEmpty()){
-			Collections.sort(pessoa.getTreinos());
-			return pessoa.getTreinos().get(pessoa.getTreinos().size() - 1);
+			List<Treino> treinosAtuais = treinoService.getTreinoAtual(pessoa);
+			Collections.sort(treinosAtuais);
+			return treinosAtuais;
 		}
 		return null;
 	}
 
-	public Treino getUltimoTreino() {
-		if(ultimoTreino == null){
-			setUltimoTreino(obtemTreinoAtual());
+	public List<Treino> getTreinosAtuais() {
+		if(treinosAtuais == null){
+			setTreinosAtuais(obtemTreinosAtuais());
 		}
-		return ultimoTreino;
+		return treinosAtuais;
 	}
 
-	public void setUltimoTreino(Treino ultimoTreino) {
-		this.ultimoTreino = ultimoTreino;
+	public void setTreinosAtuais(List<Treino> treinosAtuais) {
+		this.treinosAtuais = treinosAtuais;
 	}
 	
 	public Exercicio getExercicio() {

@@ -59,8 +59,8 @@ public class Pessoa implements Serializable{
 	@Getter @Setter
 	private String email;
 	
-//	@Getter @Setter
-//	private Integer status;
+	@Getter @Setter
+	private Integer pessoaStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "academia_idAcademia")
