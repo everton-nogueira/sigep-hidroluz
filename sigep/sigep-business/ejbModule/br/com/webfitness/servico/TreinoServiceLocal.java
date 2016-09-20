@@ -6,6 +6,7 @@ package br.com.webfitness.servico;
 import java.util.List;
 
 import br.com.webfitness.DTO.PessoaDTO;
+import br.com.webfitness.entidades.GrupoMuscular;
 import br.com.webfitness.entidades.Treino;
 
 /**
@@ -22,4 +23,5 @@ public interface TreinoServiceLocal {
 	 * @return Lista de treinos
 	 */
 	List<Treino> getTreinoAtual(PessoaDTO pessoa);
+	GrupoMuscular getGrupoMuscularByNome(String valor);
 }

@@ -3,6 +3,7 @@
  */
 package br.com.webfitness.mb;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import javax.inject.Inject;
 
 import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.entidades.Exercicio;
+import br.com.webfitness.entidades.GrupoMuscular;
 import br.com.webfitness.entidades.Treino;
 import br.com.webfitness.entidades.TreinoExercicio;
 import br.com.webfitness.servico.LoginServiceLocal;
@@ -38,6 +40,8 @@ public class TreinoMBean {
 	
 	private TreinoExercicio treinoExercicio;
 	
+	private GrupoMuscular grupoMuscular;
+	
 
 	public void carregarModal(){
 		exercicio = treinoExercicio.getExercicio();
@@ -51,6 +55,15 @@ public class TreinoMBean {
 			return treinosAtuais;
 		}
 		return null;
+	}
+	
+	public List<GrupoMuscular> listGrupoMuscular(){
+		List<GrupoMuscular> list = new ArrayList<GrupoMuscular>();
+		list.add(new GrupoMuscular("PEITO"));
+		list.add(new GrupoMuscular("BICEPS"));
+		list.add(new GrupoMuscular("TRICEPS"));
+		list.add(new GrupoMuscular("QUADRICEPS"));
+		return list;
 	}
 
 	public List<Treino> getTreinosAtuais() {
@@ -80,4 +93,11 @@ public class TreinoMBean {
 		this.treinoExercicio = treinoExercicio;
 	}
 
+	public GrupoMuscular getGrupoMuscular() {
+		return grupoMuscular;
+	}
+
+	public void setGrupoMuscular(GrupoMuscular grupoMuscular) {
+		this.grupoMuscular = grupoMuscular;
+	}
 }

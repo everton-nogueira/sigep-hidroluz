@@ -10,7 +10,9 @@ import javax.inject.Inject;
 
 import br.com.webfitness.DTO.PessoaDTO;
 import br.com.webfitness.adapter.PessoaAdapter;
-import br.com.webfitness.dao.generic.TreinoDAO;
+import br.com.webfitness.dao.GrupoMuscularDAO;
+import br.com.webfitness.dao.TreinoDAO;
+import br.com.webfitness.entidades.GrupoMuscular;
 import br.com.webfitness.entidades.Treino;
 import br.com.webfitness.servico.TreinoServiceLocal;
 
@@ -25,11 +27,19 @@ public class TreinoService implements TreinoServiceLocal{
 	@Inject
 	private TreinoDAO treinoDAO;
 	
+	@Inject 
+	private GrupoMuscularDAO grupoMuscularDAO;
+	
 	private PessoaAdapter adapter = new PessoaAdapter();
 	
 	@Override
 	public List<Treino> getTreinoAtual(PessoaDTO pessoa) {
 		return treinoDAO.findTreinoAtual(adapter.getEntidade(pessoa));
+	}
+
+	@Override
+	public GrupoMuscular getGrupoMuscularByNome(String nome) {
+		return grupoMuscularDAO.findGrupoMuscularByNome(nome);
 	}
 
 }

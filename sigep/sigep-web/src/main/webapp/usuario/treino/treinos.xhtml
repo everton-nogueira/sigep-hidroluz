@@ -48,7 +48,7 @@
 										<f:facet name="header"><h:outputText value="Nome do Exercício" rendered="#{loop.first}"/></f:facet>
 										#{treinoExercicio.exercicio.nome}
 									</p:column>
-									<p:column>
+									<p:column width="">
 										<f:facet name="header"><h:outputText value="Séries" rendered="#{loop.first}"/></f:facet>
 										#{treinoExercicio.qtdSeries}
 									</p:column>
@@ -70,7 +70,7 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="row ml-15">
-								<div class="col-md-offset-5 col-lg-offset-2">
+								<div class="col-md-offset-1 col-lg-offset-1">
 									<h:graphicImage library="imgExercicios" name="#{treinoMBean.exercicio.imagem}" style="width: auto;height: auto;"/>
 								</div>
 							</div>

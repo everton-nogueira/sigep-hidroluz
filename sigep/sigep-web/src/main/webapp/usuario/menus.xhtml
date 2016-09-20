@@ -6,6 +6,7 @@
 	<h:body>
 		<h:form>
 			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<!-- BARRA SUPERIOR -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 						<span class="sr-only">Toggle navigation</span> 
@@ -13,10 +14,10 @@
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.xhtml">WebFitness</a>
+					<h:outputLink value="/sigep-web/usuario/index.xhtml" styleClass="navbar-brand">WebFitness</h:outputLink>
 				</div>
 				
-				<!-- Menu superior -->
+				<!-- BARRA SUPERIOR DIREITO-->
 				<ul class="nav navbar-right top-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -63,25 +64,29 @@
 						<ul class="dropdown-menu alert-dropdown">
 							<li><a href="#">NOTIFICAÇÃO 1<span class="label label-success"><i class="fa fa-bell"/></span></a></li>
 							<li class="divider"></li>
-							<li><a href="#">VER TODAS</a></li>
+							<li><h:outputLink value="#">VER TODAS</h:outputLink></li>
 						</ul>
 					</li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> #{loginMBean.pessoa.nome}<b class="caret"></b></a>
+						<h:outputLink value="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> #{loginMBean.pessoa.nome}<b class="caret"></b></h:outputLink>
 						<ul class="dropdown-menu">
-							<li><a href="perfil.xhtml"><i class="fa fa-fw fa-user"></i>Perfil</a></li>
-							<li><a href="#"><i class="fa fa-fw fa-gear"></i>Opções</a></li>
+							<li><h:outputLink value="/sigep-web/usuario/perfil.xhtml"><i class="fa fa-fw fa-user"></i>Perfil</h:outputLink></li>
+							<li><h:outputLink value="#"><i class="fa fa-fw fa-gear"></i>Opções</h:outputLink></li>
 							<li class="divider"></li>
-							<li><h:commandLink action="#{loginMBean.sair}"><i class="fa fa-fw fa-power-off"/>Sair</h:commandLink></li>
+							<li><h:commandLink action="#{loginMBean.sair()}"><i class="fa fa-fw fa-power-off"/>Sair</h:commandLink></li>
 						</ul>
 					</li>
 				</ul>
 		
+				
+				<!-- MENU LATERAL ESQUERDO -->
 				<div class="collapse navbar-collapse">
 					<ul class="nav navbar-nav side-nav">
 						<li>
 							<div class="item">
-								<ui:include src="fotoPerfil.xhtml" />	
+								<a href="/sigep-web/usuario/index.xhtml" class="thumbnail"> 
+									<h:graphicImage library="imgPessoas" name="willsmith.jpg" style="width:180px;height:180px;"/>
+								</a>
 								<div class="descricao" data-toggle="modal" data-target="#alteraFoto">
 									<div class="texto">
 										Atualizar foto de perfil
@@ -89,29 +94,37 @@
 								</div>
 							</div>
 						</li>
-						<li class="active"><a href="index.xhtml"><i class="fa fa-fw fa-dashboard"/>  Inicio</a></li>
-						<li><a href="perfil.xhtml"> <i class="fa fa-fw fa-bar-chart-o"/>  Perfil</a></li>
+						<li class="active">
+							<h:outputLink value="/sigep-web/usuario/index.xhtml"><i class="fa fa-fw fa-dashboard"/>  Inicio</h:outputLink></li>
 						<li>
-							<a href="javascript:;" data-toggle="collapse" data-target="#demo">
+							<h:outputLink value="/sigep-web/usuario/perfil.xhtml"> <i class="fa fa-fw fa-bar-chart-o"/>  Perfil</h:outputLink></li>
+						<li>
+							<a href="javascript:;" data-toggle="collapse" data-target="#treino">
 								<i class="fa fa-list"/>  Treinos<i class="fa fa-fw fa-caret-down"/>
 							</a>
-							<ul id="demo" class="collapse">
-								<li><a href="treinos.xhtml">Treino Atual</a></li>
+							<ul id="treino" class="collapse">
+								<li><h:outputLink value="/sigep-web/usuario/treino/treinos.xhtml">Treino Atual</h:outputLink></li>
+								<li><h:outputLink value="/sigep-web/usuario/treino/cadastrar.xhtml">Cadastrar Treino</h:outputLink></li>
+								<li><h:outputLink value="/sigep-web/usuario/treino/gerar.xhtml">Gerar Treino</h:outputLink></li>
+								<li><h:outputLink value="/sigep-web/usuario/treino/historico.xhtml">Histórico de Treinos</h:outputLink></li>
 							</ul>
 						</li>
-						<li><a href="#"><i class="fa fa-shopping-cart"/>  Dieta</a></li>
-						<li><a href="#"><i class="fa fa-balance-scale"/>  Medidas</a></li>
+						<li><h:outputLink value="#"><i class="fa fa-shopping-cart"/>  Dieta</h:outputLink></li>
+						<li><h:outputLink value="#"><i class="fa fa-balance-scale"/>  Medidas</h:outputLink></li>
 					</ul>
 				</div>
 			</nav>
-	
 		</h:form>
 		
+		<!-- MODAL UPLOAD FOTO PERFIL -->		
 		<div class="modal fade" id="alteraFoto">
 			<div class="modal-dialog modal-lg">
 				<!-- Modal content-->
 				<div class="modal-content">
-					<ui:include src="alteraFotoPerfil.xhtml" />
+					<h:form>
+						<p:fileUpload fileUploadListener="#{fotoPerfilMBean.uploadAction}" upload="messages" mode="advanced" dragDropSupport="true" multiple="false" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+						<p:growl id="messages" showDetail="true" />
+					</h:form>
 				</div>
 			</div>
 		</div>
