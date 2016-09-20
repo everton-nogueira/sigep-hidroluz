@@ -30,9 +30,6 @@ public class Telefone {
 	@Getter @Setter
 	private Integer ddd;
 	
-	@Getter @Setter
-	private String descricao;
-	
 	@ManyToMany
 	@JoinTable(name = "pessoa_has_telefone" , 
 		joinColumns = @JoinColumn(name = "telefone_idTelefone"),
