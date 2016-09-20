@@ -12,41 +12,40 @@
 					<div class="form-group">
 						<div class="panel panel-header">
 							<div class="row">
-								<div class="col-md-10 col-lg-10">
-									<div class="row">
-										<div class="col-md-12 col-lg-12">
-											<div class="text-center"><STRONG><h:outputText value="Período do Treino"/></STRONG></div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12 col-lg-12">
-											<div class="text-center">
-												<p:outputLabel value="De: " for="idPeriodoTreinoInicio"/>
-												<p:calendar id="idPeriodoTreinoInicio" value="#{treinoMBean.treino.dataInicio}" showOn="button"/>
-												<p:outputLabel value="Até: " for="idPeriodoTreinoFim"/>
-												<p:calendar id="idPeriodoTreinoFim" value="#{treinoMBean.treino.dataFim}" showOn="button"/>
-											</div>
-										</div>
-									</div>
+								<div class="col-md-3 col-lg-3">
+									<p:outputLabel value="Período do Treino"/>
+								</div>
+								<div class="col-md-8 col-lg-8">
+									<p:outputLabel value="De: " for="idPeriodoTreinoInicio"/>
+									<p:calendar id="idPeriodoTreinoInicio" value="#{treinoMBean.treino.dataInicio}" showOn="button"/>
+									<p:outputLabel value="Até: " for="idPeriodoTreinoFim"/>
+									<p:calendar id="idPeriodoTreinoFim" value="#{treinoMBean.treino.dataFim}" showOn="button"/>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-10 col-lg-10">
+								<div class="col-md-3 col-lg-3">
 									<p:outputLabel value="Objetivo do Treino: " for="idObjTreino"/>
+								</div>
+								<div class="col-md-8 col-lg-8">
 									<p:selectOneMenu id="idObjTreino" value="#{treinoMBean.treino.objetivo}">
 										<f:selectItems value="#{treinoMBean.objetivos}" var="objetivo" itemLabel="#{objetivo.label}" itemValue="#{objetivo.valor}" itemLabelEscaped="Selecione..."/>
 									</p:selectOneMenu>
 								</div>
 							</div>
+							<HR />
 							<div class="row">
-								<div class="col-md-10 col-lg-10">
+								<div class="col-md-3 col-lg-3">
 									<p:outputLabel value="Nome do Treino: " for="idNomeTreino"/>
+								</div>
+								<div class="col-md-8 col-lg-8">
 									<p:inputText id="idNomeTreino" value="#{treinoMBean.treino.nome}"/>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-md-6 col-lg-6">
+								<div class="col-md-3 col-lg-3">
 									<p:outputLabel value="Grupo Muscular: " for="idAutoGrpMusc"/>
+								</div>
+								<div class="col-md-8 col-lg-8">
 									<p:autoComplete id="idAutoGrpMusc" dropdown="true" converter="grupoMuscularConverter"
 													var="grupoMuscular" itemLabel="#{grupoMuscular.nome}"
 													itemValue="#{grupoMuscular}" immediate="true"
@@ -56,8 +55,10 @@
 										<p:ajax event="itemSelect" process="@this" update="@form"/> 
 									</p:autoComplete>
 								</div>
-								<div class="col-md-6 col-lg-6">
+								<div class="col-md-3 col-lg-3">
 									<p:outputLabel value="Exercício: " for="idAutoExercicio"/>
+								</div>
+								<div class="col-md-8 col-lg-8">
 									<p:autoComplete id="idAutoExercicio" dropdown="true" converter="exercicioConverter"
 													var="exercicio" itemLabel="#{exercicio.nome}"
 													itemValue="#{exercicio}" immediate="true"
@@ -71,15 +72,21 @@
 							<div class="row">
 								<div class="col-md-3 col-lg-3">
 									<p:outputLabel value="Séries: " for="idQtdSeries"/>
+								</div>
+								<div class="col-md-3 col-lg-3">
 									<p:inputText id="idQtdSeries" value="#{treinoMBean.exercicioDoTreino.qtdSeries}"/>
 								</div>
 								<div class="col-md-3 col-lg-3">
 									<p:outputLabel value="Repetições: " for="idQtdRepeticoes"/>
+								</div>
+								<div class="col-md-3 col-lg-3">
 									<p:inputText id="idQtdRepeticoes" value="#{treinoMBean.exercicioDoTreino.qtdRepeticoes}"/>
 								</div>
-								<div class="col-md-6 col-lg-6">
+							</div>
+							<div class="row">
+								<div class="col-md-12 col-lg-12">
 									<p:outputLabel value="Observações: " for="idObservacoes"/>
-									<p:inputText id="idObservacoes" value="#{treinoMBean.exercicioDoTreino.observacao}" title="Deseja inserir alguma observação para esse exercício?"/>
+									<p:inputTextarea id="idObservacoes" value="#{treinoMBean.exercicioDoTreino.observacao}" title="Deseja inserir alguma observação para esse exercício?"/>
 								</div>
 							</div>
 							<div class="row">
