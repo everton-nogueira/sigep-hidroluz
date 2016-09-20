@@ -4,14 +4,19 @@
 package br.com.webfitness.mb;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
+import lombok.Getter;
+import lombok.Setter;
 import br.com.webfitness.DTO.PessoaDTO;
+import br.com.webfitness.constante.ObjetivoTreino;
 import br.com.webfitness.entidades.Exercicio;
 import br.com.webfitness.entidades.GrupoMuscular;
 import br.com.webfitness.entidades.Treino;
@@ -25,7 +30,7 @@ import br.com.webfitness.util.Authenticator;
  * Data: 14/09/2016
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class TreinoMBean {
 	
 	@Inject
@@ -42,9 +47,28 @@ public class TreinoMBean {
 	
 	private GrupoMuscular grupoMuscular;
 	
-
+	@Getter
+	private List<ObjetivoTreino> objetivos = Arrays.asList(ObjetivoTreino.values());
+	
+	
+	@Getter @Setter
+	private Treino treino;
+	
+	@Getter @Setter
+	private TreinoExercicio exercicioDoTreino;
+	
+	@PostConstruct
+	public void init(){
+		treino = new Treino();
+		treino.setExerciciosDoTreino(new ArrayList<TreinoExercicio>());
+	}
+	
 	public void carregarModal(){
 		exercicio = treinoExercicio.getExercicio();
+	}
+	
+	public void cadastrarTreino(){
+		
 	}
 	
 	public List<Treino> obtemTreinosAtuais(){
@@ -58,12 +82,11 @@ public class TreinoMBean {
 	}
 	
 	public List<GrupoMuscular> listGrupoMuscular(){
-		List<GrupoMuscular> list = new ArrayList<GrupoMuscular>();
-		list.add(new GrupoMuscular("PEITO"));
-		list.add(new GrupoMuscular("BICEPS"));
-		list.add(new GrupoMuscular("TRICEPS"));
-		list.add(new GrupoMuscular("QUADRICEPS"));
-		return list;
+		return treinoService.findAllGrupoMuscular();
+	}
+	
+	public List<Exercicio> listExercicioByGrupoMuscular(){
+		return treinoService.findExercicioByGrupoMuscular(getGrupoMuscular());
 	}
 
 	public List<Treino> getTreinosAtuais() {

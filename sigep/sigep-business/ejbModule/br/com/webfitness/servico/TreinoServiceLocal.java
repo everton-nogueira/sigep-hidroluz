@@ -6,6 +6,7 @@ package br.com.webfitness.servico;
 import java.util.List;
 
 import br.com.webfitness.DTO.PessoaDTO;
+import br.com.webfitness.entidades.Exercicio;
 import br.com.webfitness.entidades.GrupoMuscular;
 import br.com.webfitness.entidades.Treino;
 
@@ -23,5 +24,24 @@ public interface TreinoServiceLocal {
 	 * @return Lista de treinos
 	 */
 	List<Treino> getTreinoAtual(PessoaDTO pessoa);
+	/**
+	 * @Autor Éverton Nogueira
+	 * @Description Método que retorna um grupo muscular pelo nome informado 
+	 * @param valor
+	 * @return Grupo Muscular
+	 */
 	GrupoMuscular getGrupoMuscularByNome(String valor);
+	/**
+	 * @Autor Éverton Nogueira
+	 * @Description  Método que retorna todos os grupos musculares da base de dados.
+	 * @return Lista de Grupo Muscular
+	 */
+	List<GrupoMuscular> findAllGrupoMuscular();
+	/**
+	 * @Autor Éverton Nogueira
+	 * @Description Busca uma lista de exercícios para um grupo muscular específico
+	 * @param grupoMuscular
+	 * @return
+	 */
+	List<Exercicio> findExercicioByGrupoMuscular(GrupoMuscular grupoMuscular);
 }

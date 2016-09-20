@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
  */
 public abstract class DaoImpl<ENTIDADE> implements Dao<ENTIDADE> {
 	
-	//Criar uma namedQuery no entidade desejada com o nome definido nessa constante.
+	//Criar uma namedQuery na entidade desejada com o nome da classe e o nome definido nessa constante separado por um ponto. (Ex: Named Query na classe Pessoa deve ser "Pessoa.selectAll").
 	private static final String SELECT_ALL = "selectAll";
 	
 	@Inject
@@ -50,7 +50,7 @@ public abstract class DaoImpl<ENTIDADE> implements Dao<ENTIDADE> {
 
 	@Override
 	public List<ENTIDADE> listar(Class<ENTIDADE> classe) {
-		TypedQuery<ENTIDADE> query = em.createNamedQuery(SELECT_ALL, classe);
+		TypedQuery<ENTIDADE> query = em.createNamedQuery(classe.getSimpleName()+"."+SELECT_ALL, classe);
 		return query.getResultList(); 
 	}
 

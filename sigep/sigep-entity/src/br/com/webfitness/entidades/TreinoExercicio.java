@@ -42,4 +42,7 @@ public class TreinoExercicio implements Serializable{
 	
 	@Getter @Setter
 	private Integer qtdRepeticoes;
+	
+	@Getter @Setter
+	private String observacao;
 }

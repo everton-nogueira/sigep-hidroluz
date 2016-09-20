@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -19,6 +21,7 @@ import lombok.Setter;
  */
 @Entity
 @NoArgsConstructor
+@NamedQueries(value = { @NamedQuery(name="GrupoMuscular.selectAll", query="SELECT gm FROM GrupoMuscular gm") } )
 public class GrupoMuscular {
 	
 	@Id

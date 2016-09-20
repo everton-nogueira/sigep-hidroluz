@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 import lombok.Getter;
@@ -21,6 +23,7 @@ import lombok.Setter;
  * Data: 01/05/2016
  */
 @Entity
+@NamedQueries(value = { @NamedQuery(name="selectTreinoAtual", query="SELECT t FROM Treino t WHERE t.pessoa = :pessoa AND :dataAtual between t.dataInicio AND t.dataFim") } )
 public class Treino implements Comparable<Treino> , Serializable{
 	private static final long serialVersionUID = -8806803445359483677L;
 
