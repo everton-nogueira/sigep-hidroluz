@@ -5,24 +5,27 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:body>
 	<div class="row">
-			<div class="panel panel-green">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-xs-1">
-							<i class="fa fa-comments fa-1x"></i>
-						</div>
-					</div>
-				</div>
-				<div class="panel-footer">
-					<div class="form-group">
-						<label for="comment">O que você gostaria de escrever agora?</label>
-						<p>
-							<textarea class="form-control" rows="5" id="postagem"></textarea>
-						</p>
-						<button type="button" class="btn btn-success">ENVIAR</button>
+		<div class="panel panel-green">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="col-xs-1">
+						<i class="fa fa-comments fa-1x"></i>
 					</div>
 				</div>
 			</div>
+			<div class="panel-footer">
+				<h:form>
+					<div class="form-group">
+						<label for="comment">O que você gostaria de escrever
+							agora?</label>
+						<p>
+							<p:inputTextarea value="#{postagemMBean.texto}" rows="5"/>
+						</p>
+						<p:commandButton value="Enviar" action="#{postagemMBean.enviar()}" update=""/>
+					</div>
+				</h:form>
+			</div>
 		</div>
+	</div>
 </h:body>
 </html>

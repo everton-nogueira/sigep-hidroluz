@@ -3,15 +3,20 @@
  */
 package br.com.webfitness.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,9 +26,16 @@ import lombok.Setter;
  * @Data:  14/09/2016
  */
 @Entity
-public class Postagem {
+@NamedQueries(value = { @NamedQuery(name="Postagem.selectAll", query="SELECT post FROM Postagem post order by post.dataPostagem desc") } )
+public class Postagem implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1262250350948582262L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter
 	private Integer idPostagem;
 	
