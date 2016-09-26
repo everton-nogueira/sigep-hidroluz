@@ -11,44 +11,46 @@
 	<div class="row">
 		<div class="panel panel-green">
 			<div class="form-group">
-				<h:form>
-					<div class="featurette" id="about">
-						<div class="timeline-container">
-							<div class="qa-message-list" id="wallmessages">
-								<ui:repeat var="postagem" value="#{postagemMBean.postagens}">
-									<div class="timeline-message-item" id="m16">
-										<div class="timeline-message-inner">
-											<div class="timeline-message-head clearfix">
-												<div class="timeline-avatar pull-left">
-													<img class="timeline-img"
-														src="http://www.tutorialspoint.com/about/images/mohtashim.jpg">
-													</img>
-												</div>
-												<div class="timeline-user-detail">
-													<h5 class="timeline-handle">Founder note</h5>
-													<div class="timeline-post-meta">
-														<div class="timeline-asker-meta">
-															<span class="timeline-qa-message-what"></span> <span
-																class="timeline-qa-message-when"> <span
-																class="qa-message-when-data">Jan 21</span>
-															</span> <span class="timeline-qa-message-who"> <span
-																class="timeline-qa-message-who-pad">by </span> <span
-																class="timeline-qa-message-who-data"></span>
-															</span>
+				<h:panelGroup id="panelTimeLine" layout="block">
+					<h:form id="formTimeLine">
+						<div class="featurette" id="about">
+							<div class="timeline-container">
+								<div class="qa-message-list" id="wallmessages">
+									<ui:repeat var="postagem" value="#{postagemMBean.postagens}">
+										<div class="timeline-message-item" id="m16">
+											<div class="timeline-message-inner">
+												<div class="timeline-message-head clearfix">
+													<div class="timeline-avatar pull-left">
+														<img class="timeline-img"
+															src="http://www.tutorialspoint.com/about/images/mohtashim.jpg">
+														</img>
+													</div>
+													<div class="timeline-user-detail">
+														<h5 class="timeline-handle">Founder note</h5>
+														<div class="timeline-post-meta">
+															<div class="timeline-asker-meta">
+																<span class="timeline-qa-message-what"></span> <span
+																	class="timeline-qa-message-when"> <span
+																	class="qa-message-when-data">Jan 21</span>
+																</span> <span class="timeline-qa-message-who"> <span
+																	class="timeline-qa-message-who-pad">by </span> <span
+																	class="timeline-qa-message-who-data"></span>
+																</span>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-											<div class="timeline-qa-message-content">
-												<h:outputText value="#{postagem.texto}" />
+												<div class="timeline-qa-message-content">
+													<h:outputText value="#{postagem.texto}" />
+												</div>
 											</div>
 										</div>
-									</div>
-								</ui:repeat>
+									</ui:repeat>
+								</div>
 							</div>
 						</div>
-					</div>
-				</h:form>
+					</h:form>
+				</h:panelGroup>
 			</div>
 		</div>
 	</div>

@@ -14,14 +14,13 @@
 				</div>
 			</div>
 			<div class="panel-footer">
-				<h:form>
+				<h:form id="formPostagem">
 					<div class="form-group">
-						<label for="comment">O que você gostaria de escrever
-							agora?</label>
-						<p>
-							<p:inputTextarea value="#{postagemMBean.texto}" rows="5"/>
-						</p>
-						<p:commandButton value="Enviar" action="#{postagemMBean.enviar()}" update=""/>
+						<label for="comment">O que você gostaria de escrever agora?</label>
+						<h:panelGroup id="panelPostagem" layout="block">
+							<p:inputTextarea value="#{postagemMBean.texto}" rows="5" style="width:100%;"/>
+						</h:panelGroup>
+						<p:commandButton value="Enviar" action="#{postagemMBean.enviar()}" update="panelTimeLine formPostagem:panelPostagem"/>
 					</div>
 				</h:form>
 			</div>

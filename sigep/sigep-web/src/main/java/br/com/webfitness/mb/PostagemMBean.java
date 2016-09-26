@@ -64,6 +64,8 @@ public class PostagemMBean implements Serializable{
 	
 	public void enviar(){
 		postagemService.realizaPostagem(getTexto(),getPessoaSession());
+		carregaPostagens();
+		setTexto(null);
 	}
 	
 	
